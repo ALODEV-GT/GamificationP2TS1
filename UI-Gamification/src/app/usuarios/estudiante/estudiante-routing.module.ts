@@ -1,3 +1,4 @@
+import { PagePrincipalComponent } from './../../shared/page-principal/page-principal.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -7,8 +8,8 @@ const rutas: Routes = [
     //component: Component0,
     children: [
       {
-        path: 'path1',
-        //component: Component1
+        path: 'page-principal',
+        component:PagePrincipalComponent
       },
       {
         path: 'path2',
