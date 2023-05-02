@@ -1,7 +1,7 @@
 const express = require ('express')
 const cors = require('cors');
-const rolRoutes = require('./routes/Roles.routes')
-const userRoutes = require('./routes/User.routes')
+const rolRoutes = require('./routes/routes_generales/Roles.routes')
+const userRoutes = require('./routes/routes_generales/User.routes')
 
 
 

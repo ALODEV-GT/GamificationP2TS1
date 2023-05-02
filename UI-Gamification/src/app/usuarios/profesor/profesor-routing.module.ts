@@ -1,3 +1,4 @@
+import { AreaCreatJuegoComponent } from './game-memori-scratteg/area-creat-juego/area-creat-juego.component';
 import { PagePrincipalComponent } from './../../shared/page-principal/page-principal.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -12,8 +13,8 @@ const rutas: Routes = [
         component:PagePrincipalComponent
       },
       {
-        path: 'path2',
-        //component: Component2
+        path: 'creat-game-memorama',
+        component:AreaCreatJuegoComponent
       },
       {
         path: 'path3',

@@ -39,9 +39,7 @@ export class RegistroComponent implements OnInit {
     this.userService.saveUsurioSesion(this.loginForm.value).subscribe(
       (value: Usuario) =>{
         this.usuario= value
-        console.log(value)
-        console.log(this.usuario)
-        if (this.usuario.rol != undefined) {
+        if (this.usuario.id_rol != undefined) {
           this.goAreaWork()
         }
       }
@@ -49,7 +47,7 @@ export class RegistroComponent implements OnInit {
   }
 
   goAreaWork(){
-    switch (this.usuario.rol) {
+    switch (this.usuario.id_rol) {
       case 1:
         this.router.navigate(['profesor/page-principal'])
         break;
@@ -62,7 +60,7 @@ export class RegistroComponent implements OnInit {
   }
 
   clickRolSelect(index:number){
-    this.loginForm.value.rol = this.roles[index].tipo_rol
+    this.loginForm.value.rol = this.roles[index].id
   }
 
 }

@@ -4,5 +4,5 @@ export class Usuario{
     nik_name!:String
     apellido!:String
     passworde!:String
-    rol!:number
+    id_rol!:number
 }
