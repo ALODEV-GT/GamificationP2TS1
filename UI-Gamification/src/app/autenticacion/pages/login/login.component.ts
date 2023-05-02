@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       (value: Usuario) =>{
         this.usuario=value
         console.log(this.usuario)
-        if (this.usuario.rol != undefined) {
+        if (this.usuario.id_rol != undefined) {
           this.goAreaWork()
         }
       }
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   }
 
   goAreaWork(){
-    switch (this.usuario.rol) {
+    switch (this.usuario.id_rol) {
       case 1:
         this.router.navigate(['profesor/page-principal'])
         break;
