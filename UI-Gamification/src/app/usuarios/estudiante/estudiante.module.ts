@@ -5,7 +5,7 @@ import { EstudianteRoutingModule } from './estudiante-routing.module';
 import { FooterComponent } from 'src/app/shared/footer/footer.component';
 import { NavBarComponent } from 'src/app/shared/nav-bar/nav-bar.component';
 import { FooterStudentComponent } from './footer-student/footer-student.component';
-import { NavBarProfeComponent } from './nav-bar-profe/nav-bar-profe.component';
+import { NavBarStudentComponent } from './nav-bar-student/nav-bar-student.component';
 
 
 
@@ -15,7 +15,7 @@ import { NavBarProfeComponent } from './nav-bar-profe/nav-bar-profe.component';
     NavBarComponent,
     FooterComponent,
     FooterStudentComponent,
-    NavBarProfeComponent
+    NavBarStudentComponent
   ],
   imports: [
     CommonModule,
