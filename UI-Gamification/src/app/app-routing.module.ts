@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
+import { JuegoComponent } from './juegos/comido/juego/juego.component';
 
 const rutas: Routes = [
   {
@@ -28,6 +29,10 @@ const rutas: Routes = [
   {
     path: '404', //Pagina de error
     component: ErrorPageComponent
+  },
+  {//Este path es solamente para diseñar este juego
+    path: 'pruebas-comido',
+    component: JuegoComponent
   },
   {
     path: '**', //Cualquier otra pagina que no existe.
