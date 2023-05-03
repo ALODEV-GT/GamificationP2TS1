@@ -1,3 +1,4 @@
+import { MemoramaServiceService } from './../services/memorama-service.service';
 import { Respuesta } from './../models/respuesta';
 import { Pregunta } from './../models/pregunta';
 import { Tema } from './../models/tema';
@@ -20,13 +21,18 @@ export class AreaCreatJuegoComponent implements OnInit {
   respuesta5=''
   indexTem=-1
 
-  constructor() { }
+  constructor(private memoramaService:MemoramaServiceService) { }
 
   ngOnInit(): void {
   }
 
   crearGuardarJuego(){
     if (this.comprobarTitulo()) {
+      this.memoramaService.saveUsurioSesion(this.tema).subscribe(
+        (value: Tema) => {
+          console.log(value)
+        }
+      )
       console.log(this.tema)
     }
   }
