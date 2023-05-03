@@ -1,8 +1,8 @@
 import { UsuarioService } from './../../../usuarios/services/usuario.service';
-import { Usuario } from './../../../usuarios/models/Usuario';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/models/Usuario';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,private router:Router,
               private usuarioService:UsuarioService) { }
-  
+
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       nik_name:[null, Validators.required],
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         }
       }
     )
-    
+
   }
 
   goAreaWork(){
