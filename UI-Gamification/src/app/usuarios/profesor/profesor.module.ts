@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { ProfesorRoutingModule } from './profesor-routing.module';
 import { AreaCreatJuegoComponent } from './game-memori-scratteg/area-creat-juego/area-creat-juego.component';
+import { ProfesorRoutingModule } from './profesor-routing.module';
 import { NavBarProfeComponent } from './nav-bar-profe/nav-bar-profe.component';
 import { FooterProfeComponent } from './footer-profe/footer-profe.component';
 
@@ -11,7 +10,7 @@ import { FooterProfeComponent } from './footer-profe/footer-profe.component';
   declarations: [
     AreaCreatJuegoComponent,
     NavBarProfeComponent,
-    FooterProfeComponent
+    FooterProfeComponent,
   ], 
   imports: [
     CommonModule,
