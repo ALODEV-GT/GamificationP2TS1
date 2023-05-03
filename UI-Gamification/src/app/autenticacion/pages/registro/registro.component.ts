@@ -1,10 +1,11 @@
-import { Usuario } from './../../../usuarios/models/Usuario';
+
 import { UsuarioService } from './../../../usuarios/services/usuario.service';
 import { Router } from '@angular/router';
 import { RolService } from './../../services/rol.service';
 import { Rol } from './../../models/Rol';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Usuario } from 'src/models/Usuario';
 
 @Component({
   selector: 'app-registro',
