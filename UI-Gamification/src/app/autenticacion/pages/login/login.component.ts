@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
     this.usuarioService.getSesionUsuario(this.loginForm.value).subscribe(
       (value: Usuario) =>{
         this.usuario=value
-        console.log(this.usuario)
         if (this.usuario.id_rol != undefined) {
           this.goAreaWork()
         }

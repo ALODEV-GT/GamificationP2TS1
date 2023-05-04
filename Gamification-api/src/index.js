@@ -5,6 +5,10 @@ const userRoutes = require('./routes/routes_generales/User.routes')
 
 
 
+const memoramaRoutes =  require('./routes/memorama/memorama.routes')
+
+
+
 const app = express()
 
 app.use(express.json())
@@ -15,6 +19,7 @@ app.use(cors());
 
 app.use('/api/rol', rolRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/memorama', memoramaRoutes)
 
 app.listen(3000)
 
