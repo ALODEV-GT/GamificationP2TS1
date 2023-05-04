@@ -1,4 +1,4 @@
 export class Respuesta {
-    id!:number
+    id:number=0
     respuesta!:string
 }

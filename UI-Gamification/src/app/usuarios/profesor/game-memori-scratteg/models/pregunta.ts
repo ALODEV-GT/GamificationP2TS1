@@ -1,8 +1,7 @@
 import { Respuesta } from './respuesta';
 export class Pregunta {
-    id!:number
-    cantidad_respuestas!:number
+    id:number=0
+    cantidad_respuestas:number=0
     pregunta!:string
     respuestas:Respuesta[]=[]
-    
 }
