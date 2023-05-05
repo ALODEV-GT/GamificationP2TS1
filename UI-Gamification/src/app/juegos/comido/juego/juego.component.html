@@ -1,1 +1,27 @@
-<p>juego works!</p>
+<div class="base">
+
+
+  <div class="orilla">
+    <div class="contenedor">
+
+      <div class="suelo"></div>
+
+      <div #pacman class="pacman pacman-corriendo"></div>
+
+      <div class="cereza"></div>
+
+      <div class="fantasma fantasma-corriendo"></div>
+
+      <div class="coin"></div>
+
+      <button type="button" (click)="moverPacman()">
+        Mover
+      </button>
+
+      <div class="score">0</div>
+    </div>
+  </div>
+
+  <div class="game-over">GAME OVER</div>
+
+</div>

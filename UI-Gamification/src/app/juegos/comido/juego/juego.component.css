@@ -1,0 +1,136 @@
+.base {
+  height: 100vh;
+  background: #584040;
+  display: flex;
+  align-items: center;
+}
+
+.contenedor {
+  width: auto;
+  height: 170px;
+  border: 10px solid #2121DE;
+  border-bottom: 14px solid #2121DE;
+  border-radius: 5px;
+}
+
+.game-over {
+  display: none;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: #eee8e8;
+  font-size: 50px;
+  font-family: Verdana;
+  font-weight: bold;
+}
+
+.orilla {
+  width: 1000px;
+  height: 170px;
+  margin: 0 auto;
+  position: relative;
+  background: #1919A6;
+  border: 2px solid #ecdf20;
+  border-radius: 5px;
+  box-shadow: 1px 1px 30px 1px #ecdf20;
+  overflow: hidden;
+}
+
+.coin {
+  width: 17px;
+  height: 17px;
+
+  position: absolute;
+  bottom: 78px;
+  left: 570px;
+  border-radius: 50%;
+  border: 1px solid #080808;
+  background: white;
+}
+
+
+.pacman {
+  width: 71px;
+  height: 71px;
+
+  position: absolute;
+  bottom: 50px;
+  left: 465px;
+  z-index: 2;
+
+  background: url(../../../../assets/comido/img/pacmanO.png) repeat-x 0px 0px;
+  background-size: 355px 71px;
+  background-position-x: 0px;
+
+}
+
+
+.fantasma {
+  width: 70px;
+  height: 70px;
+
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  z-index: 2;
+
+  background: url(../../../../assets/comido/img/ghost.png) repeat-x 0px 0px;
+  background-size: 140px 70px;
+  background-position-x: 0px;
+}
+
+.cereza {
+  width: 56px;
+  height: 56px;
+
+  position: absolute;
+  bottom: 50px;
+  left: 894px;
+  z-index: 2;
+
+  background: url(../../../../assets/comido/img/cereza.png) repeat-x 0px 0px;
+  background-size: 56px 56px;
+  background-position-x: 0px;
+}
+
+.pacman-corriendo {
+  animation: animarPacman 0.40s steps(5) infinite;
+}
+
+@keyframes animarPacman {
+  from {
+    background-position-x: -71px;
+  }
+
+  to {
+    background-position-x: -426px;
+  }
+}
+
+.fantasma-corriendo {
+  animation: animarFantasma 0.5s steps(2) infinite;
+}
+
+@keyframes animarFantasma {
+  from {
+    background-position-x: -70px;
+  }
+
+  to {
+    background-position-x: -210px;
+  }
+}
+
+.score {
+  width: 100px;
+  height: 30px;
+
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  color: #f1edec;
+  font-family: Verdana;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: right;
+}
