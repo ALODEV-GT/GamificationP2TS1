@@ -4,4 +4,5 @@ export class Pregunta {
     cantidad_respuestas:number=0
     pregunta!:string
     respuestas:Respuesta[]=[]
+    mostrarFigura=false
 }

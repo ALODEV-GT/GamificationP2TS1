@@ -1,3 +1,5 @@
+import { DemoJuegoComponent } from './game-memori-scratteg/demo-juego/demo-juego.component';
+import { AreaJuegosCreadosComponent } from './game-memori-scratteg/area-juegos-creados/area-juegos-creados.component';
 import { AreaCreatJuegoComponent } from './game-memori-scratteg/area-creat-juego/area-creat-juego.component';
 import { PagePrincipalComponent } from './../../shared/page-principal/page-principal.component';
 import { NgModule } from '@angular/core';
@@ -23,6 +25,31 @@ const rutas: Routes = [
       {
         path: 'path4',
         //component: Component4
+      },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {
+        path: 'memoramas-creados',
+        component: AreaJuegosCreadosComponent
+      },
+      {
+        path: 'demo-juego',
+        component:DemoJuegoComponent
       },
     ]
   },
