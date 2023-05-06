@@ -1,7 +1,8 @@
-import { MemoramaServiceService } from './../services/memorama-service.service';
-import { Respuesta } from './../models/respuesta';
-import { Pregunta } from './../models/pregunta';
-import { Tema } from './../models/tema';
+import { Router } from '@angular/router';
+import { MemoramaServiceService } from '../services/memorama-service.service';
+import { Respuesta } from '../models/respuesta';
+import { Pregunta } from '../models/pregunta';
+import { Tema } from '../models/tema';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 
@@ -21,7 +22,7 @@ export class AreaCreatJuegoComponent implements OnInit {
   respuesta5=''
   indexTem=-1
 
-  constructor(private memoramaService:MemoramaServiceService) { }
+  constructor(private memoramaService:MemoramaServiceService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -30,10 +31,16 @@ export class AreaCreatJuegoComponent implements OnInit {
     if (this.comprobarTitulo()) {
       this.memoramaService.saveUsurioSesion(this.tema).subscribe(
         (value: Tema) => {
-          console.log(value)
+          if (value != undefined) {
+            Swal.fire({
+              icon: 'success',
+              title: 'Juego Creado con exito',
+              text: 'Ya puedes generar una partida con el juego creado'
+            })
+            this.router.navigate(['profesor/memoramas-creados'])
+          }
         }
       )
-      console.log(this.tema)
     }
   }
 

@@ -33,3 +33,13 @@ CREATE TABLE control_game_memorama.Tema_pregunta(
     FOREIGN KEY (id_tema) REFERENCES control_game_memorama.Tema(id),
     FOREIGN KEY (id_pregunta) REFERENCES control_game_memorama.pregunta(id)
 ); 
+
+
+--algunas consultas
+SELECT pregunta.* FROM control_game_memorama.pregunta AS pregunta
+INNER JOIN control_game_memorama.Tema_pregunta AS asoci
+ON pregunta.id = asoci.id_pregunta WHERE asoci.id_tema = 4;
+
+SELECT respuesta.* FROM control_game_memorama.respuesta AS respuesta
+INNER JOIN control_game_memorama.pregunta_respuesta AS asoci
+ON respuesta.id = asoci.id_respuesta WHERE asoci.id_pregunta = 3;

@@ -13,6 +13,30 @@ const saveTema = async (tema) => {
     return response ;
 };
 
+const getTemasJuego=async (req, res) => {
+    const idUser=req.query.id
+    const response = await conexion.pool.query('SELECT * FROM control_game_memorama.Tema WHERE id_user_creador=$1',[idUser])
+    res.json(response.rows)
+}
+
+const getQuestions=async (req, res) => {
+    const idTema=req.query.id
+    const response = await conexion.pool.query('SELECT pregunta.* FROM control_game_memorama.pregunta AS pregunta INNER JOIN control_game_memorama.Tema_pregunta AS asoci ON pregunta.id = asoci.id_pregunta WHERE asoci.id_tema=$1',[idTema])
+    res.json(response.rows)
+}
+
+const getRespuestas=async (req, res) => {
+    const idPregunta=req.query.id
+    const response = await conexion.pool.query('SELECT respuesta.* FROM control_game_memorama.respuesta AS respuesta INNER JOIN control_game_memorama.pregunta_respuesta AS asoci ON respuesta.id = asoci.id_respuesta WHERE asoci.id_pregunta = $1',[idPregunta])
+    res.json(response.rows)
+}
+
+
+/**
+ * guarda las perguntas y la asociacion con el tema, invoca a la funcion de savePreguntas
+ * @param {*} preguntas 
+ * @param {*} tema 
+ */
 const saveQuestions = async (preguntas, tema) => {
     for (const pregunta of preguntas) {
         const response = await conexion.pool.query(
@@ -25,6 +49,11 @@ const saveQuestions = async (preguntas, tema) => {
     }
   } 
 
+  /**
+   * Funcion para guardar las respuestas asi mismo guarda la asociacion con la pregunta
+   * @param {*} respuestas 
+   * @param {*} pregunta 
+   */
   const saveRespuestas = async (respuestas, pregunta)=> {
     for (const respuesta of respuestas) {
         const respuestaInsert = await conexion.pool.query(
@@ -39,5 +68,8 @@ const saveQuestions = async (preguntas, tema) => {
 
 
 module.exports={
-    saveaMemorama:saveaMemorama
+    saveaMemorama:saveaMemorama,
+    getTemasJuego:getTemasJuego,
+    getQuestions:getQuestions,
+    getRespuestas:getRespuestas
 }
