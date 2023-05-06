@@ -1,6 +1,6 @@
-import { DemoJuegoComponent } from './game-memori-scratteg/demo-juego/demo-juego.component';
-import { AreaJuegosCreadosComponent } from './game-memori-scratteg/area-juegos-creados/area-juegos-creados.component';
-import { AreaCreatJuegoComponent } from './game-memori-scratteg/area-creat-juego/area-creat-juego.component';
+import { DemoJuegoComponent } from '../../juegos/memorama/game-memori-scratteg/demo-juego/demo-juego.component';
+import { AreaJuegosCreadosComponent } from '../../juegos/memorama/game-memori-scratteg/area-juegos-creados/area-juegos-creados.component';
+import { AreaCreatJuegoComponent } from '../../juegos/memorama/game-memori-scratteg/area-creat-juego/area-creat-juego.component';
 import { PagePrincipalComponent } from './../../shared/page-principal/page-principal.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

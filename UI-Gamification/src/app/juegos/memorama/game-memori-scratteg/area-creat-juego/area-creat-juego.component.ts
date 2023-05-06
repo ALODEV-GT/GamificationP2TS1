@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
-import { MemoramaServiceService } from './../services/memorama-service.service';
-import { Respuesta } from './../models/respuesta';
-import { Pregunta } from './../models/pregunta';
-import { Tema } from './../models/tema';
+import { MemoramaServiceService } from '../services/memorama-service.service';
+import { Respuesta } from '../models/respuesta';
+import { Pregunta } from '../models/pregunta';
+import { Tema } from '../models/tema';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 

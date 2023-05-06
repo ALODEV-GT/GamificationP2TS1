@@ -1,5 +1,5 @@
-import { Tema } from './../models/tema';
-import { MemoramaServiceService } from './../services/memorama-service.service';
+import { Tema } from '../models/tema';
+import { MemoramaServiceService } from '../services/memorama-service.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 

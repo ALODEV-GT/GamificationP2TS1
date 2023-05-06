@@ -1,6 +1,6 @@
-import { Respuesta } from './../models/respuesta';
-import { Pregunta } from './../models/pregunta';
-import { Tema } from './../models/tema';
+import { Respuesta } from '../models/respuesta';
+import { Pregunta } from '../models/pregunta';
+import { Tema } from '../models/tema';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

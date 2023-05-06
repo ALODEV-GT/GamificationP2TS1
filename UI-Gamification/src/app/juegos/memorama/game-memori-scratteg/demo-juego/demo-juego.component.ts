@@ -1,6 +1,6 @@
-import { Respuesta } from './../models/respuesta';
-import { Pregunta } from './../models/pregunta';
-import { MemoramaServiceService } from './../services/memorama-service.service';
+import { Respuesta } from '../models/respuesta';
+import { Pregunta } from '../models/pregunta';
+import { MemoramaServiceService } from '../services/memorama-service.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
