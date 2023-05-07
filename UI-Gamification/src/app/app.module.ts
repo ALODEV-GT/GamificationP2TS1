@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
+import { CommonModule } from '@angular/common';
+import { ComidoModule } from './juegos/comido/comido.module';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,11 @@ import { ErrorPageComponent } from './shared/error-page/error-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ComidoModule //Solo se importo para que funcionara el common module y formularios
   ],
   providers: [],
   bootstrap: [AppComponent]

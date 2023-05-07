@@ -1,1 +1,93 @@
-<p>Crear juego works</p>
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card">
+          <div class="d-flex align-items-center">
+            <div class="card-body p-4 p-lg-5">
+              <div class="container">
+                <div class="row">
+
+
+                  <div class="col-7">
+                    <form [formGroup]="miFormulario" (ngSubmit)="crearJuego()">
+                      <div class="d-flex align-items-center mb-3 pb-1">
+                        <span class="h1 fw-bold mb-0">Creacion del juego</span>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <label class="form-label">Codigo: </label>
+                        <input class="form-control" type="text" class="form-control" formControlName="codigo" />
+                        <div *ngIf="campoEsValido('codigo')" class="form-text text-danger">
+                          Debe de ser mayor a 4 caracteres
+                        </div>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <label class="form-label">Ingrese la palabra a adivinar: </label>
+                        <input class="form-control" type="text" class="form-control" formControlName="palabra" />
+                        <div *ngIf="campoEsValido('palabra')" class="form-text text-danger">
+                          Debe de ser mayor a 1 caracter
+                        </div>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <label class="form-label">Pista:</label>
+                        <input type="text" class="form-control" class="form-control" formControlName="pista" />
+                        <div *ngIf="errorPista" class="form-text text-danger">
+                          Debe de ser mayor a 5 caracteres
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-auto">
+                          <button (click)="agregarPista()" type="button" class="btn btn-outline-info">Agregar
+                            pista</button>
+                        </div>
+                        <div class="col-auto">
+                          <button (click)="vistaPrevia()" type="button" class="btn btn-primary">Vista previa</button>
+                        </div>
+                        <div class="col-auto">
+                          <button (click)="crearJuego()" type="submit" class="btn btn-success">Crear juego</button>
+                        </div>
+                      </div>
+                      <div *ngIf="errorGeneral" class="form-text text-danger">
+                        {{mensajeErrorG}}
+                      </div>
+                    </form>
+
+                  </div>
+                  <div class="col-5">
+                    <div>
+                      Pistas:
+                    </div>
+                    <div class="card m-1" *ngFor="let pista of pistas; let i = index">
+                      <div class="card-body row">
+                        <span class="col-auto">
+                          {{pista}}
+                        </span>
+                        <div class="col-auto">
+                          <button (click)="eliminarPista(i)" type="button" class="btn btn-outline-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                              class="bi bi-x-lg" viewBox="0 0 16 16">
+                              <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

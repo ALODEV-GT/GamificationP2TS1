@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { JuegoComponent } from './juegos/comido/juego/juego.component';
+import { CrearJuegoComponent } from './juegos/comido/crear-juego/crear-juego.component';
 
 const rutas: Routes = [
   {
@@ -32,7 +33,7 @@ const rutas: Routes = [
   },
   {//Este path es solamente para diseñar este juego
     path: 'pruebas-comido',
-    component: JuegoComponent
+    component: CrearJuegoComponent
   },
   {
     path: '**', //Cualquier otra pagina que no existe.

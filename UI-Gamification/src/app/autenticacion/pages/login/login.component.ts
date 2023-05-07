@@ -10,7 +10,6 @@ import { Usuario } from 'src/models/Usuario';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   loginForm!: FormGroup;
   usuario:Usuario = new Usuario();
 
