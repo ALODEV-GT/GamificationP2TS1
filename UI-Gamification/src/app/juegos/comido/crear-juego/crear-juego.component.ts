@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ComidoService } from '../services/comido.service';
+import { Comido } from '../models/Comido';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crear-juego',
@@ -16,6 +19,7 @@ export class CrearJuegoComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private comidoService: ComidoService
   ) { }
 
   miFormulario: FormGroup = this.fb.group({
@@ -57,8 +61,22 @@ export class CrearJuegoComponent implements OnInit {
       return
     }
     //Guardar las configuraciones en la base de datos
-    console.log("guardado");
+    const pistas: string[] = [
+      "Primera pista",
+      "Segunda pista",
+      "Tercera pista"
+    ]
+    const comido = new Comido("aguila", "H1S3", pistas);
 
+    this.comidoService.saveComido(comido).subscribe((resp: boolean) => {
+      if (resp) {
+        Swal.fire(
+          'Se ha guardado el juego',
+          '',
+          'success'
+        )
+      }
+    })
   }
 
   campoEsValido(control: string) {

@@ -1,27 +1,63 @@
-<div class="base">
+<div class="container" style="background-color: #181717;">
+  <div class="row">
+    <div class="col-10 ">
+      <div class="base">
+        <div class="container align-items-center">
 
+          <div class="row p-5">
+            <div class="game-over">{{messaje}}</div>
+          </div>
 
-  <div class="orilla">
-    <div class="contenedor">
+          <div class="row">
+            <div class="col-12">
+              <div class="orilla">
+                <div class="contenedor">
+                  <div class="suelo"></div>
+                  <div #fruit class="cereza" *ngIf="!eatedFruit"></div>
+                  <div #pacman class="pacman pacman-corriendo" *ngIf="!isPacmanDead"></div>
+                  <div #ghost class="fantasma fantasma-corriendo"></div>
+                  <div *ngFor="let coin of coins">
+                    <div class="coin" [style.left.px]="coin.x" [style.top.px]="coin.y" *ngIf="coin.visible">
+                    </div>
+                  </div>
+                  <div class="score">0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Letras -->
+          <div class="row p-5 ">
+            <div class="col-12 ">
+              <div class="row d-flex justify-content-center">
+                <div class="col-auto" *ngFor="let letter of letters">
+                  <input type=" text" class="input-text" disabled [(ngModel)]="letter.value">
+                </div>
+              </div>
+            </div>
+          </div>
 
-      <div class="suelo"></div>
-
-      <div #pacman class="pacman pacman-corriendo"></div>
-
-      <div class="cereza"></div>
-
-      <div class="fantasma fantasma-corriendo"></div>
-
-      <div class="coin"></div>
-
-      <button type="button" (click)="moverPacman()">
-        Mover
-      </button>
-
-      <div class="score">0</div>
+          <div class="row">
+            <div class="row d-flex justify-content-center p-3">
+              <div class="col-auto">
+                <input #inputLett type="text" class="form-control input-letter" [(ngModel)]="inputLetter"
+                  placeholder="letra">
+              </div>
+              <div class="col-auto">
+                <button #btnIng type="button" (click)="validation()" class="btn btn-dark boton">Ingresar</button>
+              </div>
+            </div>
+            <div class="row text-white justify-content-center">
+              {{errorMessaje}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="title">PISTAS</div>
+      <div class="clue" *ngFor="let clue of game.pistas">
+        {{clue}}
+      </div>
     </div>
   </div>
-
-  <div class="game-over">GAME OVER</div>
-
 </div>
