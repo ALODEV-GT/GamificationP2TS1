@@ -1,11 +1,13 @@
-const express = require ('express')
+const express = require('express')
+
+//Configuracion cors
 const cors = require('cors');
+
+//Rutas
 const rolRoutes = require('./routes/routes_generales/Roles.routes')
 const userRoutes = require('./routes/routes_generales/User.routes')
-
-
-
-const memoramaRoutes =  require('./routes/memorama/memorama.routes')
+const memoramaRoutes = require('./routes/memorama/memorama.routes')
+const comidoRoutes = require('./routes/comido/comido.routes')
 
 
 
@@ -20,6 +22,7 @@ app.use(cors());
 app.use('/api/rol', rolRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/memorama', memoramaRoutes)
+app.use('/api/comido', comidoRoutes)
 
 app.listen(3000)
 
