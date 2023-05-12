@@ -7,7 +7,7 @@
                 <div class="main">
                     <div *ngFor="let pregunta of preguntas; let i = index" >
                         <figure >
-                            <img class="back" *ngIf="!pregunta.mostrarFigura" src="https://github.com/RetaxMaster/memorama/blob/main/images/back.png?raw=true" alt="Back" />
+                            <img class="back" *ngIf="!pregunta.mostrarFigura" src="assets/memorama/img/back.png" alt="Back" />
                             <div  *ngIf="pregunta.mostrarFigura" class="searched-image2">
                               <div class="internal">
                                   <h4 class="text-center" >Categoria 🡇</h4>
@@ -34,8 +34,8 @@
                 <div class="main">  
                     <div *ngFor="let respuesta of respuestas; let i = index" >
                         <figure (click)='clickTarjeta(i)' >
-                            <img class="back" *ngIf="respuesta.mostrarFigura"  src="https://github.com/RetaxMaster/memorama/blob/main/images/back.png?raw=true" alt="Back" />
-                            <div  *ngIf="!respuesta.mostrarFigura"  class="searched-image">
+                            <img class="back" *ngIf="respuesta.mostrarFigura" src="assets/memorama/img/back.png" alt="Back" />
+                            <div  *ngIf="!respuesta.mostrarFigura"  class={{classCSSstatus}}>
                               <div class="internal">
                                   <h4 class="text-center" >Respuesta!</h4>
                               </div>
@@ -45,7 +45,8 @@
                                       😀 </b></h5>
                               </div>
                               <br>
-                              <div class="text-center"><h6>Incorrecto! 😬</h6></div>
+                              <div *ngIf="incorrecto"  class="text-center"><h6>Incorrecto! 😬</h6></div>
+                              <div *ngIf="incorrecto"  class="text-center"><h6>Correcto! 😸</h6></div>
                             </div> 
                         </figure> 
                     </div>

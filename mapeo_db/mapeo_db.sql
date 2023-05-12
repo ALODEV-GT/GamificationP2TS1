@@ -39,8 +39,10 @@ CREATE TABLE control_general_juego.instancia_juego(
     creador INTEGER NOT NULL,
     FOREIGN KEY (id_juego) REFERENCES control_general_juego.juego(id),
     FOREIGN KEY (creador) REFERENCES control_usuarios.usuario(id)
-
 );
+
+ALTER TABLE control_general_juego.instancia_juego ADD dificultad VARCHAR(20); 
+
 
 CREATE TABLE control_general_juego.partida(
     id SERIAL PRIMARY KEY,

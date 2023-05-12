@@ -1,9 +1,9 @@
-import { DemoJuegoComponent } from '../../juegos/memorama/game-memori-scratteg/demo-juego/demo-juego.component';
-import { AreaJuegosCreadosComponent } from '../../juegos/memorama/game-memori-scratteg/area-juegos-creados/area-juegos-creados.component';
-import { AreaCreatJuegoComponent } from '../../juegos/memorama/game-memori-scratteg/area-creat-juego/area-creat-juego.component';
 import { PagePrincipalComponent } from './../../shared/page-principal/page-principal.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AreaCreatJuegoComponent } from 'src/app/juegos/memorama/area-profesor/area-creat-juego/area-creat-juego.component';
+import { AreaJuegosCreadosComponent } from 'src/app/juegos/memorama/area-profesor/area-juegos-creados/area-juegos-creados.component';
+import { DemoJuegoComponent } from 'src/app/juegos/memorama/area-profesor/demo-juego/demo-juego.component';
 
 const rutas: Routes = [
   {
