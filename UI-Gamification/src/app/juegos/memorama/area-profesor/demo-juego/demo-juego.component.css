@@ -1,0 +1,115 @@
+
+
+h1 {
+    text-align: center;
+    margin: 2rem;
+    color: #fff;
+    text-shadow: 2px 2px 2px rgb(0, 0, 0, 0.46);
+}
+h4,h5{
+    text-align: center;
+    text-shadow: 2px 2px 2px rgb(0, 0, 0, 0.46);
+    color: rgb(0, 0, 0);
+    word-wrap: break-word;
+
+}
+
+h5{
+    color: #fff;
+}
+
+.main {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(6, 1fr);
+    max-width: 95%;
+    margin: auto;
+    justify-content: center; 
+    align-content: center; 
+}
+
+figure,
+figure img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+figure {
+    position: relative;
+    transition: all ease .5s;
+    transform-style: preserve-3d;
+    transform: perspective(600px) rotateY(0deg);
+    cursor: pointer;
+    box-shadow: 3px 3px 16px rgb(0, 0, 0, 0.6);
+}
+
+figure::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0);
+    transition: 0.3s all ease;
+}
+
+figure:hover:after {
+    background: rgba(255, 255, 255, 0.137);
+}
+
+figure.opened {
+    transform: perspective(600px) rotateY(180deg);
+}
+
+figure .back {
+    display: block;
+    backface-visibility: hidden;
+}
+
+figure .searched-image {
+    display: block;
+    display: inline-block;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom right, rgb(94, 170, 241), rgb(245, 87, 245))
+}
+
+
+figure .searched-image2{
+    display: block;
+    display: inline-block;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;     
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom right, rgb(227, 146, 243), rgb(1, 161, 247))
+}
+
+figure .searched-image-incoreect{
+    display: block;
+    display: inline-block;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;     
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom right, rgb(235, 89, 89), rgb(242, 238, 123))
+}
+
+
+.internal{
+    border: 1px solid black;
+}
+
+.internal-r{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+
+}

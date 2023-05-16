@@ -1,6 +1,3 @@
-import { DemoJuegoComponent } from '../../juegos/memorama/game-memori-scratteg/demo-juego/demo-juego.component';
-import { AreaJuegosCreadosComponent } from '../../juegos/memorama/game-memori-scratteg/area-juegos-creados/area-juegos-creados.component';
-import { AreaCreatJuegoComponent } from '../../juegos/memorama/game-memori-scratteg/area-creat-juego/area-creat-juego.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InicioComponent } from './pages/inicio/inicio.component';
@@ -37,20 +34,6 @@ const rutas: Routes = [
     ]
   },
 ]
-
-/*
-      {
-        path: 'memoramas-creados',
-        component: AreaJuegosCreadosComponent
-      },
-      {
-        path: 'demo-juego',
-        component: DemoJuegoComponent
-      },
-    ]
-  },
-]*/
-
 
 @NgModule({
   declarations: [],

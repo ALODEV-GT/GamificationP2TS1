@@ -5,4 +5,5 @@ export class Tema {
     id_user_creador:number=1
     cantidad_preguntas:number=0
     preguntas:Pregunta[]=[]
+    dificultad:string='Facil'
 }
