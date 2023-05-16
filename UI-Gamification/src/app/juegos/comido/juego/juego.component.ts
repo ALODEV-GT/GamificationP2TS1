@@ -42,7 +42,7 @@ export class JuegoComponent {
     "Pista 2",
     "Pista 3",
   ]
-  game: Comido = new Comido("solidaridad", "code", this.clues);
+  game: Comido = new Comido("serpiente", "code", this.clues);
 
   //Letters
   letters: Letter[] = []

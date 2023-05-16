@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/models/Usuario';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -11,32 +12,38 @@ import { Usuario } from 'src/models/Usuario';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  usuario:Usuario = new Usuario();
+  usuario: Usuario = new Usuario();
 
-  constructor(private formBuilder: FormBuilder,private router:Router,
-              private usuarioService:UsuarioService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router,
+    private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      nik_name:[null, Validators.required],
-      passworde: [null, Validators.required],
+      nik_name: ["", [Validators.required, Validators.minLength(5)]],
+      passworde: ["", [Validators.required, Validators.minLength(5)]],
     });
   }
 
-
-  clickInciarSesion(){
+  clickInciarSesion() {
     this.usuarioService.getSesionUsuario(this.loginForm.value).subscribe(
-      (value: Usuario) =>{
-        this.usuario=value
-        if (this.usuario.id_rol != undefined) {
-          this.goAreaWork()
+      (value: Usuario) => {
+        if (value) {
+          this.usuario = value
+          if (this.usuario.id_rol != undefined) {
+            this.goAreaWork()
+          }
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Credenciales incorrectos",
+            text: "Vuelve a intentarlo"
+          })
         }
       }
     )
-
   }
 
-  goAreaWork(){
+  goAreaWork() {
     switch (this.usuario.id_rol) {
       case 1:
         this.router.navigate(['profesor/page-principal'])
@@ -49,7 +56,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  goRegister(){
+  goRegister() {
     this.router.navigate(['autenticacion/registro'])
   }
 

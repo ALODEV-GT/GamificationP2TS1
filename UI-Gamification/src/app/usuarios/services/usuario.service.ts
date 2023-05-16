@@ -19,4 +19,9 @@ export class UsuarioService {
     return this.httpClient.post<Usuario>(this.API_URL + 'save-user', usuario)
   }
 
+  public validateUser(usuario: Usuario): Observable<Usuario> {
+    return this.httpClient.get<Usuario>(this.API_URL + 'validate?nik_name=' + usuario.nik_name)
+  }
+
+
 }

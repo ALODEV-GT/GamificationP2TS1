@@ -61,12 +61,9 @@ export class CrearJuegoComponent implements OnInit {
       return
     }
     //Guardar las configuraciones en la base de datos
-    const pistas: string[] = [
-      "Primera pista",
-      "Segunda pista",
-      "Tercera pista"
-    ]
-    const comido = new Comido("aguila", "H1S3", pistas);
+    const palabra = this.miFormulario.get("palabra")?.value
+    const codigo = this.miFormulario.get("codigo")?.value
+    const comido = new Comido(palabra, codigo, this.pistas);
 
     this.comidoService.saveComido(comido).subscribe((resp: boolean) => {
       if (resp) {

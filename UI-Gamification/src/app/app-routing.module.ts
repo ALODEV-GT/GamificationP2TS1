@@ -33,7 +33,7 @@ const rutas: Routes = [
   },
   {//Este path es solamente para diseñar este juego
     path: 'pruebas-comido',
-    component: CrearJuegoComponent
+    component: JuegoComponent
   },
   {
     path: '**', //Cualquier otra pagina que no existe.
