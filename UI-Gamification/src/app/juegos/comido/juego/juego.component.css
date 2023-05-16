@@ -1,6 +1,6 @@
 .base {
   height: 100vh;
-  background: #584040;
+  background: #181717;
   display: flex;
   align-items: center;
 }
@@ -13,8 +13,18 @@
   border-radius: 5px;
 }
 
+/*GAME*/
 .game-over {
-  display: none;
+  width: 100%;
+  text-align: center;
+  color: #eee8e8;
+  font-size: 50px;
+  font-family: Verdana;
+  font-weight: bold;
+}
+
+/*GAME*/
+.win {
   position: absolute;
   width: 100%;
   text-align: center;
@@ -63,7 +73,6 @@
   background-position-x: 0px;
 
 }
-
 
 .fantasma {
   width: 70px;
@@ -133,4 +142,50 @@
   font-size: 25px;
   font-weight: bold;
   text-align: right;
+}
+
+/*GAME - END*/
+
+/*LETTERS*/
+.input-text {
+  border: none;
+  text-align: center;
+  width: 35px;
+  border-bottom: 3px solid #dfe216;
+  background-color: transparent;
+  color: #dfe216;
+  box-shadow: 1px 1px 10px 1px #ecdf20;
+  font-weight: bolder;
+  font-size: 35px;
+}
+
+/*LETTERS - END*/
+
+.input-letter {
+  border: none;
+  text-align: center;
+  font-weight: bold;
+  color: #dfe216;
+  width: 150px;
+  box-shadow: 1px 1px 15px 1px #ecdf20;
+  background-color: transparent;
+}
+
+.boton {
+  box-shadow: 1px 1px 15px 1px #ecdf20;
+}
+
+
+.title {
+  color: white;
+  margin-top: 50px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.clue {
+  color: white;
+  margin-top: 10px;
+  border-bottom: 3px solid #ecdf20;
+  margin-bottom: 10px;
 }

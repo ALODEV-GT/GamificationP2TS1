@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { JuegoMemoramaComponent } from './juegos/memorama/area-estudiante/juego-memorama/juego-memorama.component';
+import { ComidoModule } from './juegos/comido/comido.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { JuegoMemoramaComponent } from './juegos/memorama/area-estudiante/juego-
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ComidoModule //Solo se importo para que funcionara el common module y formularios
   ],
   providers: [],
   bootstrap: [AppComponent]

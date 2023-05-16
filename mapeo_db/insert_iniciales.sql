@@ -16,3 +16,6 @@ INSERT INTO control_general_juego.juego(nombre, descripcion, img) VALUES (
     Por ejemplo, si se muestra la categoría >animales mamíferos<, el jugador deberá buscar y emparejar las cartas de memoria que representen a los animales mamíferos.
     \n Cada vez que se encuentra un emparejamiento correcto, el jugador obtiene puntos. cada carta vale 10 puntos y cada vez que sea la equivocada esta carta se le restara un punto','/img/img_productos/32179.jpg' 
 )
+INSERT INTO control_usuarios.usuario(nombre, nik_name,apellido,passworde, id_rol) VALUES(
+    '----', 'Boot1', '----', 'boot1234',2
+);
