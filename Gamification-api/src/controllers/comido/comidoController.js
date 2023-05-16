@@ -1,14 +1,11 @@
 const conexion = require('../general/conexionDB')
 
 const saveComido = async (req, res) => {
-  const { palabra } = req.body
-  console.log(palabra);
-  console.log(req.body);
+  const { palabra, pistas } = req.body
   const resp = await saveGameConfigs(palabra)
-  console.log(resp);
-  //Recuperar id gameConfigs
-  //saveClues(game.clues)
-  res.json("Guardado en la db")
+  const id_gc = resp.rows[0].id_gc
+  saveClues(id_gc, pistas)
+  res.json(true)
 };
 
 const saveGameConfigs = async (palabra) => {
@@ -16,6 +13,7 @@ const saveGameConfigs = async (palabra) => {
   const response = await conexion.pool.query(
     consulta,
     [palabra]);
+
   return response;
 }
 
