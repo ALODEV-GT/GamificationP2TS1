@@ -37,11 +37,11 @@ CREATE TABLE control_general_juego.instancia_juego(
     codigo VARCHAR(100) NOT NULL,
     id_logica_juego INTEGER NOT NULL,
     creador INTEGER NOT NULL,
+    dificultad VARCHAR(20),
     FOREIGN KEY (id_juego) REFERENCES control_general_juego.juego(id),
     FOREIGN KEY (creador) REFERENCES control_usuarios.usuario(id)
 );
 
-ALTER TABLE control_general_juego.instancia_juego ADD dificultad VARCHAR(20); 
 
 
 CREATE TABLE control_general_juego.partida(

@@ -1,3 +1,4 @@
+import { Usuario } from 'src/models/Usuario';
 import { Tema } from './../../models/tema';
 import { MemoramaServiceService } from '../../services/memorama-service.service';
 import { Pregunta } from '../../models/pregunta';
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-demo-juego',
-  templateUrl: './demo-juego.component.html',
-  styleUrls: ['./demo-juego.component.css']
+  selector: 'app-juego-memorama',
+  templateUrl: './juego-memorama.component.html',
+  styleUrls: ['./juego-memorama.component.css']
 })
-export class DemoJuegoComponent implements OnInit {
+
+export class JuegoMemoramaComponent implements OnInit {
 
   mostrarFigura=false;
   classCSS1=  'searched-image'
@@ -23,6 +25,7 @@ export class DemoJuegoComponent implements OnInit {
   punteoGeneral=0
   tema:Tema= new Tema()
   coeficienteDificultad:number=0.7
+  usuario:Usuario=new Usuario()
 
 
   constructor(private router:Router, private memoramaService:MemoramaServiceService) { }
@@ -149,3 +152,4 @@ export class DemoJuegoComponent implements OnInit {
   
 
 }
+

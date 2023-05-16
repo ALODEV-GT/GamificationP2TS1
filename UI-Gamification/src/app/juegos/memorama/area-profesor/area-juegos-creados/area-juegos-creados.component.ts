@@ -12,6 +12,9 @@ import { Tema } from '../../models/tema';
 export class AreaJuegosCreadosComponent implements OnInit {
 
   temas:Tema[]=[]
+  tituloTema=''
+  temaPartida!:Tema
+
 
   constructor(private router:Router, private memoramaService:MemoramaServiceService) { }
 
@@ -23,7 +26,14 @@ export class AreaJuegosCreadosComponent implements OnInit {
     )
   }
 
-  clickGoDemo(){
+  clickSettearTemaPartida(index:number){
+   this.temaPartida = this.temas[index]
+   this.tituloTema = this.temaPartida.titulo
+
+  }
+
+  clickGoDemo(index:number){
+    //servicioSesion.tema = this.temas[index]    enviar el tema mediante un servicio
     this.router.navigate(['profesor/demo-juego'])
   }
 

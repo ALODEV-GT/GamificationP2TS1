@@ -6,7 +6,7 @@
             <div class="col-md-3 mb-4">
                 <div class="card-body p-1" >
                     <br>
-                    <h4 class="text-center">Datos para la partida con tema : <b>hola mundo</b></h4>
+                    <h4 class="text-center">Datos para la partida con tema : <b>{{tituloTema}}</b></h4>
                     <br>
                     <div class="form-outline">
                         <input type="text" id="firstName" class="form-control form-control-lg" 
@@ -48,8 +48,8 @@
                           <tr class="text-center" *ngFor="let tema of temas let i = index" >
                             <th scope="row">{{i+1}}</th>
                             <td><b>{{tema.titulo}}</b></td>
-                            <td><button type="button" class="btn btn-link" (click)='clickGoDemo()' >Probar</button></td>
-                            <td><button type="button" class="btn btn-link">Crear</button></td>
+                            <td><button type="button" class="btn btn-link" (click)='clickGoDemo(i)' >Probar</button></td>
+                            <td><button type="button" class="btn btn-link" (click)='clickSettearTemaPartida(i)' >Crear</button></td>
                           </tr>
                         </tbody>
                       </table>
