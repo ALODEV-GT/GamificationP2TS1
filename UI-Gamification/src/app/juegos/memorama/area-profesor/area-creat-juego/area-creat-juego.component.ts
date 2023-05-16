@@ -1,10 +1,10 @@
 import { Router } from '@angular/router';
-import { MemoramaServiceService } from '../services/memorama-service.service';
-import { Respuesta } from '../models/respuesta';
-import { Pregunta } from '../models/pregunta';
-import { Tema } from '../models/tema';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { MemoramaServiceService } from '../../services/memorama-service.service';
+import { Tema } from '../../models/tema';
+import { Pregunta } from '../../models/pregunta';
+import { Respuesta } from '../../models/respuesta';
 
 @Component({
   selector: 'app-area-creat-juego',

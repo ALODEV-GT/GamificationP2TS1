@@ -1,7 +1,8 @@
-import { Tema } from '../models/tema';
-import { MemoramaServiceService } from '../services/memorama-service.service';
+
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { MemoramaServiceService } from '../../services/memorama-service.service';
+import { Tema } from '../../models/tema';
 
 @Component({
   selector: 'app-area-juegos-creados',
@@ -11,6 +12,9 @@ import { Component, OnInit } from '@angular/core';
 export class AreaJuegosCreadosComponent implements OnInit {
 
   temas:Tema[]=[]
+  tituloTema=''
+  temaPartida!:Tema
+
 
   constructor(private router:Router, private memoramaService:MemoramaServiceService) { }
 
@@ -22,7 +26,14 @@ export class AreaJuegosCreadosComponent implements OnInit {
     )
   }
 
-  clickGoDemo(){
+  clickSettearTemaPartida(index:number){
+   this.temaPartida = this.temas[index]
+   this.tituloTema = this.temaPartida.titulo
+
+  }
+
+  clickGoDemo(index:number){
+    //servicioSesion.tema = this.temas[index]    enviar el tema mediante un servicio
     this.router.navigate(['profesor/demo-juego'])
   }
 

@@ -1,13 +1,12 @@
-<app-nav-bar-profe></app-nav-bar-profe>
 <section style="background-color: #81cdf5">
     <div class="container-fluid py-1" >
-        <h1>Área de Preguntas 😎</h1>
+        <h1>Área de Categorias del Tema: <b>{{tema.titulo}}</b> 😉</h1>
         <div class="row">
             <div class="col-md-9">
                 <div class="main">
                     <div *ngFor="let pregunta of preguntas; let i = index" >
                         <figure >
-                            <img class="back" *ngIf="!pregunta.mostrarFigura" src="https://github.com/RetaxMaster/memorama/blob/main/images/back.png?raw=true" alt="Back" />
+                            <img class="back" *ngIf="!pregunta.mostrarFigura" src="assets/memorama/img/back.png" alt="Back" />
                             <div  *ngIf="pregunta.mostrarFigura" class="searched-image2">
                               <div class="internal">
                                   <h4 class="text-center" >Categoria 🡇</h4>
@@ -18,14 +17,28 @@
                                       😀 </b></h5>
                               </div>
                               <br>
-                              <div class="text-center"><h6>🢚No. Respuestas: {{pregunta.cantidad_respuestas}} </h6></div>
+                              <div class="text-center"><h6>🢚No. Respuestas: Faltantes {{pregunta.cantidad_respuestas}} </h6></div>
                       
                             </div> 
                           </figure> 
                     </div>
                 </div>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <h5 class="text-center">
+                    Dificultad:
+                    <br>
+                    <b>{{tema.dificultad}}</b>
+                </h5>
+                <br>
+                <br>
+                <h4 >
+                    ✌ Puntaje ✌
+                </h4>
+                <h4 >
+                    {{punteoGeneral}}
+                </h4>
+            </div>
         </div>
         <br>
         <h1>Área de Respuestas 😎</h1>
@@ -34,8 +47,8 @@
                 <div class="main">  
                     <div *ngFor="let respuesta of respuestas; let i = index" >
                         <figure (click)='clickTarjeta(i)' >
-                            <img class="back" *ngIf="respuesta.mostrarFigura"  src="https://github.com/RetaxMaster/memorama/blob/main/images/back.png?raw=true" alt="Back" />
-                            <div  *ngIf="!respuesta.mostrarFigura"  class="searched-image">
+                            <img class="back" *ngIf="respuesta.mostrarFigura" src="assets/memorama/img/back.png" alt="Back" />
+                            <div  *ngIf="!respuesta.mostrarFigura"  class={{respuesta.classCSSstatus}}>
                               <div class="internal">
                                   <h4 class="text-center" >Respuesta!</h4>
                               </div>
@@ -45,7 +58,10 @@
                                       😀 </b></h5>
                               </div>
                               <br>
-                              <div class="text-center"><h6>Incorrecto! 😬</h6></div>
+                              <div *ngIf="juegoInciado"  >
+                                <div *ngIf="!respuesta.correcto"  class="text-center"><h6>Incorrecto! 😬</h6></div>
+                                <div *ngIf="respuesta.correcto"  class="text-center"><h6>Correcto! 😸</h6></div>
+                              </div>
                             </div> 
                         </figure> 
                     </div>
@@ -80,4 +96,4 @@
 
   
 </section>
-<app-footer-profe></app-footer-profe>
+

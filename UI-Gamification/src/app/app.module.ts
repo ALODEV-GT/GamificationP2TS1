@@ -5,18 +5,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
-import { CommonModule } from '@angular/common';
+import { JuegoMemoramaComponent } from './juegos/memorama/area-estudiante/juego-memorama/juego-memorama.component';
 import { ComidoModule } from './juegos/comido/comido.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
+    JuegoMemoramaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
