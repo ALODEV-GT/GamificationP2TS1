@@ -1,28 +1,31 @@
-import { PagePrincipalComponent } from './../../shared/page-principal/page-principal.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { InicioComponent } from './pages/inicio/inicio.component';
+import { MisAulasComponent } from './pages/mis-aulas/mis-aulas.component';
+import { AulaComponent } from './pages/aula/aula.component';
+import { PerfilComponent } from '../components/perfil/perfil.component';
 
 const rutas: Routes = [
   {
     path: '',
-    //component: Component0,
+    component: InicioComponent,
     children: [
       {
-        path: 'page-principal',
-        component:PagePrincipalComponent
+        path: 'mis-aulas',
+        component: MisAulasComponent
       },
       {
-        path: 'path2',
-        //component: Component2
+        path: 'aula',
+        component: AulaComponent
       },
       {
-        path: 'path3',
-        //component: Component3
+        path: 'perfil',
+        component: PerfilComponent
       },
       {
-        path: 'path4',
-        //component: Component4
-      },
+        path: "**",
+        redirectTo: 'mis-aulas'
+      }
     ]
   },
 ]

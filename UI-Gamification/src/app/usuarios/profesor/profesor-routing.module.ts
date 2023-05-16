@@ -1,59 +1,55 @@
 import { DemoJuegoComponent } from '../../juegos/memorama/game-memori-scratteg/demo-juego/demo-juego.component';
 import { AreaJuegosCreadosComponent } from '../../juegos/memorama/game-memori-scratteg/area-juegos-creados/area-juegos-creados.component';
 import { AreaCreatJuegoComponent } from '../../juegos/memorama/game-memori-scratteg/area-creat-juego/area-creat-juego.component';
-import { PagePrincipalComponent } from './../../shared/page-principal/page-principal.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { InicioComponent } from './pages/inicio/inicio.component';
+import { MisAulasComponent } from './pages/mis-aulas/mis-aulas.component';
+import { AulaComponent } from './pages/aula/aula.component';
+import { AreaCreacionComponent } from './pages/area-creacion/area-creacion.component';
+import { PerfilComponent } from '../components/perfil/perfil.component';
 
 const rutas: Routes = [
   {
     path: '',
-    //component: Component0,
+    component: InicioComponent,
     children: [
       {
-        path: 'page-principal',
-        component:PagePrincipalComponent
+        path: 'mis-aulas',
+        component: MisAulasComponent
       },
       {
-        path: 'creat-game-memorama',
-        component:AreaCreatJuegoComponent
+        path: 'aula',
+        component: AulaComponent
       },
       {
-        path: 'path3',
-        //component: Component3
+        path: 'area-creacion',
+        component: AreaCreacionComponent
       },
       {
-        path: 'path4',
-        //component: Component4
+        path: 'perfil',
+        component: PerfilComponent
       },
+      {
+        path: "**",
+        redirectTo: 'mis-aulas'
+      }
+    ]
+  },
+]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
       {
         path: 'memoramas-creados',
         component: AreaJuegosCreadosComponent
       },
       {
         path: 'demo-juego',
-        component:DemoJuegoComponent
+        component: DemoJuegoComponent
       },
     ]
   },
-]
+]*/
 
 
 @NgModule({

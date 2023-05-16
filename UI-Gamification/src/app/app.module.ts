@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { CommonModule } from '@angular/common';
 import { ComidoModule } from './juegos/comido/comido.module';
+import { PaginaPrincipalComponent } from './shared/pagina-principal/pagina-principal.component';
+import { PerfilComponent } from './usuarios/components/perfil/perfil.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
+    PaginaPrincipalComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,

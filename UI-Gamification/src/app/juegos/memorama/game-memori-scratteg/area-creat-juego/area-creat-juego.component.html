@@ -1,92 +1,91 @@
 <app-nav-bar-profe></app-nav-bar-profe>
 <section class="gradient-custom">
-    <div class="container py-5 h-100">
-      <div class="row justify-content-center align-items-center h-100">
-        <div class="col-12 col-lg-9 col-xl-7">
-          <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-            <div class="card-body p-4 p-md-5">
-              <h3 class="">Creacion de Juego Scattergories-Memorama</h3>
-              <div  >
-                <div class="row">
-                  <div class="col-md-12 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="firstName" class="form-control form-control-lg" placeholder="Escribe el titulo del Tema del Juego example: Tipo de Animales"
-                      [(ngModel)]='tema.titulo'/>
-                      <label class="form-label" for="firstName">Titulo</label>
-                    </div>
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="">Creacion de Juego Scattergories-Memorama</h3>
+            <div>
+              <div class="row">
+                <div class="col-md-12 mb-4">
+                  <div class="form-outline">
+                    <input type="text" id="firstName" class="form-control form-control-lg"
+                      placeholder="Escribe el titulo del Tema del Juego example: Tipo de Animales"
+                      [(ngModel)]='tema.titulo' />
+                    <label class="form-label" for="firstName">Titulo</label>
                   </div>
                 </div>
-                <h5 > ➮ Puedes Escribir categorias o preguntas, maximo 6  y minimo 3</h5>    
-                <div  class="row">
-                    <div class="col-md-10 mb-4">
-                      <div class="form-outline">
-                        <input type="text" id="firstName" class="form-control form-control-lg" placeholder="Los Animales Mamíferos" 
-                        [(ngModel)]='categoria' />
-                        <label class="form-label" for="firstName">Pregunta o Categoria 1</label>
-                      </div>
-                    </div>
+              </div>
+              <h5> ➮ Puedes Escribir categorias o preguntas, maximo 6 y minimo 3</h5>
+              <div class="row">
+                <div class="col-md-10 mb-4">
+                  <div class="form-outline">
+                    <input type="text" id="firstName" class="form-control form-control-lg"
+                      placeholder="Los Animales Mamíferos" [(ngModel)]='categoria' />
+                    <label class="form-label" for="firstName">Pregunta o Categoria 1</label>
+                  </div>
                 </div>
-                <h5 >➮ Puedes Escribir las Respuestas, maximo 5  y minimo 2</h5>
-                <br>    
-                <div  class="row">
-                    <div class="col-md-6 ">
-                      <div class="form-outline">
-                        <input type="text" id="firstName" class="form-control form-control-lg" placeholder="example: Canguro" 
-                        [(ngModel)]='respuesta1' />
-                        <label class="form-label" for="firstName"></label>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-outline">
-                        <input type="text" id="firstName" class="form-control form-control-lg" placeholder="example: León" 
-                        [(ngModel)]='respuesta2' />
-                        <label class="form-label" for="firstName"></label>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-outline">
-                        <input type="text" id="firstName" class="form-control form-control-lg" placeholder="example: " 
-                        [(ngModel)]='respuesta3' />
-                        <label class="form-label" for="firstName"></label>
-                      </div>
-                    </div>
-                    <div class="col-md-6 ">
-                      <div class="form-outline">
-                        <input type="text" id="firstName" class="form-control form-control-lg" placeholder="example: " 
-                        [(ngModel)]='respuesta4' />
-                        <label class="form-label" for="firstName"></label>
-                      </div>
-                    </div>
-                    <div class="col-md-3 "></div>
-                    <div class="col-md-6 ">
-                      <div class="form-outline">
-                        <input type="text" id="firstName" class="form-control form-control-lg" placeholder="example: " 
-                        [(ngModel)]='respuesta5' />
-                        <label class="form-label" for="firstName"></label>
-                      </div>
-                    </div>
+              </div>
+              <h5>➮ Puedes Escribir las Respuestas, maximo 5 y minimo 2</h5>
+              <br>
+              <div class="row">
+                <div class="col-md-6 ">
+                  <div class="form-outline">
+                    <input type="text" id="firstName" class="form-control form-control-lg"
+                      placeholder="example: Canguro" [(ngModel)]='respuesta1' />
+                    <label class="form-label" for="firstName"></label>
+                  </div>
                 </div>
-                <div  class="row">
-                    <div class="col-md-3 "></div>
-                  <div class="col-md-6 mb-4">
-                      <div class="form-outline">
-                        <button type="button" class="btn btn-warning" 
-                        (click)="guardarCategoria()" [disabled]="tema.preguntas.length ===6" >Guardar Categoria</button>
-                      </div>
-                  <label class="form-label" for="lastName"
-                  >Categorias Guardadas: {{tema.preguntas.length}}</label
-                >
+                <div class="col-md-6">
+                  <div class="form-outline">
+                    <input type="text" id="firstName" class="form-control form-control-lg" placeholder="example: León"
+                      [(ngModel)]='respuesta2' />
+                    <label class="form-label" for="firstName"></label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-outline">
+                    <input type="text" id="firstName" class="form-control form-control-lg" placeholder="example: "
+                      [(ngModel)]='respuesta3' />
+                    <label class="form-label" for="firstName"></label>
+                  </div>
+                </div>
+                <div class="col-md-6 ">
+                  <div class="form-outline">
+                    <input type="text" id="firstName" class="form-control form-control-lg" placeholder="example: "
+                      [(ngModel)]='respuesta4' />
+                    <label class="form-label" for="firstName"></label>
+                  </div>
+                </div>
+                <div class="col-md-3 "></div>
+                <div class="col-md-6 ">
+                  <div class="form-outline">
+                    <input type="text" id="firstName" class="form-control form-control-lg" placeholder="example: "
+                      [(ngModel)]='respuesta5' />
+                    <label class="form-label" for="firstName"></label>
+                  </div>
+                </div>
               </div>
+              <div class="row">
+                <div class="col-md-3 "></div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <button type="button" class="btn btn-warning" (click)="guardarCategoria()"
+                      [disabled]="tema.preguntas.length ===6">Guardar Categoria</button>
+                  </div>
+                  <label class="form-label" for="lastName">Categorias Guardadas: {{tema.preguntas.length}}</label>
+                </div>
               </div>
-                <div  class="mt-4 pt-2">
-                  <button type="submit" class="btn btn-primary " (click)="crearGuardarJuego()" >Crear Juego</button>
+              <div class="mt-4 pt-2">
+                <button type="submit" class="btn btn-primary " (click)="crearGuardarJuego()">Crear Juego</button>
               </div>
-              
-            </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </section>
-<app-footer-profe></app-footer-profe>
+
