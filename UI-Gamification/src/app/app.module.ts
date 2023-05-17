@@ -9,6 +9,8 @@ import { JuegoMemoramaComponent } from './juegos/memorama/area-estudiante/juego-
 import { ComidoModule } from './juegos/comido/comido.module';
 import { PaginaPrincipalComponent } from './shared/pagina-principal/pagina-principal.component';
 import { PerfilComponent } from './usuarios/components/perfil/perfil.component';
+import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
+import { DemosComponent } from './shared/demos/demos.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { PerfilComponent } from './usuarios/components/perfil/perfil.component';
     ErrorPageComponent,
     PaginaPrincipalComponent,
     PerfilComponent,
+    NavBarComponent,
+    DemosComponent,
   ],
   imports: [
     BrowserModule,

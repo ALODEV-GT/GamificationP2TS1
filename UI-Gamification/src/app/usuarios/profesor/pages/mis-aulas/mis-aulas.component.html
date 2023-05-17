@@ -1,1 +1,54 @@
-<p>mis-aulas works!</p>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-10"></div>
+    <div class="col-2">
+      <button (click)="openModal()" type="button" class="btn btn-outline-primary">Unirse a un aula</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="mb-4">
+        <div class="titulo">MIS AULAS</div>
+      </div>
+      <div class="col-6 mb-2" *ngFor="let aula of aulas">
+        <div class="row">
+          <div class="col-6 bg-info rounded">
+            <a type="button" class="aula-anchor">Aula {{aula}}</a>
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-outline-danger">Salirse</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-6"></div>
+    </div>
+  </div>
+</div>
+
+<!--Modal-->
+<div #myModal class="modal fade">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Nuevo aula</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3 align-items-center">
+          <div class="col-auto">
+            <label class="col-form-label">Codigo</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-auto">
+            <label class="col-form-label">Nombre</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button (click)="unirseAula()" type="button" class="btn btn-success">Crear</button>
+      </div>
+    </div>
+  </div>
+</div>
