@@ -185,7 +185,7 @@ CREATE TABLE control_general_juego.tipo_juego(
 );
 
 CREATE TABLE control_general_juego.instancia_juego(
-  codigo_instancia_juego VARCHAR(20) PRIMARY KEY,
+  id_instancia_juego INTEGER PRIMARY KEY,
   nombre VARCHAR(250) NOT NULL,
   id_usuario_creador INTEGER NOT NULL,
   id_tipo_juego INTEGER NOT NULL,
@@ -195,8 +195,8 @@ CREATE TABLE control_general_juego.instancia_juego(
 
 CREATE TABLE control_general_juego.compartir_aula(
   id_compartir_aula SERIAL PRIMARY KEY,
-  codigo_instancia_juego VARCHAR(20) NOT NULL,
+  id_instancia_juego INTEGER NOT NULL,
   codigo_aula VARCHAR(20) NOT NULL,
-  FOREIGN KEY (codigo_instancia_juego) REFERENCES control_general_juego.instancia_juego(codigo_instancia_juego),
+  FOREIGN KEY (id_instancia_juego) REFERENCES control_general_juego.instancia_juego(id_instancia_juego),
   FOREIGN KEY (codigo_aula) REFERENCES control_aulas.aula(codigo_aula)
 );
