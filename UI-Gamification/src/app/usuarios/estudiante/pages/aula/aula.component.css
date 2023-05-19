@@ -1,0 +1,76 @@
+.card {
+  margin-bottom: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.avatar-img {
+  width: 100%;
+  height: auto;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.card-text {
+  margin-bottom: 10px;
+}
+
+.post-img {
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.btn {
+  margin-right: 10px;
+}
+
+/** Miembros*/
+.user-info-miembro {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-container-miembro {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.avatar-img-miembro {
+  width: 100%;
+  height: auto;
+}
+
+.card-title-miembro {
+  font-size: 17px;
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+
+.more{
+  text-decoration: none;
+  color: rgb(80, 79, 79);
+  cursor: pointer;
+}

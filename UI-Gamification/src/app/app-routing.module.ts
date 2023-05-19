@@ -3,8 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { JuegoComponent } from './juegos/comido/juego/juego.component';
 import { CrearJuegoComponent } from './juegos/comido/crear-juego/crear-juego.component';
+import { PaginaPrincipalComponent } from './shared/pagina-principal/pagina-principal.component';
 
 const rutas: Routes = [
+  {
+    path: 'inicio',
+    component: PaginaPrincipalComponent
+  },
   {
     //LazyLoad
     path: 'autenticacion',

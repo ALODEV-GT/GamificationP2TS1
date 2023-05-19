@@ -7,6 +7,7 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { MisAulasComponent } from './pages/mis-aulas/mis-aulas.component';
 import { AulaComponent } from './pages/aula/aula.component';
 import { AreaCreacionComponent } from './pages/area-creacion/area-creacion.component';
+import { UsuariosModule } from '../usuarios.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AreaCreacionComponent } from './pages/area-creacion/area-creacion.compo
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ProfesorRoutingModule
+    ProfesorRoutingModule,
+    UsuariosModule
   ], exports: [
   ]
 })

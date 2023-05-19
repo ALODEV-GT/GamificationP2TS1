@@ -1,1 +1,55 @@
-<p>perfil works!</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-4 d-flex">
+      <img
+        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+        alt="Imagen de perfil" class="avatar-img ms-auto" />
+    </div>
+    <div class="col-5">
+      <div class="card">
+
+        <div class="card-header borde">
+          <h3 class="mb-4">Mi perfil</h3>
+          <form [formGroup]="loginForm" (ngSubmit)="clickRegistrar()">
+            <div class="row">
+              <div class="col-6 mb-3">
+                <div class="form-outline">
+                  <input type="text" class="form-control" formControlName="nombre" />
+                  <label class="form-label">Nombres</label>
+                </div>
+              </div>
+              <div class="col-6 mb-3">
+                <div class="form-outline">
+                  <input type="text" class="form-control" formControlName="apellido" />
+                  <label class="form-label" for="lastName">Apellidos</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 mb-3">
+                <div class="form-outline">
+                  <input type="text" class="form-control" formControlName="nik_name" />
+                  <label class="form-label">Usuario (Nickname)</label>
+                </div>
+              </div>
+              <div class="col-6 mb-3">
+                <div class="form-outline">
+                  <input type="password" class="form-control" formControlName="passworde" />
+                  <label class="form-label">Contraseña</label>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="mb-2 pb-2">
+              <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </form>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>

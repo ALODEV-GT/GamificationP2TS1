@@ -1,1 +1,19 @@
+@import '~bootstrap/dist/css/bootstrap.css';
 /* You can add global styles to this file, and also import other style files */
+.brand{
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(255, 255, 255)
+}
+
+.titulo{
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(77, 77, 77);
+}
+
+.sub-titulo{
+  font-size: 23px;
+  font-weight: bold;
+  color: rgb(77, 77, 77);
+}

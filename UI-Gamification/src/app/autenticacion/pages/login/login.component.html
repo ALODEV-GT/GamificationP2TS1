@@ -35,11 +35,18 @@
                     <button class="btn btn-info btn-lg btn-block" type="submit"
                       [disabled]="loginForm.invalid">Login</button>
                   </div>
+                  <div>
+                    <a type="button" class="small text-muted" (click)="goRegister()">
+                      <h5>Registrarme!</h5>
+                    </a>
+                  </div>
                   <br>
-                  <a type="button" class="small text-muted" (click)="goRegister()">
-                    <h5>Registrarme!</h5>
-                  </a>
                   <br>
+                  <div>
+                    <a routerLink="/inicio" type="button" class="small text-muted">
+                      <span>Regresar al inicio</span>
+                    </a>
+                  </div>
                 </form>
               </div>
             </div>
