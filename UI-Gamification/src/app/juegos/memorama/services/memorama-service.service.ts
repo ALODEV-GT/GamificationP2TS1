@@ -13,7 +13,7 @@ export class MemoramaServiceService {
   readonly API_URL = 'http://localhost:3000/api/memorama/';
   constructor(private httpClient: HttpClient) { }
 
-  public saveUsurioSesion(tema:Tema): Observable<Tema>{
+  public saveMemorama(tema:Tema): Observable<Tema>{
     return this.httpClient.post<Tema>(this.API_URL+'save-game',tema)
   }
   

@@ -31,7 +31,8 @@ export class JuegoMemoramaComponent implements OnInit {
   constructor(private router:Router, private memoramaService:MemoramaServiceService) { }
 
   async ngOnInit(): Promise<void> {
-    this.tema.id = 5   // this.tema = servicioSesion.Tema
+    this.tema.id = 4  // this.tema = servicioSesion.Tema
+    // this.usuario= usuarioSesion
     this.calculoDififultad()
     this.preguntas = await this.memoramaService.getPreguntasJuego(this.tema.id).toPromise();
     for (let i = 0; i < this.preguntas.length; i++) {
@@ -90,8 +91,8 @@ export class JuegoMemoramaComponent implements OnInit {
       case 'Medio':
         this.coeficienteDificultad = 0.5
         break;
-    
       default:
+        this.coeficienteDificultad = 0.5
         break;
     }
   }
@@ -128,6 +129,7 @@ export class JuegoMemoramaComponent implements OnInit {
         })
         this.preguntas[this.indexPregunta].mostrarFigura = true;
       }else{
+        //guradar resultados de la partida
         Swal.fire({
           icon: 'success',
           title: 'Exelente juego',
@@ -136,6 +138,11 @@ export class JuegoMemoramaComponent implements OnInit {
         this.indexPregunta=0
       }
     }
+  }
+
+  //funcion para guardar el punteo de la partida
+  private guardarResultadosPartida() {
+    //ir a traer el punteo anteriro si es que existiera
   }
 
 

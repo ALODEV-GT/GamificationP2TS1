@@ -1,3 +1,4 @@
+import { Usuario } from 'src/models/Usuario';
 
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -14,14 +15,23 @@ export class AreaJuegosCreadosComponent implements OnInit {
   temas:Tema[]=[]
   tituloTema=''
   temaPartida!:Tema
-
+  usuario:Usuario=new Usuario()
 
   constructor(private router:Router, private memoramaService:MemoramaServiceService) { }
 
   ngOnInit(): void {
-    this.memoramaService.getTemaJuegosCreados(1).subscribe(
+    //this.usurio = usurio del servicio
+    this.memoramaService.getTemaJuegosCreados(this.usuario.id).subscribe(
       (value:Tema[]) => {
         this.temas=value
+      }
+    )
+    //ir a traer juegos generales, los predeterminados
+    this.memoramaService.getTemaJuegosCreados(1).subscribe(
+      (value:Tema[]) => {
+        value.forEach(element => {
+          this.temas.push(element)
+        });
       }
     )
   }
@@ -34,7 +44,7 @@ export class AreaJuegosCreadosComponent implements OnInit {
 
   clickGoDemo(index:number){
     //servicioSesion.tema = this.temas[index]    enviar el tema mediante un servicio
-    this.router.navigate(['profesor/demo-juego'])
+    //this.router.navigate(['profesor/demo-juego'])
   }
 
 }

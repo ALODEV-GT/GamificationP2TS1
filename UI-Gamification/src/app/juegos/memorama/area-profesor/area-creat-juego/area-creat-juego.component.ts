@@ -1,3 +1,4 @@
+import { Usuario } from 'src/models/Usuario';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
@@ -11,6 +12,7 @@ import { Respuesta } from '../../models/respuesta';
   templateUrl: './area-creat-juego.component.html',
   styleUrls: ['./area-creat-juego.component.css']
 })
+
 export class AreaCreatJuegoComponent implements OnInit {
 
   tema:Tema=new Tema()
@@ -21,15 +23,18 @@ export class AreaCreatJuegoComponent implements OnInit {
   respuesta4=''
   respuesta5=''
   indexTem=-1
+  usuario:Usuario=new Usuario()
 
   constructor(private memoramaService:MemoramaServiceService, private router:Router) { }
 
   ngOnInit(): void {
+    //this.usuario = usuario del servicio
   }
 
   crearGuardarJuego(){
+    this.tema.id_user_creador=this.usuario.id
     if (this.comprobarTitulo()) {
-      this.memoramaService.saveUsurioSesion(this.tema).subscribe(
+      this.memoramaService.saveMemorama(this.tema).subscribe(
         (value: Tema) => {
           if (value != undefined) {
             Swal.fire({
@@ -37,7 +42,7 @@ export class AreaCreatJuegoComponent implements OnInit {
               title: 'Juego Creado con exito',
               text: 'Ya puedes generar una partida con el juego creado'
             })
-            this.router.navigate(['profesor/memoramas-creados'])
+            //this.router.navigate(['profesor/memoramas-creados'])
           }
         }
       )
