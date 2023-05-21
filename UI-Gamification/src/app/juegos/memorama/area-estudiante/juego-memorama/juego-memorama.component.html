@@ -66,34 +66,61 @@
                         </figure> 
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="text-center">
-                    <h4 >
-                        Estoy listo para Comenzar
-                    </h4>
-                    <br>
-                    <button type="button" class="btn btn-primary" (click)='clickComenzar()' >Comenzar</button>
-                    <br>
-                    <br>
-                    <p>
-                        Puedes Memorizarte las respuesta lo mejor Posible, cuando presiones el boton comenzar las preguntas se ocultaran y el juego comienza
-                        <b>Suerte!!</b>
-                    </p>
-                    <br>
-                    <br>
-                    <p>
-                        <b>
-                            Cada Tarjeta seleccionada correctamente y a la primera vale 10 pts, mientras mas falles estos puntos se ven reducidos
-                        </b>
-                    </p>
-                    
-                </div>
-            </div>
+          </div>
         </div>
+      <div class="col-md-1"></div>
+    <br>
+    <h1>Área de Respuestas 😎</h1>
+    <div class="row">
+      <div class="col-md-9">
+        <div class="main">
+          <div *ngFor="let respuesta of respuestas; let i = index">
+            <figure (click)='clickTarjeta(i)'>
+              <img class="back" *ngIf="respuesta.mostrarFigura"
+              src="assets/memorama/img/back.png" alt="Back" />
+              <div *ngIf="!respuesta.mostrarFigura" class="searched-image">
+                <div class="internal">
+                  <h4 class="text-center">Respuesta!</h4>
+                </div>
+                <br>
+                <div class="internal-r">
+                  <h5 class="text-center"><b>{{respuesta.respuesta}}
+                      😀 </b></h5>
+                </div>
+                <br>
+                <div class="text-center">
+                  <h6>Incorrecto! 😬</h6>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="text-center">
+          <h4>
+            Estoy listo para Comenzar
+          </h4>
+          <br>
+          <button type="button" class="btn btn-primary" (click)='clickComenzar()'>Comenzar</button>
+          <br>
+          <br>
+          <p>
+            Puedes Memorizarte las respuesta lo mejor Posible, cuando presiones el boton comenzar las preguntas se
+            ocultaran y el juego comienza
+            <b>Suerte!!</b>
+          </p>
+          <br>
+          <br>
+          <p>
+            <b>
+              Cada Tarjeta seleccionada correctamente y a la primera vale 10 pts, mientras mas falles estos puntos se
+              ven reducidos
+            </b>
+          </p>
+
+        </div>
+      </div>
     </div>
-
-
-  
+  </div>
 </section>
-

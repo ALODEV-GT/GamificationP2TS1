@@ -21,9 +21,10 @@ CREATE TABLE control_game_memorama.pregunta_respuesta(
 CREATE TABLE control_game_memorama.Tema(
     id SERIAL PRIMARY KEY, 
     titulo VARCHAR(100) NOT NULL,
-    id_user_creador INTEGER NOT NULL,
     cantidad_preguntas INTEGER NOT NULL,
-    FOREIGN KEY (id_user_creador) REFERENCES control_usuarios.usuario(id)
+    dificultad VARCHAR(15) NOT NULL,
+    codigo_instancia_juego VARCHAR(20) NOT NULL,
+    FOREIGN KEY (codigo_instancia_juego) REFERENCES control_general_juego.instancia_juego(codigo_instancia_juego)
 );
 
 CREATE TABLE control_game_memorama.Tema_pregunta(
@@ -43,3 +44,9 @@ ON pregunta.id = asoci.id_pregunta WHERE asoci.id_tema = 4;
 SELECT respuesta.* FROM control_game_memorama.respuesta AS respuesta
 INNER JOIN control_game_memorama.pregunta_respuesta AS asoci
 ON respuesta.id = asoci.id_respuesta WHERE asoci.id_pregunta = 3;
+
+
+SELECT tema.* FROM control_game_memorama.Tema AS tema
+INNER JOIN control_general_juego.instancia_juego AS instancia
+ON tema.codigo_instancia_juego = instancia.codigo_instancia_juego
+WHERE instancia.id_usuario_creador=1;

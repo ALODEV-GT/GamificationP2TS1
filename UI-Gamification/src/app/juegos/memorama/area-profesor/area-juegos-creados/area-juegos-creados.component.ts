@@ -26,14 +26,6 @@ export class AreaJuegosCreadosComponent implements OnInit {
         this.temas=value
       }
     )
-    //ir a traer juegos generales, los predeterminados
-    this.memoramaService.getTemaJuegosCreados(1).subscribe(
-      (value:Tema[]) => {
-        value.forEach(element => {
-          this.temas.push(element)
-        });
-      }
-    )
   }
 
   clickSettearTemaPartida(index:number){

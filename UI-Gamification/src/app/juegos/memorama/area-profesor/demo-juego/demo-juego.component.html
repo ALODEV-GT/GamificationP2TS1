@@ -1,24 +1,4 @@
-<app-nav-bar-profe></app-nav-bar-profe>
 <section style="background-color: #81cdf5">
-<<<<<<< HEAD:UI-Gamification/src/app/juegos/memorama/game-memori-scratteg/demo-juego/demo-juego.component.html
-  <div class="container-fluid py-1">
-    <h1>Área de Preguntas 😎</h1>
-    <div class="row">
-      <div class="col-md-9">
-        <div class="main">
-          <div *ngFor="let pregunta of preguntas; let i = index">
-            <figure>
-              <img class="back" *ngIf="!pregunta.mostrarFigura"
-                src="https://github.com/RetaxMaster/memorama/blob/main/images/back.png?raw=true" alt="Back" />
-              <div *ngIf="pregunta.mostrarFigura" class="searched-image2">
-                <div class="internal">
-                  <h4 class="text-center">Categoria 🡇</h4>
-                </div>
-                <br>
-                <div class="internal-r">
-                  <h5 class="text-center"><b>{{pregunta.pregunta}}
-                      😀 </b></h5>
-=======
     <div class="container-fluid py-1" >
         <h1>Área de Categorias del Tema: <b>{{tema.titulo}}</b> 😉</h1>
         <div class="row">
@@ -85,20 +65,10 @@
                             </div> 
                         </figure> 
                     </div>
->>>>>>> 6694265e7bfa532e3ea7c9f3e9a2f8848220e184:UI-Gamification/src/app/juegos/memorama/area-profesor/demo-juego/demo-juego.component.html
                 </div>
-                <br>
-                <div class="text-center">
-                  <h6>🢚No. Respuestas: {{pregunta.cantidad_respuestas}} </h6>
-                </div>
-
-              </div>
-            </figure>
           </div>
         </div>
-      </div>
       <div class="col-md-1"></div>
-    </div>
     <br>
     <h1>Área de Respuestas 😎</h1>
     <div class="row">
@@ -107,7 +77,7 @@
           <div *ngFor="let respuesta of respuestas; let i = index">
             <figure (click)='clickTarjeta(i)'>
               <img class="back" *ngIf="respuesta.mostrarFigura"
-                src="https://github.com/RetaxMaster/memorama/blob/main/images/back.png?raw=true" alt="Back" />
+              src="assets/memorama/img/back.png" alt="Back" />
               <div *ngIf="!respuesta.mostrarFigura" class="searched-image">
                 <div class="internal">
                   <h4 class="text-center">Respuesta!</h4>
