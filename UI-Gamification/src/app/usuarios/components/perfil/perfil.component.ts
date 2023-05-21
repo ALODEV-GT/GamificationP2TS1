@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
-import { Usuario } from 'src/models/Usuario';
-import { Rol } from 'src/app/autenticacion/models/Rol';
+import { Usuario } from 'src/models/usuarios/Usuario';
+import { Rol } from 'src/models/usuarios/Rol';
 import Swal from 'sweetalert2';
 
 @Component({

@@ -2,10 +2,10 @@
 import { UsuarioService } from './../../../usuarios/services/usuario.service';
 import { Router } from '@angular/router';
 import { RolService } from './../../services/rol.service';
-import { Rol } from './../../models/Rol';
+import { Rol } from '../../../../models/usuarios/Rol';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Usuario } from 'src/models/Usuario';
+import { Usuario } from 'src/models/usuarios/Usuario';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -30,9 +30,9 @@ export class RegistroComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       nombre: ["", [Validators.required, Validators.minLength(5)]],
       apellido: ["", [Validators.required, Validators.minLength(5)]],
-      nik_name: ["", [Validators.required, Validators.minLength(5)]],
+      usuario: ["", [Validators.required, Validators.minLength(5)]],
       rol: [this.rolSelect],
-      passworde: ["", [Validators.required, Validators.minLength(5)]],
+      contrasena: ["", [Validators.required, Validators.minLength(5)]],
     });
     this.rolService.getRoles().subscribe(
       (value: Rol[]) => {
@@ -79,7 +79,7 @@ export class RegistroComponent implements OnInit {
   }
 
   clickRolSelect(index: number) {
-    this.loginForm.value.rol = this.roles[index].id
+    this.loginForm.value.rol = this.roles[index].id_rol
   }
 
 }

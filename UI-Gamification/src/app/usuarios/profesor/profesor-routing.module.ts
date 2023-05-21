@@ -16,7 +16,7 @@ const rutas: Routes = [
         component: MisAulasComponent
       },
       {
-        path: 'aula',
+        path: 'aula/:codigo',
         component: AulaComponent
       },
       {

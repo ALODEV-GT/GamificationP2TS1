@@ -38,6 +38,7 @@ CREATE TABLE control_usuarios.usuario(
   usuario VARCHAR(50) NOT NULL UNIQUE,
   apellido VARCHAR(50) NOT NULL,
   contrasena VARCHAR(100) NOT NULL,
+  id_imagen INTEGER NOT NULL,
   id_rol INTEGER NOT NULL,
   FOREIGN KEY(id_rol) REFERENCES control_usuarios.rol(id_rol)
 );
@@ -177,11 +178,9 @@ CREATE TABLE control_recursos.imagen(
 
 -- JUEGO GENERAL
 CREATE TABLE control_general_juego.tipo_juego(
-  id_tipo_juego SERIAL PRIMARY KEY,
+  id_tipo_juego INTEGER PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
   descripcion VARCHAR(3000) NOT NULL,
-  id_imagen INTEGER NOT NULL,
-  FOREIGN KEY(id_imagen) REFERENCES control_recursos.imagen(id_imagen)
 );
 
 CREATE TABLE control_general_juego.instancia_juego(

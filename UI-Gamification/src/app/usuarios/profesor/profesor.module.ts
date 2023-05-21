@@ -8,6 +8,8 @@ import { MisAulasComponent } from './pages/mis-aulas/mis-aulas.component';
 import { AulaComponent } from './pages/aula/aula.component';
 import { AreaCreacionComponent } from './pages/area-creacion/area-creacion.component';
 import { UsuariosModule } from '../usuarios.module';
+import { ComidoModule } from 'src/app/juegos/comido/comido.module';
+import { CreacionComidoComponent } from './pages/creacion-comido/creacion-comido.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { UsuariosModule } from '../usuarios.module';
     MisAulasComponent,
     AulaComponent,
     AreaCreacionComponent,
+    CreacionComidoComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     ProfesorRoutingModule,
-    UsuariosModule
+    UsuariosModule,
+    ComidoModule
   ], exports: [
   ]
 })

@@ -6,14 +6,18 @@
           src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
           alt="Imagen de perfil" class="avatar-img">
       </div>
-      <h5 class="card-title">Nombre de usuario</h5>
+      <div>
+        <h5 class="card-title">{{usuario.nombre + " " + usuario.apellido}}</h5>
+        <h5 class="usuario-text">@{{usuario.usuario}}</h5>
+      </div>
     </div>
   </div>
   <div class="card-body">
-    <p class="card-text">Contenido de la publicación</p>
-    <img
+    <p class="card-text">{{publicacion.contenido_publicacion}}</p>
+    <!-- <img
       src="https://plus.unsplash.com/premium_photo-1677935148699-52055b6baaf2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1096&q=80"
-      alt="Imagen de la publicación" class="post-img">
+      alt="Imagen de la publicación" class="post-img">-->
+
     <div class="card-footer">
       <button type="button" class="btn btn-primary">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up"

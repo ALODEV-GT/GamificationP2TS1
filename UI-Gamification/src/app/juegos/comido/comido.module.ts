@@ -13,6 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule
+  ], exports: [
+    CrearJuegoComponent,
+    JuegoComponent
   ]
 })
 export class ComidoModule { }

@@ -24,13 +24,13 @@
               <div class="row">
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input type="text" class="form-control form-control-lg" formControlName="nik_name" />
+                    <input type="text" class="form-control form-control-lg" formControlName="usuario" />
                     <label class="form-label">Usuario (Nickname)</label>
                   </div>
                 </div>
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input type="password" class="form-control form-control-lg" formControlName="passworde" />
+                    <input type="password" class="form-control form-control-lg" formControlName="contrasena" />
                     <label class="form-label">Contraseña</label>
                   </div>
                 </div>
@@ -41,9 +41,9 @@
                   <div class="form-outline">
                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                       <div *ngFor="let rol of roles let i = index">
-                        <input type="radio" class="btn-check" name="btnradio" (click)="clickRolSelect(i)" id={{rol.id}}
-                          autocomplete="off" checked>
-                        <label class="btn btn-outline-primary" for={{rol.id}}>{{rol.name_rol}}</label>
+                        <input type="radio" class="btn-check" name="btnradio" (click)="clickRolSelect(i)"
+                          id={{rol.id_rol}} autocomplete="off" checked>
+                        <label class="btn btn-outline-primary" for={{rol.id_rol}}>{{rol.nombre}}</label>
                       </div>
                     </div>
                   </div>
