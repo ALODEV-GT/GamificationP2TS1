@@ -184,7 +184,7 @@ CREATE TABLE control_general_juego.tipo_juego(
 );
 
 CREATE TABLE control_general_juego.instancia_juego(
-  id_instancia_juego INTEGER PRIMARY KEY,
+  id_instancia_juego SERIAL PRIMARY KEY,
   nombre VARCHAR(250) NOT NULL,
   id_usuario_creador INTEGER NOT NULL,
   id_tipo_juego INTEGER NOT NULL,
