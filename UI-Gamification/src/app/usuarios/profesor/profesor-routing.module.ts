@@ -7,6 +7,8 @@ import { AreaCreacionComponent } from './pages/area-creacion/area-creacion.compo
 import { PerfilComponent } from '../components/perfil/perfil.component';
 import { CreacionComidoComponent } from './pages/creacion-comido/creacion-comido.component';
 import { CreacionMemoramaComponent } from './pages/creacion-memorama/creacion-memorama.component';
+import { CreacionSopaComponent } from './pages/creacion-sopa/creacion-sopa.component';
+import { CreacionCuriosoComponent } from './pages/creacion-curioso/creacion-curioso.component';
 
 const rutas: Routes = [
   {
@@ -33,6 +35,14 @@ const rutas: Routes = [
       {
         path: 'area-creacion/memorama',
         component: CreacionMemoramaComponent
+      },
+      {
+        path: 'area-creacion/sopa',
+        component: CreacionSopaComponent
+      },
+      {
+        path: 'area-creacion/curioso',
+        component: CreacionCuriosoComponent
       },
       {
         path: 'perfil',
