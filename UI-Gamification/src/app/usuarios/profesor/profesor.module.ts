@@ -10,6 +10,8 @@ import { AreaCreacionComponent } from './pages/area-creacion/area-creacion.compo
 import { UsuariosModule } from '../usuarios.module';
 import { ComidoModule } from 'src/app/juegos/comido/comido.module';
 import { CreacionComidoComponent } from './pages/creacion-comido/creacion-comido.component';
+import { CreacionMemoramaComponent } from './pages/creacion-memorama/creacion-memorama.component';
+import { MemoramaModule } from 'src/app/juegos/memorama/memorama.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { CreacionComidoComponent } from './pages/creacion-comido/creacion-comido
     AulaComponent,
     AreaCreacionComponent,
     CreacionComidoComponent,
+    CreacionMemoramaComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +29,8 @@ import { CreacionComidoComponent } from './pages/creacion-comido/creacion-comido
     ReactiveFormsModule,
     ProfesorRoutingModule,
     UsuariosModule,
-    ComidoModule
+    ComidoModule,
+    MemoramaModule
   ], exports: [
   ]
 })

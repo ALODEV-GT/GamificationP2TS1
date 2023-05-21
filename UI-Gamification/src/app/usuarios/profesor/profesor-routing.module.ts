@@ -6,6 +6,7 @@ import { AulaComponent } from './pages/aula/aula.component';
 import { AreaCreacionComponent } from './pages/area-creacion/area-creacion.component';
 import { PerfilComponent } from '../components/perfil/perfil.component';
 import { CreacionComidoComponent } from './pages/creacion-comido/creacion-comido.component';
+import { CreacionMemoramaComponent } from './pages/creacion-memorama/creacion-memorama.component';
 
 const rutas: Routes = [
   {
@@ -28,6 +29,10 @@ const rutas: Routes = [
       {
         path: 'area-creacion/comido',
         component: CreacionComidoComponent
+      },
+      {
+        path: 'area-creacion/memorama',
+        component: CreacionMemoramaComponent
       },
       {
         path: 'perfil',
