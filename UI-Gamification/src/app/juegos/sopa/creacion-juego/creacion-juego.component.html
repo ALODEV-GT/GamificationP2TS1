@@ -1,0 +1,45 @@
+<app-nav-bar-profe></app-nav-bar-profe>
+
+
+<body>
+    <div class="registration-form">
+        <form>
+            <div class="form-icon">
+                <span><i class="icon icon-user"></i></span>
+                
+            </div>
+            <p>Ingrese 5 palabras </p>
+            <div class="form-group">
+                <label for="">Codigo de la partida</label>
+                <input [(ngModel)]="codigo" name="codigo" type="text" class="form-control item" id="username" placeholder="codigo">
+            </div>
+            <div class="form-group">
+                <label for="">Titulo de la partida</label>
+                <input [(ngModel)]="tituloPartida" name="tituloPartida" type="text" class="form-control item" id="password" placeholder="Titulo">
+            </div>
+
+            <div class="form-group">
+                <label for="">Nivel de la partida</label>
+                <select [(ngModel)]="nivelPartida" name="nivelPartida" class="form-control item" (click)="cargarValor()" >
+                    <option  value="Facil" >Facil</option>
+                    <option  value="Intermedio">Intermedio</option>
+                    <option  value="Avanzado">Avanzado</option>
+                </select> 
+            </div>
+
+            <div class="form-group">
+                <label for="">Ingrese la palabra</label>
+                <input [disabled]="palabras.length==5" type="text" maxlength="11" class="form-control item" [(ngModel)]="palabraNG" name="palabraNG" >
+                <button [disabled]="palabras.length==5" class="btn btn-success form-control item" (click)="agregarPalabra()" >Agregar</button>
+            </div>
+            <div *ngFor="let sort of palabras; let i=index;" >
+                <h2>{{sort}}</h2>
+                <button class="btn btn-danger" (click)="eliminarPalabra(i)" >Eliminar</button>
+            </div>
+          <hr>
+          <button class="btn btn-primary" (click)="crearJuego()" >Crear Juego</button>
+        </form>
+    </div>
+
+</body>
+
