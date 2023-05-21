@@ -38,7 +38,7 @@ CREATE TABLE control_usuarios.usuario(
   usuario VARCHAR(50) NOT NULL UNIQUE,
   apellido VARCHAR(50) NOT NULL,
   contrasena VARCHAR(100) NOT NULL,
-  id_imagen INTEGER NOT NULL,
+  id_imagen INTEGER,
   id_rol INTEGER NOT NULL,
   FOREIGN KEY(id_rol) REFERENCES control_usuarios.rol(id_rol)
 );
