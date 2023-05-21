@@ -38,6 +38,7 @@ CREATE TABLE control_usuarios.usuario(
   usuario VARCHAR(50) NOT NULL UNIQUE,
   apellido VARCHAR(50) NOT NULL,
   contrasena VARCHAR(100) NOT NULL,
+  id_imagen INTEGER NOT NULL,
   id_rol INTEGER NOT NULL,
   FOREIGN KEY(id_rol) REFERENCES control_usuarios.rol(id_rol)
 );
@@ -177,15 +178,13 @@ CREATE TABLE control_recursos.imagen(
 
 -- JUEGO GENERAL
 CREATE TABLE control_general_juego.tipo_juego(
-  id_tipo_juego SERIAL PRIMARY KEY,
+  id_tipo_juego INTEGER PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
   descripcion VARCHAR(3000) NOT NULL,
-  id_imagen INTEGER NOT NULL,
-  FOREIGN KEY(id_imagen) REFERENCES control_recursos.imagen(id_imagen)
 );
 
 CREATE TABLE control_general_juego.instancia_juego(
-  codigo_instancia_juego VARCHAR(20) PRIMARY KEY,
+  id_instancia_juego INTEGER PRIMARY KEY,
   nombre VARCHAR(250) NOT NULL,
   id_usuario_creador INTEGER NOT NULL,
   id_tipo_juego INTEGER NOT NULL,
@@ -195,8 +194,8 @@ CREATE TABLE control_general_juego.instancia_juego(
 
 CREATE TABLE control_general_juego.compartir_aula(
   id_compartir_aula SERIAL PRIMARY KEY,
-  codigo_instancia_juego VARCHAR(20) NOT NULL,
+  id_instancia_juego INTEGER NOT NULL,
   codigo_aula VARCHAR(20) NOT NULL,
-  FOREIGN KEY (codigo_instancia_juego) REFERENCES control_general_juego.instancia_juego(codigo_instancia_juego),
+  FOREIGN KEY (id_instancia_juego) REFERENCES control_general_juego.instancia_juego(id_instancia_juego),
   FOREIGN KEY (codigo_aula) REFERENCES control_aulas.aula(codigo_aula)
 );

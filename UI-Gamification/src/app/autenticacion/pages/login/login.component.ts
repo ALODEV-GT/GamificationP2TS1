@@ -2,7 +2,7 @@ import { UsuarioService } from './../../../usuarios/services/usuario.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/models/Usuario';
+import { Usuario } from 'src/models/usuarios/Usuario';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      nik_name: ["", [Validators.required, Validators.minLength(5)]],
-      passworde: ["", [Validators.required, Validators.minLength(5)]],
+      usuario: ["", [Validators.required, Validators.minLength(5)]],
+      contrasena: ["", [Validators.required, Validators.minLength(5)]],
     });
   }
 

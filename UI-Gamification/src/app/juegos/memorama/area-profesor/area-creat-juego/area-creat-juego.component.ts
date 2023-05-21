@@ -1,4 +1,3 @@
-import { Usuario } from 'src/models/Usuario';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
@@ -6,6 +5,7 @@ import { MemoramaServiceService } from '../../services/memorama-service.service'
 import { Tema } from '../../models/tema';
 import { Pregunta } from '../../models/pregunta';
 import { Respuesta } from '../../models/respuesta';
+import { Usuario } from 'src/models/usuarios/Usuario';
 
 @Component({
   selector: 'app-area-creat-juego',
@@ -16,7 +16,7 @@ import { Respuesta } from '../../models/respuesta';
 export class AreaCreatJuegoComponent implements OnInit {
 
   tema:Tema=new Tema()
-  categoria=''
+  categoria:string=''
   respuesta1=''
   respuesta2=''
   respuesta3=''
@@ -32,7 +32,7 @@ export class AreaCreatJuegoComponent implements OnInit {
   }
 
   crearGuardarJuego(){
-    this.tema.id_user_creador=this.usuario.id
+    this.tema.id_user_creador=this.usuario.id_usuario
     if (this.comprobarTitulo()) {
       this.memoramaService.saveMemorama(this.tema).subscribe(
         (value: Tema) => {

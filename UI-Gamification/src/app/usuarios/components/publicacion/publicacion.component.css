@@ -62,20 +62,25 @@
 .comment-username {
   font-size: 14px;
   font-weight: 500;
-  margin-bottom:3px;
+  margin-bottom: 3px;
 }
 
 .comment-text {
   font-size: 12px;
 }
 
-.head{
+.head {
   border: none;
   padding-bottom: 0;
 }
 
-.cardc{
+.cardc {
   margin-top: 4px;
   margin-bottom: 4px;
 }
 
+.usuario-text {
+  font-size: 15px;
+  font-weight: 400;
+  color: dimgrey;
+}

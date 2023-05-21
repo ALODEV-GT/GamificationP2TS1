@@ -1,8 +1,8 @@
 export class Usuario{
-    id!:number
+    id_usuario!:number
     nombre!:String
-    nik_name!:String
+    usuario!:String
     apellido!:String
-    passworde!:String
+    contrasena!:String
     id_rol!:number
 }

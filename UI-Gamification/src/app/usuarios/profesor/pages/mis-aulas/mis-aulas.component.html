@@ -2,7 +2,7 @@
   <div class="row mt-4">
     <div class="col-10"></div>
     <div class="col-2">
-      <button (click)="openModal()" type="button" class="btn btn-outline-primary">Unirse a un aula</button>
+      <button (click)="openModal()" type="button" class="btn btn-outline-primary">Crear aula</button>
     </div>
   </div>
   <div class="row">
@@ -10,13 +10,14 @@
       <div class="mb-4">
         <div class="titulo">MIS AULAS</div>
       </div>
-      <div class="col-6 mb-2" *ngFor="let aula of aulas">
+      <div class="col-6 mb-2" *ngFor="let aula of misAulas">
         <div class="row">
           <div class="col-6 bg-info rounded">
-            <a type="button" class="aula-anchor">Aula {{aula}}</a>
+            <a type="button" class="aula-anchor"
+              [routerLink]="['/profesor/aula', aula.codigo_aula]">{{aula.codigo_aula}} - {{aula.nombre}}</a>
           </div>
           <div class="col-6">
-            <button type="button" class="btn btn-outline-danger">Salirse</button>
+            <button type="button" class="btn btn-outline-danger">Archivar aula</button>
           </div>
         </div>
       </div>
@@ -33,22 +34,24 @@
         <h5 class="modal-title">Nuevo aula</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
-      <div class="modal-body">
-        <div class="row g-3 align-items-center">
-          <div class="col-auto">
-            <label class="col-form-label">Codigo</label>
-            <input type="text" class="form-control">
-          </div>
-          <div class="col-auto">
-            <label class="col-form-label">Nombre</label>
-            <input type="text" class="form-control">
+      <form (ngSubmit)='crearAula()' autocomplete="off" [formGroup]="formularioNuevoAula">
+        <div class="modal-body">
+          <div class="row g-3 align-items-center">
+            <div class="col-auto">
+              <label class="col-form-label">Codigo</label>
+              <input type="text" class="form-control" formControlName="codigoAula">
+            </div>
+            <div class="col-auto">
+              <label class="col-form-label">Nombre</label>
+              <input type="text" class="form-control" formControlName="nombreAula">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button (click)="unirseAula()" type="button" class="btn btn-success">Crear</button>
-      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-success" [disabled]="formularioNuevoAula.invalid">Crear</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

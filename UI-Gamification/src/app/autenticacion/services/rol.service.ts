@@ -1,4 +1,4 @@
-import { Rol } from './../models/Rol';
+import { Rol } from '../../../models/usuarios/Rol';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -14,5 +14,5 @@ export class RolService {
   public getRoles(): Observable<Rol[]>{
     return this.httpClient.get<Rol[]>(this.API_URL+'get-roles')
   }
-  
+
 }

@@ -1,9 +1,9 @@
-import { Usuario } from 'src/models/Usuario';
 
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MemoramaServiceService } from '../../services/memorama-service.service';
 import { Tema } from '../../models/tema';
+import { Usuario } from 'src/models/usuarios/Usuario';
 
 @Component({
   selector: 'app-area-juegos-creados',
@@ -21,7 +21,7 @@ export class AreaJuegosCreadosComponent implements OnInit {
 
   ngOnInit(): void {
     //this.usurio = usurio del servicio
-    this.memoramaService.getTemaJuegosCreados(this.usuario.id).subscribe(
+    this.memoramaService.getTemaJuegosCreados(this.usuario.id_usuario).subscribe(
       (value:Tema[]) => {
         this.temas=value
       }

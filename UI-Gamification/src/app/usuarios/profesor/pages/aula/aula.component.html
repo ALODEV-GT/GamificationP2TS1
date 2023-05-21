@@ -15,22 +15,25 @@
                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
                 alt="Imagen de perfil" class="avatar-img">
             </div>
-            <h5 class="card-title">Nombre de usuario</h5>
+            <div>
+              <h5 class="card-title">{{usuario.nombre + " " + usuario.apellido}}</h5>
+              <h5 class="usuario-text">@{{usuario.usuario}}</h5>
+            </div>
           </div>
         </div>
         <div class="card-body">
           <div class="col-auto">
-            <input type="text" class="form-control">
+            <input [(ngModel)]="contenido" type="text" class="form-control">
           </div>
           <div class="mt-3">
-            <button type="button" class="btn btn-primary">
+            <button (click)="publicar()" type="button" class="btn btn-primary">
               Publicar
             </button>
           </div>
         </div>
       </div>
 
-      <app-publicacion *ngFor="let publicacion of publicaciones"></app-publicacion>
+      <app-publicacion *ngFor="let publicacion of publicaciones" [publicacion]="publicacion"></app-publicacion>
     </div>
     <div class="col-1">
     </div>
