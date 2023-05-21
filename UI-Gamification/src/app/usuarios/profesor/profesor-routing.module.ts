@@ -5,6 +5,7 @@ import { MisAulasComponent } from './pages/mis-aulas/mis-aulas.component';
 import { AulaComponent } from './pages/aula/aula.component';
 import { AreaCreacionComponent } from './pages/area-creacion/area-creacion.component';
 import { PerfilComponent } from '../components/perfil/perfil.component';
+import { CreacionComidoComponent } from './pages/creacion-comido/creacion-comido.component';
 
 const rutas: Routes = [
   {
@@ -21,7 +22,12 @@ const rutas: Routes = [
       },
       {
         path: 'area-creacion',
-        component: AreaCreacionComponent
+        component: AreaCreacionComponent,
+
+      },
+      {
+        path: 'area-creacion/comido',
+        component: CreacionComidoComponent
       },
       {
         path: 'perfil',
