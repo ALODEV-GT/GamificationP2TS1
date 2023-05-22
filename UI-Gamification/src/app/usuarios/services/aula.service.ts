@@ -22,12 +22,22 @@ export class AulaService {
     return this.http.post<boolean>(`${this.baseUrl}crear-nuevo`, aula);
   }
 
-  validarCodigoAula(codigoAula: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.baseUrl}validar?codigo_aula=${codigoAula}`)
+  existeAula(codigoAula: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.baseUrl}existe?codigo_aula=${codigoAula}`)
   }
 
-  getMisAulas() {
+
+  getAulaByCodigo(codigoAula: string): Observable<Aula> {
+    return this.http.get<Aula>(`${this.baseUrl}aula?codigo_aula=${codigoAula}`)
+  }
+
+  getMisAulasProfesor() {
     const id_usuario = this.usuarioService.getUsuarioSesion()?.id_usuario;
-    return this.http.get<Aula[]>(`${this.baseUrl}mis-aulas?id_usuario=${id_usuario}`)
+    return this.http.get<Aula[]>(`${this.baseUrl}mis-aulas-profesor?id_usuario=${id_usuario}`)
+  }
+
+  getMisAulasEstudiante() {
+    const id_usuario = this.usuarioService.getUsuarioSesion()?.id_usuario;
+    return this.http.get<Aula[]>(`${this.baseUrl}mis-aulas-estudiante?id_usuario=${id_usuario}`)
   }
 }

@@ -10,10 +10,11 @@
       <div class="mb-4">
         <div class="titulo">MIS AULAS</div>
       </div>
-      <div class="col-6 mb-2" *ngFor="let aula of aulas">
+      <div class="col-6 mb-2" *ngFor="let aula of misAulas">
         <div class="row">
           <div class="col-6 bg-info rounded">
-            <a type="button" class="aula-anchor">Aula {{aula}}</a>
+            <a type="button" class="aula-anchor"
+              [routerLink]="['/estudiante/aula', aula.codigo_aula]">{{aula.codigo_aula}} - {{aula.nombre}}</a>
           </div>
           <div class="col-6">
             <button type="button" class="btn btn-outline-danger">Salirse</button>
@@ -37,7 +38,7 @@
         <div class="row g-3 align-items-center">
           <div class="col-auto">
             <label class="col-form-label">Codigo</label>
-            <input type="text" class="form-control">
+            <input [(ngModel)]="codigoAula" type="text" class="form-control">
           </div>
         </div>
       </div>

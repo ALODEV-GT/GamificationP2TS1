@@ -37,7 +37,6 @@ export class AulaComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(({ codigo }) => {
-      //Mostrar publicaciones
       //Mostrar miembros
       this.codigoAula = codigo;
       this.listarPublicaciones()

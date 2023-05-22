@@ -2,11 +2,10 @@ CREATE DATABASE gamication;
 
 --eliminacion de la base de datos
 --DROP DATABASE gamication;
-
 --ingreso a la base de datos
-\ c gamication
+\c gamication
 
---esquemas
+--Esquemas
 CREATE SCHEMA control_usuarios;
 
 CREATE SCHEMA control_aulas;
@@ -92,7 +91,6 @@ CREATE TABLE control_comunicaciones.like(
   FOREIGN KEY(id_usuario) REFERENCES control_usuarios.usuario(id_usuario)
 );
 
-
 --NOTIFICACIONES
 CREATE TABLE control_notificaciones.noti_aceptado_aula(
   id_noti_aceptado_aula SERIAL PRIMARY KEY,
@@ -100,6 +98,15 @@ CREATE TABLE control_notificaciones.noti_aceptado_aula(
   id_asignacion INTEGER NOT NULL,
   visto BOOLEAN NOT NULL,
   FOREIGN KEY(id_asignacion) REFERENCES control_aulas.asignacion(id_asignacion),
+  FOREIGN KEY(id_usuario_noti) REFERENCES control_usuarios.usuario(id_usuario)
+);
+
+CREATE TABLE control_notificaciones.noti_rechazado_aula(
+  id_noti_rechazado_aula SERIAL PRIMARY KEY,
+  id_usuario_noti INTEGER NOT NULL,
+  codigo_aula VARCHAR(20) NOT NULL,
+  visto BOOLEAN NOT NULL,
+  FOREIGN KEY(codigo_aula) REFERENCES control_aulas.aula(codigo_aula),
   FOREIGN KEY(id_usuario_noti) REFERENCES control_usuarios.usuario(id_usuario)
 );
 
@@ -121,14 +128,14 @@ CREATE TABLE control_notificaciones.noti_like(
   FOREIGN KEY(id_usuario_noti) REFERENCES control_usuarios.usuario(id_usuario)
 );
 
-CREATE TABLE control_notificaciones.noti_nueva_publicacion(
-  id_noti_nueva_publicacion SERIAL PRIMARY KEY,
-  id_usuario_noti INTEGER NOT NULL,
-  id_publicacion INTEGER NOT NULL,
-  visto BOOLEAN NOT NULL,
-  FOREIGN KEY(id_publicacion) REFERENCES control_comunicaciones.publicacion(id_publicacion),
-  FOREIGN KEY(id_usuario_noti) REFERENCES control_usuarios.usuario(id_usuario)
-);
+--CREATE TABLE control_notificaciones.noti_nueva_publicacion(
+--  id_noti_nueva_publicacion SERIAL PRIMARY KEY,
+--  id_usuario_noti INTEGER NOT NULL,
+--  id_publicacion INTEGER NOT NULL,
+--  visto BOOLEAN NOT NULL,
+--  FOREIGN KEY(id_publicacion) REFERENCES control_comunicaciones.publicacion(id_publicacion),
+--  FOREIGN KEY(id_usuario_noti) REFERENCES control_usuarios.usuario(id_usuario)
+--);
 
 CREATE TABLE control_notificaciones.noti_expulsado(
   id_noti_expulsado SERIAL PRIMARY KEY,
@@ -139,15 +146,14 @@ CREATE TABLE control_notificaciones.noti_expulsado(
   FOREIGN KEY(id_usuario_noti) REFERENCES control_usuarios.usuario(id_usuario)
 );
 
-CREATE TABLE control_notificaciones.noti_nuevo_miembro(
-  id_noti_nuevo_miembro SERIAL PRIMARY KEY,
-  id_usuario_noti INTEGER NOT NULL,
-  id_asignacion INTEGER NOT NULL,
-  visto BOOLEAN NOT NULL,
-  FOREIGN KEY(id_asignacion) REFERENCES control_aulas.asignacion(id_asignacion),
-  FOREIGN KEY(id_usuario_noti) REFERENCES control_usuarios.usuario(id_usuario)
-);
-
+--CREATE TABLE control_notificaciones.noti_nuevo_miembro(
+--  id_noti_nuevo_miembro SERIAL PRIMARY KEY,
+--  id_usuario_noti INTEGER NOT NULL,
+--  id_asignacion INTEGER NOT NULL,
+--  visto BOOLEAN NOT NULL,
+--  FOREIGN KEY(id_asignacion) REFERENCES control_aulas.asignacion(id_asignacion),
+--  FOREIGN KEY(id_usuario_noti) REFERENCES control_usuarios.usuario(id_usuario)
+--);
 CREATE TABLE control_notificaciones.noti_solicitud_aula(
   id_noti_solicitud_aula SERIAL PRIMARY KEY,
   id_usuario_noti INTEGER NOT NULL,
@@ -159,16 +165,16 @@ CREATE TABLE control_notificaciones.noti_solicitud_aula(
   FOREIGN KEY(id_usuario_solicitante) REFERENCES control_usuarios.usuario(id_usuario)
 );
 
-CREATE TABLE control_notificaciones.noti_retirado(
-  id_noti_retirado SERIAL PRIMARY KEY,
-  id_usuario_noti INTEGER NOT NULL,
-  id_usuario_retirado INTEGER NOT NULL,
-  codigo_aula VARCHAR(20) NOT NULL,
-  visto BOOLEAN NOT NULL,
-  FOREIGN KEY(codigo_aula) REFERENCES control_aulas.aula(codigo_aula),
-  FOREIGN KEY(id_usuario_noti) REFERENCES control_usuarios.usuario(id_usuario),
-  FOREIGN KEY(id_usuario_retirado) REFERENCES control_usuarios.usuario(id_usuario)
-);
+--CREATE TABLE control_notificaciones.noti_retirado(
+--  id_noti_retirado SERIAL PRIMARY KEY,
+--  id_usuario_noti INTEGER NOT NULL,
+--  id_usuario_retirado INTEGER NOT NULL,
+--  codigo_aula VARCHAR(20) NOT NULL,
+--  visto BOOLEAN NOT NULL,
+--  FOREIGN KEY(codigo_aula) REFERENCES control_aulas.aula(codigo_aula),
+--  FOREIGN KEY(id_usuario_noti) REFERENCES control_usuarios.usuario(id_usuario),
+--  FOREIGN KEY(id_usuario_retirado) REFERENCES control_usuarios.usuario(id_usuario)
+--);
 
 -- RECURSOS
 CREATE TABLE control_recursos.imagen(
@@ -180,7 +186,7 @@ CREATE TABLE control_recursos.imagen(
 CREATE TABLE control_general_juego.tipo_juego(
   id_tipo_juego INTEGER PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
-  descripcion VARCHAR(3000) NOT NULL,
+  descripcion VARCHAR(3000) NOT NULL
 );
 
 CREATE TABLE control_general_juego.instancia_juego(

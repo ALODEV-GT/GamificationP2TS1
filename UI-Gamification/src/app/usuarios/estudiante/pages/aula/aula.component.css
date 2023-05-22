@@ -74,3 +74,9 @@
   color: rgb(80, 79, 79);
   cursor: pointer;
 }
+
+.usuario-text {
+  font-size: 15px;
+  font-weight: 400;
+  color: dimgrey;
+}
