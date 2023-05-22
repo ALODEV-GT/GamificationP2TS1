@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as bootstrap from 'bootstrap';
 import { NotificacionService } from '../../../services/notificacion.service';
-import { NotiAceptadoAulaI, NotiRechazadoAulaI } from 'src/models/notificaciones/interfaces/NotificacionesInterfaces';
+import { NotiAceptadoAulaI, NotiComentarioI, NotiLikeI, NotiRechazadoAulaI } from 'src/models/notificaciones/interfaces/NotificacionesInterfaces';
 
 @Component({
   selector: 'app-nav-bar-student',
@@ -17,6 +17,8 @@ export class NavBarStudentComponent implements OnInit {
 
   notisAceptadoAula: NotiAceptadoAulaI[] = []
   notisRechazadoAula: NotiRechazadoAulaI[] = []
+  notisComentarios: NotiComentarioI[] = [];
+  notisLikes: NotiLikeI[] = [];
 
   myDropVar: any;
 
@@ -29,6 +31,12 @@ export class NavBarStudentComponent implements OnInit {
     this.notificacionService.getNotisRechazadoAula().subscribe((resp: NotiRechazadoAulaI[]) => {
       this.notisRechazadoAula = resp;
     })
+    this.notificacionService.getNotisComentarios().subscribe((resp: NotiComentarioI[]) => {
+      this.notisComentarios = resp;
+    })
+    this.notificacionService.getNotisLikes().subscribe((resp: NotiLikeI[]) => {
+      this.notisLikes = resp;
+    })
   }
 
   ngOnInit(): void {
@@ -38,6 +46,16 @@ export class NavBarStudentComponent implements OnInit {
 
   showDropDown() {
     this.myDropVar.toggle()
+  }
+
+  recorteTexto(texto: string) {
+    let nuevoTexto: string = "";
+    if (texto.length < 30) {
+      nuevoTexto = texto;
+    } else {
+      nuevoTexto = texto.slice(0, 29) + "...";
+    }
+    return nuevoTexto;
   }
 
 }

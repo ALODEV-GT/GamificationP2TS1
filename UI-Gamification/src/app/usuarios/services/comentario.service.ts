@@ -17,8 +17,8 @@ export class ComentarioService {
 
   }
 
-  guardarComentario(aula: Comentario): Observable<boolean> {
-    return this.http.post<boolean>(`${this.baseUrl}guardar`, aula);
+  guardarComentario(aula: Comentario): Observable<Comentario> {
+    return this.http.post<Comentario>(`${this.baseUrl}guardar`, aula);
   }
 
   getComentarios(idPublicacion: number): Observable<ComentarioI[]> {

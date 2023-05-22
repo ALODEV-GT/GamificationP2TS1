@@ -8,11 +8,7 @@ const guardarComentario = async (req, res) => {
     [id_publicacion, id_usuario, comentario]
   );
 
-  if (nuevoComentario) {
-    res.json(true)
-  } else {
-    res.json(false)
-  }
+  res.json(nuevoComentario.rows[0])
 };
 
 const getComentarios = async (req, res) => {

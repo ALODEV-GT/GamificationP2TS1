@@ -82,11 +82,11 @@ const getNotisAceptadoAula = async (req, res) => {
 }
 
 const guardarNotiRechazadoAula = async (req, res) => {
-  const { id_usuario_noti,codigo_aula,visto } = req.body;
+  const { id_usuario_noti, codigo_aula, visto } = req.body;
 
   const nuevaNoti = await conexion.pool.query(
     'INSERT INTO control_notificaciones.noti_rechazado_aula(id_usuario_noti,codigo_aula,visto) VALUES($1, $2, $3) RETURNING *',
-    [id_usuario_noti,codigo_aula,visto]
+    [id_usuario_noti, codigo_aula, visto]
   );
 
   if (nuevaNoti.rows[0]) {
@@ -109,6 +109,81 @@ const getNotisRechazadoAula = async (req, res) => {
   }
 }
 
+const guardarNotiComentario = async (req, res) => {
+  const { id_usuario_noti, id_comentario, visto } = req.body;
+
+  const nuevaNoti = await conexion.pool.query(
+    'INSERT INTO control_notificaciones.noti_comentario(id_usuario_noti, id_comentario, visto) VALUES($1, $2, $3) RETURNING *',
+    [id_usuario_noti, id_comentario, visto]
+  );
+
+  if (nuevaNoti.rows[0]) {
+    res.json(true)
+  } else {
+    res.json(false)
+  }
+};
+
+const getNotisComentarios = async (req, res) => {
+  const { id_usuario } = req.query
+  const t1 = "control_notificaciones.noti_comentario"
+  const t2 = "control_usuarios.usuario"
+  const t3 = "control_comunicaciones.comentario"
+  const t4 = "control_comunicaciones.contenido_publicacion"
+  const t5 = "control_comunicaciones.publicacion"
+  const consulta = `SELECT ${t2}.nombre, ${t2}.apellido, ${t2}.usuario, ${t4}.contenido FROM ${t1} JOIN ${t3} ON ${t1}.id_comentario=${t3}.id_comentario JOIN ${t2} ON ${t3}.id_usuario=${t2}.id_usuario JOIN ${t5} ON ${t3}.id_publicacion=${t5}.id_publicacion JOIN ${t4} ON ${t5}.id_contenido_publicacion=${t4}.id_contenido_publicacion WHERE ${t1}.id_usuario_noti=$1 AND ${t1}.visto=false ORDER BY ${t1}.id_noti_comentario DESC`
+  const response = await conexion.pool.query(consulta, [id_usuario]);
+  if (response.rows) {
+    res.json(response.rows)
+  } else {
+    res.json([])
+  }
+}
+
+const guardarNotiLike = async (req, res) => {
+  const { id_usuario_noti, id_like, visto } = req.body;
+
+  const nuevaNoti = await conexion.pool.query(
+    'INSERT INTO control_notificaciones.noti_like(id_usuario_noti,id_like,visto) VALUES($1, $2, $3) RETURNING *',
+    [id_usuario_noti, id_like, visto]
+  );
+
+  if (nuevaNoti.rows[0]) {
+    res.json(true)
+  } else {
+    res.json(false)
+  }
+};
+
+const getNotisLikes = async (req, res) => {
+  const { id_usuario } = req.query
+  const t1 = "control_notificaciones.noti_like"
+  const t2 = "control_usuarios.usuario"
+  const t3 = "control_comunicaciones.like"
+  const t4 = "control_comunicaciones.contenido_publicacion"
+  const t5 = "control_comunicaciones.publicacion"
+  const consulta = `SELECT ${t2}.nombre, ${t2}.apellido, ${t2}.usuario, ${t4}.contenido FROM ${t1} JOIN ${t3} ON ${t1}.id_like=${t3}.id_like JOIN ${t2} ON ${t3}.id_usuario=${t2}.id_usuario JOIN ${t5} ON ${t3}.id_publicacion=${t5}.id_publicacion JOIN ${t4} ON ${t5}.id_contenido_publicacion=${t4}.id_contenido_publicacion WHERE ${t1}.id_usuario_noti=$1 AND ${t1}.visto=false ORDER BY ${t1}.id_noti_like DESC`
+  const response = await conexion.pool.query(consulta, [id_usuario]);
+  if (response.rows) {
+    res.json(response.rows)
+  } else {
+    res.json([])
+  }
+}
+
+const quitarNotiLike = async (req, res) => {
+  const { id_publicacion, id_usuario } = req.query;
+  const busqueda = `SELECT * FROM control_comunicaciones.like WHERE id_publicacion=$1 AND id_usuario=$2`
+  const busRes = await conexion.pool.query(busqueda, [id_publicacion, id_usuario])
+  if (busRes.rows[0]) {
+    const consulta = `DELETE FROM control_notificaciones.noti_like WHERE id_like=$1`
+    const eliminar = await conexion.pool.query(consulta, [busRes.rows[0].id_like]);
+    res.json(true)
+  } else {
+    res.json(false)
+  }
+};
+
 module.exports = {
   guardarNotiSolicitudAula: guardarNotiSolicitudAula,
   getNotiSolicitudesAula: getNotiSolicitudesAula,
@@ -117,5 +192,10 @@ module.exports = {
   getNotisAceptadoAula: getNotisAceptadoAula,
   setVistoNotiSolicitudAula: setVistoNotiSolicitudAula,
   guardarNotiRechazadoAula: guardarNotiRechazadoAula,
-  getNotisRechazadoAula: getNotisRechazadoAula
+  getNotisRechazadoAula: getNotisRechazadoAula,
+  guardarNotiComentario: guardarNotiComentario,
+  getNotisComentarios: getNotisComentarios,
+  guardarNotiLike: guardarNotiLike,
+  getNotisLikes: getNotisLikes,
+  quitarNotiLike: quitarNotiLike
 }

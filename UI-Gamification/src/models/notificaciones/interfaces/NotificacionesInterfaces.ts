@@ -19,3 +19,18 @@ export interface NotiRechazadoAulaI {
   codigo_aula: string,
   nombre_aula: string
 }
+
+export interface NotiComentarioI {
+  apellido: string,
+  contenido: string,
+  nombre: string,
+  usuario: string
+}
+
+export interface NotiLikeI {
+  apellido: string,
+  contenido: string,
+  nombre: string,
+  usuario: string
+}
+

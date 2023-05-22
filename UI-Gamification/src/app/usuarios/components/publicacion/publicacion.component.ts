@@ -8,6 +8,9 @@ import { LikeService } from '../../services/like.service';
 import { Comentario } from 'src/models/Comentarios/Comentario';
 import { ComentarioI } from 'src/models/interfaces/ComentarioI';
 import { Like } from 'src/models/Likes/Like';
+import { NotificacionService } from '../../services/notificacion.service';
+import { NotiLike } from 'src/models/notificaciones/NotiLike';
+import { NotiComentario } from 'src/models/notificaciones/NotiComentario';
 
 @Component({
   selector: 'app-publicacion',
@@ -31,7 +34,8 @@ export class PublicacionComponent implements OnInit {
   constructor(
     private usuarioService: UsuarioService,
     private comentarioService: ComentarioService,
-    private likeService: LikeService
+    private likeService: LikeService,
+    private notificacionService: NotificacionService
   ) { }
 
   ngOnInit(): void {
@@ -78,46 +82,112 @@ export class PublicacionComponent implements OnInit {
     }
 
     const usuario: Usuario = this.usuarioService.getUsuarioSesion()!;
-    const nuevoComentario: Comentario = new Comentario(0, this.publicacion.id_publicacion, usuario.id_usuario, this.comentario);
-    this.comentarioService.guardarComentario(nuevoComentario).subscribe((resp: boolean) => {
-      if (resp) {
-        //Notificar que se comento la publicacion - PENDIENTE
-        this.listarComentarios();
-        this.getNumComentarios();
-        this.comentario = "";
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: ":C",
-          text: "No se pudo comentar"
-        })
-      }
-    })
+    if (this.publicacion.id_usuario == usuario.id_usuario) {
+      const nuevoComentario: Comentario = new Comentario(0, this.publicacion.id_publicacion, usuario.id_usuario, this.comentario);
+      this.comentarioService.guardarComentario(nuevoComentario).subscribe((resp: Comentario) => {
+        if (resp) {
+          this.listarComentarios();
+          this.getNumComentarios();
+          this.comentario = "";
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: ":C",
+            text: "No se pudo comentar"
+          })
+        }
+      })
+
+    } else {
+      const nuevoComentario: Comentario = new Comentario(0, this.publicacion.id_publicacion, usuario.id_usuario, this.comentario);
+      this.comentarioService.guardarComentario(nuevoComentario).subscribe((resp: Comentario) => {
+        if (resp) {
+          const nuevaNoti: NotiComentario = new NotiComentario(0, this.publicacion.id_usuario, resp.id_comentario, false);
+          this.notificacionService.guardarNotiComentario(nuevaNoti).subscribe((resp: boolean) => {
+            if (resp) {
+              this.listarComentarios();
+              this.getNumComentarios();
+              this.comentario = "";
+            } else {
+              Swal.fire({
+                icon: "error",
+                title: ":C",
+                text: "No se pudo crear la notifiacion del comentario"
+              })
+            }
+          })
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: ":C",
+            text: "No se pudo comentar"
+          })
+        }
+      })
+    }
+
+
   }
 
   like() {
-    //Buscar si no existe el like
     const usuario: Usuario = this.usuarioService.getUsuarioSesion()!;
-    this.likeService.dislike(this.publicacion.id_publicacion, usuario.id_usuario).subscribe((resp: boolean) => {
-      if (resp) {
-        this.getNumLikes()
-      } else {
-        const nuevoLike: Like = new Like(0, this.publicacion.id_publicacion, usuario.id_usuario);
-        this.likeService.guardarLike(nuevoLike).subscribe((resp: boolean) => {
-          if (resp) {
-            this.getNumLikes()
-            //Notificar el like - PENDIENTE
-          } else {
-            Swal.fire({
-              icon: "error",
-              title: ":C",
-              text: "No se pudo realizar el like"
-            })
-          }
-        })
-      }
-    })
+    if (this.publicacion.id_usuario == usuario.id_usuario) {
+      this.likeService.dislike(this.publicacion.id_publicacion, usuario.id_usuario).subscribe((resp: boolean) => {
+        if (resp) {
+          this.getNumLikes()
+        } else {
+          const nuevoLike: Like = new Like(0, this.publicacion.id_publicacion, usuario.id_usuario);
+          this.likeService.guardarLike(nuevoLike).subscribe((resp: Like) => {
+            if (resp) {
+              this.getNumLikes()
+            } else {
+              Swal.fire({
+                icon: "error",
+                title: ":C",
+                text: "No se pudo realizar el like"
+              })
+            }
+          })
+        }
+      })
+    } else {
+      //Buscar si no existe el like
+      this.notificacionService.quitarNotiLike(this.publicacion.id_publicacion, usuario.id_usuario).subscribe((resp) => {
+        if (resp) {
+          this.likeService.dislike(this.publicacion.id_publicacion, usuario.id_usuario).subscribe((resp: boolean) => {
+            if (resp) {
+              this.getNumLikes()
+            }
+          })
+        } else {
+          const nuevoLike: Like = new Like(0, this.publicacion.id_publicacion, usuario.id_usuario);
+          this.likeService.guardarLike(nuevoLike).subscribe((resp: Like) => {
+            if (resp) {
+              this.getNumLikes()
 
+
+              const nuvaNotiLike: NotiLike = new NotiLike(0, this.publicacion.id_usuario, resp.id_like, false);
+              this.notificacionService.guardarNotiLike(nuvaNotiLike).subscribe((resp: boolean) => {
+                if (!resp) {
+                  Swal.fire({
+                    icon: "error",
+                    title: ":C",
+                    text: "No se pudo crear la notifiacion del like"
+                  })
+                }
+              })
+
+            } else {
+              Swal.fire({
+                icon: "error",
+                title: ":C",
+                text: "No se pudo realizar el like"
+              })
+            }
+          })
+        }
+      })
+    }
   }
 
 }

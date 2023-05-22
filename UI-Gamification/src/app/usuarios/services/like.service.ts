@@ -16,8 +16,8 @@ export class LikeService {
 
   }
 
-  guardarLike(aula: Like): Observable<boolean> {
-    return this.http.post<boolean>(`${this.baseUrl}guardar`, aula);
+  guardarLike(aula: Like): Observable<Like> {
+    return this.http.post<Like>(`${this.baseUrl}guardar`, aula);
   }
 
   dislike(idPublicacion: number, idUsuario: number): Observable<boolean> {

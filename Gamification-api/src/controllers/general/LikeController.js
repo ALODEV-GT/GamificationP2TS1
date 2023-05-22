@@ -8,11 +8,7 @@ const guardarLike = async (req, res) => {
     [id_publicacion, id_usuario]
   );
 
-  if (nuevoLike) {
-    res.json(true)
-  } else {
-    res.json(false)
-  }
+  res.json(nuevoLike.rows[0])
 };
 
 const getCantidadLikes = async (req, res) => {
