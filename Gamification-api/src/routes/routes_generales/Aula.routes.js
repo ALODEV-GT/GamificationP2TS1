@@ -4,8 +4,14 @@ const router = express.Router();
 
 router.post('/crear-nuevo', AulaController.guardarAula)
 
-router.get('/validar', AulaController.validarCodigo)
+router.get('/existe', AulaController.existeAula)
 
-router.get('/mis-aulas', AulaController.getMisAulas)
+router.get('/aula', AulaController.getAulaByCodigo)
+
+router.get('/mis-aulas-profesor', AulaController.getMisAulasProfesor)
+
+router.get('/mis-aulas-estudiante', AulaController.getMisAulasEstudiante)
+
+router.get('/miembros', AulaController.getMiembros)
 
 module.exports = router;

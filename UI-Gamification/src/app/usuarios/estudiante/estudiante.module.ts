@@ -7,6 +7,7 @@ import { MisAulasComponent } from './pages/mis-aulas/mis-aulas.component';
 import { AulaComponent } from './pages/aula/aula.component';
 import { AppModule } from 'src/app/app.module';
 import { UsuariosModule } from '../usuarios.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { UsuariosModule } from '../usuarios.module';
   imports: [
     CommonModule,
     EstudianteRoutingModule,
-    UsuariosModule
+    UsuariosModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class EstudianteModule { }

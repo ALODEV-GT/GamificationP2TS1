@@ -14,7 +14,6 @@ import Swal from 'sweetalert2';
 export class MisAulasComponent implements OnInit {
   @ViewChild('myModal', { static: true }) myModal!: ElementRef
 
-  aulas = [1, 2, 3, 4, 5]
   misAulas: Aula[] = []
 
   myModalVar: any;
@@ -28,7 +27,7 @@ export class MisAulasComponent implements OnInit {
   }
 
   listarAulas() {
-    this.aulaService.getMisAulas().subscribe((resp: Aula[]) => {
+    this.aulaService.getMisAulasProfesor().subscribe((resp: Aula[]) => {
       this.misAulas = resp;
     })
   }
@@ -55,8 +54,8 @@ export class MisAulasComponent implements OnInit {
     const nombreAula = this.formularioNuevoAula.get("nombreAula")?.value;
     const nuevoAula = new Aula(codigoAula, idUsuario, nombreAula, false)
 
-    this.aulaService.validarCodigoAula(codigoAula).subscribe((resp: boolean) => {
-      if (!resp) { //Si no esta en uso el codigo
+    this.aulaService.existeAula(codigoAula).subscribe((resp: boolean) => {
+      if (!resp) { //Si no existe el aula
         this.aulaService.guardarAula(nuevoAula).subscribe((resp: boolean) => {
           if (resp) {
             Swal.fire({
