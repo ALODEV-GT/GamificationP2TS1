@@ -32,6 +32,17 @@ export class DemoJuegoComponent implements OnInit {
       this.tema.id = params['id'];
       // Hacer algo con el valor del parámetro id
     });
+    Swal.fire({
+      title: '<strong><u>Explicacion y reglas</u></strong>',
+      icon: 'info',
+      html:
+        'Puedes Memorizarte las respuesta lo mejor Posible, cuando presiones el boton comenzar las preguntas se ocultaran y el juego comienza <b>Suerte!!</b>'
+        +'<br /><br /> <b>Cada Tarjeta seleccionada correctamente y a la primera vale 10 pts, mientras mas falles estos puntos se ven reducidos </b>',
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+     
+    })
     this.tema = await this.memoramaService.getMemorama(this.tema.id).toPromise();
     this.calculoDififultad()
     this.preguntas = await this.memoramaService.getPreguntasJuego(this.tema.id).toPromise();
@@ -103,7 +114,7 @@ export class DemoJuegoComponent implements OnInit {
 
   private descontarPuntosTarjeta(index:number){
     if (this.respuestas[index].puntos>3) {
-      this.respuestas[index].puntos--
+      this.respuestas[index].puntos = this.respuestas[index].puntos-2
     }
   }
 
@@ -125,7 +136,7 @@ export class DemoJuegoComponent implements OnInit {
           icon: 'success',
           title: 'Completado! siguiente Categoria :'+this.preguntas[this.indexPregunta].pregunta,
           showConfirmButton: false,
-          timer: 1500
+          timer: 2000
         })
         this.preguntas[this.indexPregunta].mostrarFigura = true;
       }else{
