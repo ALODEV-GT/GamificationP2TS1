@@ -1,14 +1,43 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
-import { JuegoComponent } from './juegos/comido/juego/juego.component';
-import { CrearJuegoComponent } from './juegos/comido/crear-juego/crear-juego.component';
 import { PaginaPrincipalComponent } from './shared/pagina-principal/pagina-principal.component';
+import { DemosComponent } from './shared/demos/demos/demos.component';
+import { ComidoDemoComponent } from './shared/demos/comido-demo/comido-demo.component';
+import { MemoramaDemoComponent } from './shared/demos/memorama-demo/memorama-demo.component';
+import { SopaDemoComponent } from './shared/demos/sopa-demo/sopa-demo.component';
+import { CuriosoDemoComponent } from './shared/demos/curioso-demo/curioso-demo.component';
+
 
 const rutas: Routes = [
   {
     path: 'inicio',
-    component: PaginaPrincipalComponent
+    component: PaginaPrincipalComponent,
+    children: [
+      {
+        path: "principal",
+        component: DemosComponent
+      },
+      {
+        path: "demo/comido",
+        component: ComidoDemoComponent
+      },
+      {
+        path: "demo/memorama",
+        component: MemoramaDemoComponent
+      },
+      {
+        path: "demo/sopa",
+        component: SopaDemoComponent
+      },
+      {
+        path: "demo/curioso",
+        component: CuriosoDemoComponent
+      },
+      {
+        path: '', redirectTo: 'principal', pathMatch: 'full'
+      },
+    ]
   },
   {
     //LazyLoad
@@ -35,10 +64,6 @@ const rutas: Routes = [
   {
     path: '404', //Pagina de error
     component: ErrorPageComponent
-  },
-  {//Este path es solamente para diseñar este juego
-    path: 'pruebas-comido',
-    component: JuegoComponent
   },
   {
     path: '**', //Cualquier otra pagina que no existe.

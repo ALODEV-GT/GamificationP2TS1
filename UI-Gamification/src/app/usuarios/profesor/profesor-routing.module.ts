@@ -11,6 +11,7 @@ import { CreacionComidoComponent } from './pages/creacion-comido/creacion-comido
 import { CreacionMemoramaComponent } from './pages/creacion-memorama/creacion-memorama.component';
 import { CreacionSopaComponent } from './pages/creacion-sopa/creacion-sopa.component';
 import { CreacionCuriosoComponent } from './pages/creacion-curioso/creacion-curioso.component';
+import { CreadosComponent } from './pages/creados/creados.component';
 
 const rutas: Routes = [
   {
@@ -29,6 +30,10 @@ const rutas: Routes = [
         path: 'area-creacion',
         component: AreaCreacionComponent,
 
+      },
+      {
+        path: 'creados',
+        component: CreadosComponent,
       },
       {
         path: 'area-creacion/comido',

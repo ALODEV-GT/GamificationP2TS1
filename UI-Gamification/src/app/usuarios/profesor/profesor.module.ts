@@ -16,6 +16,7 @@ import { SopaModule } from 'src/app/juegos/sopa/sopa.module';
 import { CuriosoModule } from 'src/app/juegos/curioso/curioso.module';
 import { CreacionSopaComponent } from './pages/creacion-sopa/creacion-sopa.component';
 import { CreacionCuriosoComponent } from './pages/creacion-curioso/creacion-curioso.component';
+import { CreadosComponent } from './pages/creados/creados.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CreacionCuriosoComponent } from './pages/creacion-curioso/creacion-curi
     CreacionMemoramaComponent,
     CreacionSopaComponent,
     CreacionCuriosoComponent,
+    CreadosComponent,
   ],
   imports: [
     CommonModule,
