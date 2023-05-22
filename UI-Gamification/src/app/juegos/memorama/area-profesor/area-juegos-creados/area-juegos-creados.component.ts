@@ -1,3 +1,4 @@
+import { UsuarioService } from './../../../../usuarios/services/usuario.service';
 
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -17,10 +18,11 @@ export class AreaJuegosCreadosComponent implements OnInit {
   temaPartida!:Tema
   usuario:Usuario=new Usuario()
 
-  constructor(private router:Router, private memoramaService:MemoramaServiceService) { }
+  constructor(private router:Router, private memoramaService:MemoramaServiceService,
+    private usuariosService:UsuarioService) { }
 
   ngOnInit(): void {
-    //this.usurio = usurio del servicio
+    this.usuario = this.usuariosService.getUsuarioSesion()!
     this.memoramaService.getTemaJuegosCreados(this.usuario.id_usuario).subscribe(
       (value:Tema[]) => {
         this.temas=value
@@ -28,15 +30,37 @@ export class AreaJuegosCreadosComponent implements OnInit {
     )
   }
 
-  clickSettearTemaPartida(index:number){
-   this.temaPartida = this.temas[index]
-   this.tituloTema = this.temaPartida.titulo
+  clickEditarDificultad(index:number, dificultad:number){
+   switch (dificultad) {
+    case 1:
+        this.temas[index].dificultad='Facil'
+        this.memoramaService.setDificultad(this.temas[index]).subscribe(
+          (value:Tema) => {
+          }
+        )
+      break;
+    case 2:
+        this.temas[index].dificultad='Medio'
+        this.memoramaService.setDificultad(this.temas[index]).subscribe(
+          (value:Tema) => {
+          }
+        )
+      break;
+    case 3:
+        this.temas[index].dificultad='Dificil'
+        this.memoramaService.setDificultad(this.temas[index]).subscribe(
+          (value:Tema) => {
+          }
+        )
+     break;
+     default:
+       break;
+   }
 
   }
 
   clickGoDemo(index:number){
-    //servicioSesion.tema = this.temas[index]    enviar el tema mediante un servicio
-    //this.router.navigate(['profesor/demo-juego'])
+    this.router.navigate(['profesor/area-creacion/memorama/demo',this.temas[index].id])
   }
 
 }

@@ -2,7 +2,7 @@ import { Tema } from './../../models/tema';
 import { MemoramaServiceService } from '../../services/memorama-service.service';
 import { Pregunta } from '../../models/pregunta';
 import { Respuesta } from '../../models/respuesta';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 
@@ -25,10 +25,14 @@ export class DemoJuegoComponent implements OnInit {
   coeficienteDificultad:number=0.7
 
 
-  constructor(private router:Router, private memoramaService:MemoramaServiceService) { }
+  constructor(private router:ActivatedRoute, private memoramaService:MemoramaServiceService) { }
 
   async ngOnInit(): Promise<void> {
-    this.tema.id = 5   // this.tema = servicioSesion.Tema
+    this.router.params.subscribe(params => {
+      this.tema.id = params['id'];
+      // Hacer algo con el valor del parámetro id
+    });
+    this.tema = await this.memoramaService.getMemorama(this.tema.id).toPromise();
     this.calculoDififultad()
     this.preguntas = await this.memoramaService.getPreguntasJuego(this.tema.id).toPromise();
     for (let i = 0; i < this.preguntas.length; i++) {

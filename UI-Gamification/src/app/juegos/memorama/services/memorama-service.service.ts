@@ -29,6 +29,15 @@ export class MemoramaServiceService {
     return this.httpClient.get<Respuesta[]>(this.API_URL+'get-respuestas?id='+id_pregunta)
   }
 
+  public setDificultad(tema:Tema): Observable<Tema>{
+    return this.httpClient.put<Tema>(this.API_URL+'set-dificultad',tema)
+  }
+
+  public getMemorama(id:number):Observable<Tema>{
+    return this.httpClient.get<Tema>(this.API_URL+'get-tema-memorama?id='+id)
+  }
+  
+
   
 
 }

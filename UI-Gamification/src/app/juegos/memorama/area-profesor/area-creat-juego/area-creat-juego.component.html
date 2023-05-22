@@ -4,7 +4,7 @@
       <div class="col-12 col-lg-9 col-xl-7">
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
-            <h3 class="">Creacion de Juego Scattergories-Memorama</h3>
+            <h3 class="">Creacion de Juego Memorama</h3>
             <div>
               <div class="row">
                 <div class="col-md-12 mb-4">
@@ -22,7 +22,7 @@
                   <div class="form-outline">
                     <input type="text" id="firstName" class="form-control form-control-lg"
                       placeholder="Los Animales Mamíferos" [(ngModel)]='categoria' />
-                    <label class="form-label" for="firstName">Pregunta o Categoria 1</label>
+                    <label class="form-label" for="firstName">Categorias</label>
                   </div>
                 </div>
               </div>
@@ -78,8 +78,8 @@
               </div>
               <div class="mt-4 pt-2">
                 <button type="submit" class="btn btn-primary " (click)="crearGuardarJuego()">Crear Juego</button>
+                <button type="button" class="btn btn-info float-end" (click)="clickMemoramasCreados()">Ir a Memoramas Creados</button>
               </div>
-
             </div>
           </div>
         </div>

@@ -23,8 +23,8 @@ CREATE TABLE control_game_memorama.Tema(
     titulo VARCHAR(100) NOT NULL,
     cantidad_preguntas INTEGER NOT NULL,
     dificultad VARCHAR(15) NOT NULL,
-    codigo_instancia_juego VARCHAR(20) NOT NULL,
-    FOREIGN KEY (codigo_instancia_juego) REFERENCES control_general_juego.instancia_juego(codigo_instancia_juego)
+    id_instancia_juego INTEGER NOT NULL,
+    FOREIGN KEY (id_instancia_juego) REFERENCES control_general_juego.instancia_juego(id_instancia_juego)
 );
 
 CREATE TABLE control_game_memorama.Tema_pregunta(

@@ -6,6 +6,6 @@ export class Tema {
     cantidad_preguntas:number=0
     preguntas:Pregunta[]=[]
     dificultad:string='Facil'
-    id_tipo_juego:number=1
+    id_tipo_juego:number=3
     codigo_instancia_juego!:string
 }
