@@ -1,22 +1,36 @@
 const conexion = require('../general/conexionDB')
 
 const saveaMemorama = async (req, res) => {
-    const insertTema = await saveTema(req.body)
+    const insertInstancia = await saveInstanciaJuego(req.body)
+    const insertTema = await saveTema(req.body, insertInstancia.rows[0].id_instancia_juego)
     await saveQuestions(req.body.preguntas,insertTema.rows[0]) 
     res.json(req.body)
 }
 
-const saveTema = async (tema) => {
+const saveInstanciaJuego = async (tema) => {
     const response = await conexion.pool.query(
-        'INSERT INTO control_game_memorama.Tema(titulo, id_user_creador, cantidad_preguntas) VALUES($1, $2, $3) RETURNING *',
-        [tema.titulo,tema.id_user_creador,tema.preguntas.length]); 
+        'INSERT INTO control_general_juego.instancia_juego(nombre, id_usuario_creador, id_tipo_juego) VALUES($1, $2, $3) RETURNING *',
+        [tema.titulo,tema.id_user_creador, tema.id_tipo_juego]); 
+    return response ;
+}
+
+const saveTema = async (tema,codigoJuego) => {
+    const response = await conexion.pool.query(
+        'INSERT INTO control_game_memorama.Tema(titulo, cantidad_preguntas, dificultad, id_instancia_juego) VALUES($1, $2, $3, $4) RETURNING *',
+        [tema.titulo,tema.preguntas.length, tema.dificultad, codigoJuego]); 
     return response ;
 };
 
 const getTemasJuego=async (req, res) => {
     const idUser=req.query.id
-    const response = await conexion.pool.query('SELECT * FROM control_game_memorama.Tema WHERE id_user_creador=$1',[idUser])
+    const response = await conexion.pool.query('SELECT tema.* FROM control_game_memorama.Tema AS tema INNER JOIN control_general_juego.instancia_juego AS instancia ON tema.id_instancia_juego = instancia.id_instancia_juego WHERE instancia.id_usuario_creador=$1',[idUser])
     res.json(response.rows)
+}
+
+const getTemaMemorama = async (req, res) => {
+    const idMemorama=req.query.id
+    const response = await conexion.pool.query('SELECT * FROM control_game_memorama.Tema WHERE id=$1',[idMemorama])
+    res.json(response.rows[0])
 }
 
 const getQuestions=async (req, res) => {
@@ -64,6 +78,14 @@ const saveQuestions = async (preguntas, tema) => {
             [pregunta.id, respuestaInsert.rows[0].id])
     }
   }
+
+  const setDificultad = async (req, res)=> {
+    const tema = req.body
+    const response = await conexion.pool.query(
+        'UPDATE control_game_memorama.Tema SET dificultad = $1 WHERE id =$2 RETURNING *',
+        [tema.dificultad, tema.id]); 
+    return res.json(response.rows[0])  ;
+  }
   
 
 
@@ -71,5 +93,7 @@ module.exports={
     saveaMemorama:saveaMemorama,
     getTemasJuego:getTemasJuego,
     getQuestions:getQuestions,
-    getRespuestas:getRespuestas
+    getRespuestas:getRespuestas,
+    setDificultad:setDificultad,
+    getTemaMemorama:getTemaMemorama
 }

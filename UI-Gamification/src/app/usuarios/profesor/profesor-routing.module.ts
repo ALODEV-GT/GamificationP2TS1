@@ -1,3 +1,5 @@
+import { DemoJuegoComponent } from './../../juegos/memorama/area-profesor/demo-juego/demo-juego.component';
+import { AreaJuegosCreadosComponent } from './../../juegos/memorama/area-profesor/area-juegos-creados/area-juegos-creados.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InicioComponent } from './pages/inicio/inicio.component';
@@ -37,8 +39,16 @@ const rutas: Routes = [
         component: CreacionMemoramaComponent
       },
       {
+        path: 'area-creacion/memorama/memoramas-creados',
+        component: AreaJuegosCreadosComponent
+      },
+      {
         path: 'area-creacion/sopa',
         component: CreacionSopaComponent
+      },
+      {
+        path: 'area-creacion/memorama/demo/:id',
+        component: DemoJuegoComponent
       },
       {
         path: 'area-creacion/curioso',
