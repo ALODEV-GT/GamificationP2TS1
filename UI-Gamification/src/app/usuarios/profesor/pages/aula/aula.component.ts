@@ -6,6 +6,8 @@ import { Publicacion } from 'src/models/publicaciones/Publicacion';
 import { UsuarioService } from '../../../services/usuario.service';
 import { Usuario } from 'src/models/usuarios/Usuario';
 import Swal from 'sweetalert2';
+import { AulaService } from '../../../services/aula.service';
+import { Miembro } from 'src/models/interfaces/Miembro';
 
 @Component({
   selector: 'app-aula',
@@ -15,7 +17,7 @@ import Swal from 'sweetalert2';
 export class AulaComponent implements OnInit {
   @ViewChild('myModal', { static: true }) myModal!: ElementRef
 
-  miembros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  miembros: Miembro[] = []
 
   myModalVar: any;
 
@@ -30,7 +32,8 @@ export class AulaComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private publicacionService: PublicacionService,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private aulaService: AulaService
   ) {
     this.usuario = this.usuarioService.getUsuarioSesion()!;
   }
@@ -39,7 +42,8 @@ export class AulaComponent implements OnInit {
     this.activatedRoute.params.subscribe(({ codigo }) => {
       //Mostrar miembros
       this.codigoAula = codigo;
-      this.listarPublicaciones()
+      this.listarPublicaciones();
+      this.listarMiembros();
     })
 
     const myModal = this.myModal.nativeElement;
@@ -49,6 +53,12 @@ export class AulaComponent implements OnInit {
   listarPublicaciones() {
     this.publicacionService.getPublicaciones(this.codigoAula).subscribe((resp: Publicacion[]) => {
       this.publicaciones = resp;
+    })
+  }
+
+  listarMiembros() {
+    this.aulaService.getMiembrosAula(this.codigoAula).subscribe((resp: Miembro[]) => {
+      this.miembros = resp;
     })
   }
 

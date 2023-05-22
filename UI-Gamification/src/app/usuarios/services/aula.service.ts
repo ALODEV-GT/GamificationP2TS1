@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Aula } from 'src/models/aulas/Aula';
 import { UsuarioService } from './usuario.service';
+import { Miembro } from 'src/models/interfaces/Miembro';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,9 @@ export class AulaService {
   getMisAulasEstudiante() {
     const id_usuario = this.usuarioService.getUsuarioSesion()?.id_usuario;
     return this.http.get<Aula[]>(`${this.baseUrl}mis-aulas-estudiante?id_usuario=${id_usuario}`)
+  }
+
+  getMiembrosAula(codigoAula: String): Observable<Miembro[]> {
+    return this.http.get<Miembro[]>(`${this.baseUrl}miembros?codigo_aula=${codigoAula}`)
   }
 }

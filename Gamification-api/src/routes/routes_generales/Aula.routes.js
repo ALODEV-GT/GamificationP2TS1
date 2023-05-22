@@ -12,4 +12,6 @@ router.get('/mis-aulas-profesor', AulaController.getMisAulasProfesor)
 
 router.get('/mis-aulas-estudiante', AulaController.getMisAulasEstudiante)
 
+router.get('/miembros', AulaController.getMiembros)
+
 module.exports = router;

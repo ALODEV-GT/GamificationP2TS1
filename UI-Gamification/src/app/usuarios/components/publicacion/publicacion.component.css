@@ -83,4 +83,12 @@
   font-size: 15px;
   font-weight: 400;
   color: dimgrey;
+  cursor: pointer;
+}
+
+.usuario-text-coment{
+  font-size: 12px;
+  font-weight: 400;
+  color: dimgrey;
+  cursor: pointer;
 }

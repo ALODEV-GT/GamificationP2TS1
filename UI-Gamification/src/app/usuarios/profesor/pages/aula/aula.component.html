@@ -47,7 +47,7 @@
             src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
             alt="Imagen de perfil" class="avatar-img-miembro">
         </div>
-        <h5 class="card-title-miembro">Nombre de usuario</h5>
+        <h5 class="card-title-miembro">{{miembro.nombre}} {{miembro.apellido}} <span class="user-miembro">@{{miembro.usuario}}</span></h5>
       </div>
       <a type="button" (click)="openModal()" class="more mt-2">Ver mas</a>
     </div>
@@ -69,7 +69,7 @@
               src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
               alt="Imagen de perfil" class="avatar-img-miembro">
           </div>
-          <h5 class="card-title-miembro">Nombre de usuario</h5>
+          <h5 class="card-title-miembro">{{miembro.nombre}} {{miembro.apellido}} <span class="user-miembro">@{{miembro.usuario}}</span></h5>
           <button class="btn btn-outline-danger btn-miembros">
             Expulsar
           </button>

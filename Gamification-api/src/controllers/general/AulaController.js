@@ -53,11 +53,24 @@ const getMisAulasEstudiante = async (req, res) => {
   }
 }
 
+const getMiembros = async (req, res) => {
+  const { codigo_aula } = req.query
+  const t1 = "control_aulas.asignacion";
+  const t2 = "control_usuarios.usuario";
+  const consulta = `SELECT ${t1}.id_asignacion,${t2}.id_usuario,${t2}.nombre,${t2}.usuario,${t2}.apellido FROM ${t1} JOIN ${t2} ON ${t1}.id_usuario=${t2}.id_usuario WHERE ${t1}.codigo_aula=$1 AND ${t1}.activo=true`
+  const response = await conexion.pool.query(consulta, [codigo_aula]);
+  if (response.rows) {
+    res.json(response.rows)
+  } else {
+    res.json([])
+  }
+}
+
 module.exports = {
   guardarAula: guardarAula,
   existeAula: existeAula,
   getMisAulasProfesor: getMisAulasProfesor,
   getMisAulasEstudiante: getMisAulasEstudiante,
-  getAulaByCodigo: getAulaByCodigo
-
+  getAulaByCodigo: getAulaByCodigo,
+  getMiembros: getMiembros
 }

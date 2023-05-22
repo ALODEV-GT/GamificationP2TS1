@@ -10,6 +10,8 @@ const aulaRoutes = require('./routes/routes_generales/Aula.routes')
 const publicacionRoutes = require('./routes/routes_generales/Publicacion.routes')
 const notificacionRoutes = require('./routes/routes_generales/Notificacion.routes')
 const asignacionRoutes = require('./routes/routes_generales/Asignacion.routes')
+const comentarioRoutes = require('./routes/routes_generales/Comentario.routes')
+const likeRoutes = require('./routes/routes_generales/Like.routes')
 
 //juegos
 const memoramaRoutes = require('./routes/memorama/memorama.routes')
@@ -31,6 +33,8 @@ app.use('/api/aulas', aulaRoutes)
 app.use('/api/publicaciones', publicacionRoutes)
 app.use('/api/notificaciones', notificacionRoutes)
 app.use('/api/asignaciones', asignacionRoutes)
+app.use('/api/comentarios', comentarioRoutes)
+app.use('/api/likes', likeRoutes)
 
 app.use('/api/memorama', memoramaRoutes)
 app.use('/api/comido', comidoRoutes)

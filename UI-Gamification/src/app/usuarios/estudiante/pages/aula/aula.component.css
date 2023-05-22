@@ -80,3 +80,9 @@
   font-weight: 400;
   color: dimgrey;
 }
+
+.user-miembro{
+  font-size: 14px;
+  color: dimgrey;
+  cursor: pointer;
+}
