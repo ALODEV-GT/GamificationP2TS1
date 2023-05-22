@@ -12,6 +12,10 @@ import { ComidoModule } from 'src/app/juegos/comido/comido.module';
 import { CreacionComidoComponent } from './pages/creacion-comido/creacion-comido.component';
 import { CreacionMemoramaComponent } from './pages/creacion-memorama/creacion-memorama.component';
 import { MemoramaModule } from 'src/app/juegos/memorama/memorama.module';
+import { SopaModule } from 'src/app/juegos/sopa/sopa.module';
+import { CuriosoModule } from 'src/app/juegos/curioso/curioso.module';
+import { CreacionSopaComponent } from './pages/creacion-sopa/creacion-sopa.component';
+import { CreacionCuriosoComponent } from './pages/creacion-curioso/creacion-curioso.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +26,8 @@ import { MemoramaModule } from 'src/app/juegos/memorama/memorama.module';
     AreaCreacionComponent,
     CreacionComidoComponent,
     CreacionMemoramaComponent,
+    CreacionSopaComponent,
+    CreacionCuriosoComponent,
   ],
   imports: [
     CommonModule,
@@ -30,7 +36,9 @@ import { MemoramaModule } from 'src/app/juegos/memorama/memorama.module';
     ProfesorRoutingModule,
     UsuariosModule,
     ComidoModule,
-    MemoramaModule
+    MemoramaModule,
+    SopaModule,
+    CuriosoModule
   ], exports: [
   ]
 })
