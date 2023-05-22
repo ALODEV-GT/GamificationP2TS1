@@ -1,3 +1,4 @@
+import { UsuarioService } from './../../../../usuarios/services/usuario.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
@@ -5,31 +6,37 @@ import { MemoramaServiceService } from '../../services/memorama-service.service'
 import { Tema } from '../../models/tema';
 import { Pregunta } from '../../models/pregunta';
 import { Respuesta } from '../../models/respuesta';
+import { Usuario } from 'src/models/usuarios/Usuario';
 
 @Component({
   selector: 'app-area-creat-juego',
   templateUrl: './area-creat-juego.component.html',
   styleUrls: ['./area-creat-juego.component.css']
 })
+
 export class AreaCreatJuegoComponent implements OnInit {
 
   tema:Tema=new Tema()
-  categoria=''
+  categoria:string=''
   respuesta1=''
   respuesta2=''
   respuesta3=''
   respuesta4=''
   respuesta5=''
   indexTem=-1
+  usuario:Usuario=new Usuario()
 
-  constructor(private memoramaService:MemoramaServiceService, private router:Router) { }
+  constructor(private memoramaService:MemoramaServiceService, private router:Router,
+    private usuarioSevice:UsuarioService) { }
 
   ngOnInit(): void {
+    //this.usuario = usuario del servicio
   }
 
   crearGuardarJuego(){
+    this.tema.id_user_creador=this.usuarioSevice.getUsuarioSesion()!.id_usuario
     if (this.comprobarTitulo()) {
-      this.memoramaService.saveUsurioSesion(this.tema).subscribe(
+      this.memoramaService.saveMemorama(this.tema).subscribe(
         (value: Tema) => {
           if (value != undefined) {
             Swal.fire({
@@ -37,7 +44,7 @@ export class AreaCreatJuegoComponent implements OnInit {
               title: 'Juego Creado con exito',
               text: 'Ya puedes generar una partida con el juego creado'
             })
-            this.router.navigate(['profesor/memoramas-creados'])
+            this.router.navigate(['profesor/area-creacion/memorama/memoramas-creados'])
           }
         }
       )
@@ -137,5 +144,9 @@ export class AreaCreatJuegoComponent implements OnInit {
     this.respuesta3=''
     this.respuesta4=''
     this.respuesta5=''
+  }
+
+  clickMemoramasCreados(){
+    this.router.navigate(['profesor/area-creacion/memorama/memoramas-creados'])
   }
 }
