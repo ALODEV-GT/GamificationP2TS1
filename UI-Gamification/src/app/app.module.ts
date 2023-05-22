@@ -1,3 +1,4 @@
+import { MemoramaModule } from 'src/app/juegos/memorama/memorama.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -36,7 +37,8 @@ import { CuriosoDemoComponent } from './shared/demos/curioso-demo/curioso-demo.c
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ComidoModule //Solo se importo para que funcionara el common module y formularios
+    ComidoModule, //Solo se importo para que funcionara el common module y formularios
+    MemoramaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

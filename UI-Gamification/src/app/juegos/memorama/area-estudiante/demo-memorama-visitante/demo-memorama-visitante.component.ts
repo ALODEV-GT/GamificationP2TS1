@@ -1,17 +1,18 @@
-import { Tema } from './../../models/tema';
-import { MemoramaServiceService } from '../../services/memorama-service.service';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Pregunta } from '../../models/pregunta';
 import { Respuesta } from '../../models/respuesta';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Tema } from '../../models/tema';
+import { MemoramaServiceService } from '../../services/memorama-service.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-demo-juego',
-  templateUrl: './demo-juego.component.html',
-  styleUrls: ['./demo-juego.component.css']
+  selector: 'app-demo-memorama-visitante',
+  templateUrl: './demo-memorama-visitante.component.html',
+  styleUrls: ['./demo-memorama-visitante.component.css']
 })
-export class DemoJuegoComponent implements OnInit {
+export class DemoMemoramaVisitanteComponent implements OnInit {
+
 
   mostrarFigura=false;
   classCSS1=  'searched-image'
@@ -23,26 +24,11 @@ export class DemoJuegoComponent implements OnInit {
   punteoGeneral=0
   tema:Tema= new Tema()
   coeficienteDificultad:number=0.7
-
-
+  
   constructor(private router:ActivatedRoute, private memoramaService:MemoramaServiceService) { }
 
   async ngOnInit(): Promise<void> {
-    this.router.params.subscribe(params => {
-      this.tema.id = params['id'];
-      // Hacer algo con el valor del parámetro id
-    });
-    Swal.fire({
-      title: '<strong><u>Explicacion y reglas</u></strong>',
-      icon: 'info',
-      html:
-        'Puedes Memorizarte las respuesta lo mejor Posible, cuando presiones el boton comenzar las preguntas se ocultaran y el juego comienza <b>Suerte!!</b>'
-        +'<br /><br /> <b>Cada Tarjeta seleccionada correctamente y a la primera vale 10 pts, mientras mas falles estos puntos se ven reducidos </b>',
-      showCloseButton: true,
-      showCancelButton: true,
-      focusConfirm: false,
-     
-    })
+    this.tema.id=1
     this.tema = await this.memoramaService.getMemorama(this.tema.id).toPromise();
     this.calculoDififultad()
     this.preguntas = await this.memoramaService.getPreguntasJuego(this.tema.id).toPromise();
@@ -59,8 +45,8 @@ export class DemoJuegoComponent implements OnInit {
     this.respuestas.sort(() => Math.random() - this.coeficienteDificultad);
     this.preguntas.sort(() => Math.random() - 0.5);
   }
-  
-  
+
+
 
   clicMostrarFigura(index:number){
     this.preguntas[index].mostrarFigura = true
@@ -162,5 +148,4 @@ export class DemoJuegoComponent implements OnInit {
       }
   }
   
-
 }

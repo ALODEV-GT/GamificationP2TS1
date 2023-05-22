@@ -63,6 +63,12 @@ export class AreaCreatJuegoComponent implements OnInit {
           title: 'Bien',
           text: 'Ya creaste 6 categorias, puedes crear el juego'
         })
+      } else {
+        Swal.fire({
+          icon: 'info',
+          title: 'Bien',
+          text: 'Sigue Creando categorias si aun no cumples con lo minimo'
+        })
       }
     }
   }
