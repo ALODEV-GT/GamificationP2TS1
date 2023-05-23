@@ -43,7 +43,7 @@ export class JuegoComponent implements OnInit {
   //DEMO CONFIGS
 
 
-  game: Comido = new Comido("", "code", this.clues);
+  game: Comido = new Comido(0, 0, "code", this.clues);
 
   //Letters
   letters: Letter[] = []

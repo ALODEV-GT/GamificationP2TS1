@@ -12,6 +12,10 @@ import { CreacionMemoramaComponent } from './pages/creacion-memorama/creacion-me
 import { CreacionSopaComponent } from './pages/creacion-sopa/creacion-sopa.component';
 import { CreacionCuriosoComponent } from './pages/creacion-curioso/creacion-curioso.component';
 import { CreadosComponent } from './pages/creados/creados.component';
+import { PuntajeComidoComponent } from './pages/puntaje-comido/puntaje-comido.component';
+import { PuntajeMemoramaComponent } from './pages/puntaje-memorama/puntaje-memorama.component';
+import { PuntajeSopaComponent } from './pages/puntaje-sopa/puntaje-sopa.component';
+import { PuntajeCuriosoComponent } from './pages/puntaje-curioso/puntaje-curioso.component';
 
 const rutas: Routes = [
   {
@@ -34,6 +38,22 @@ const rutas: Routes = [
       {
         path: 'creados',
         component: CreadosComponent,
+      },
+      {
+        path: 'puntaje/comido/:id',
+        component: PuntajeComidoComponent,
+      },
+      {
+        path: 'puntaje/memorama/:id',
+        component: PuntajeMemoramaComponent,
+      },
+      {
+        path: 'puntaje/sopa/:id',
+        component: PuntajeSopaComponent,
+      },
+      {
+        path: 'puntaje/curioso/:id',
+        component: PuntajeCuriosoComponent,
       },
       {
         path: 'area-creacion/comido',

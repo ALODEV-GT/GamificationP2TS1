@@ -4,6 +4,10 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { MisAulasComponent } from './pages/mis-aulas/mis-aulas.component';
 import { AulaComponent } from './pages/aula/aula.component';
 import { PerfilComponent } from '../components/perfil/perfil.component';
+import { JuegoEjecucionComidoComponent } from './pages/juego-ejecucion-comido/juego-ejecucion-comido.component';
+import { JuegoEjecucionSopaComponent } from './pages/juego-ejecucion-sopa/juego-ejecucion-sopa.component';
+import { JuegoEjecucionMemoramaComponent } from './pages/juego-ejecucion-memorama/juego-ejecucion-memorama.component';
+import { JuegoEjecucionCuriosoComponent } from './pages/juego-ejecucion-curioso/juego-ejecucion-curioso.component';
 
 const rutas: Routes = [
   {
@@ -21,6 +25,22 @@ const rutas: Routes = [
       {
         path: 'perfil',
         component: PerfilComponent
+      },
+      {
+        path: 'juego/comido/:id',
+        component: JuegoEjecucionComidoComponent
+      },
+      {
+        path: 'juego/sopa/:id',
+        component: JuegoEjecucionSopaComponent
+      },
+      {
+        path: 'juego/memorama/:id',
+        component: JuegoEjecucionMemoramaComponent
+      },
+      {
+        path: 'juego/curioso/:id',
+        component: JuegoEjecucionCuriosoComponent
       },
       {
         path: "**",
