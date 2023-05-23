@@ -8,6 +8,11 @@ import { AulaComponent } from './pages/aula/aula.component';
 import { AppModule } from 'src/app/app.module';
 import { UsuariosModule } from '../usuarios.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JuegoEjecucionComidoComponent } from './pages/juego-ejecucion-comido/juego-ejecucion-comido.component';
+import { JuegoEjecucionSopaComponent } from './pages/juego-ejecucion-sopa/juego-ejecucion-sopa.component';
+import { JuegoEjecucionMemoramaComponent } from './pages/juego-ejecucion-memorama/juego-ejecucion-memorama.component';
+import { JuegoEjecucionCuriosoComponent } from './pages/juego-ejecucion-curioso/juego-ejecucion-curioso.component';
+import { ComidoModule } from 'src/app/juegos/comido/comido.module';
 
 
 @NgModule({
@@ -15,14 +20,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavBarStudentComponent,
     InicioComponent,
     MisAulasComponent,
-    AulaComponent
+    AulaComponent,
+    JuegoEjecucionComidoComponent,
+    JuegoEjecucionSopaComponent,
+    JuegoEjecucionMemoramaComponent,
+    JuegoEjecucionCuriosoComponent
   ],
   imports: [
     CommonModule,
     EstudianteRoutingModule,
     UsuariosModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ComidoModule
   ]
 })
 export class EstudianteModule { }
