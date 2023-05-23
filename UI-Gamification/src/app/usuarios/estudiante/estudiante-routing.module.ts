@@ -23,24 +23,24 @@ const rutas: Routes = [
         component: AulaComponent
       },
       {
-        path: 'perfil',
-        component: PerfilComponent
-      },
-      {
-        path: 'juego/comido/:id',
+        path: 'aula/:codigo/juego/comido/:id',
         component: JuegoEjecucionComidoComponent
       },
       {
-        path: 'juego/sopa/:id',
+        path: 'aula/:codigo/juego/sopa/:id',
         component: JuegoEjecucionSopaComponent
       },
       {
-        path: 'juego/memorama/:id',
+        path: 'aula/:codigo/juego/memorama/:id',
         component: JuegoEjecucionMemoramaComponent
       },
       {
-        path: 'juego/curioso/:id',
+        path: 'aula/:codigo/juego/curioso/:id',
         component: JuegoEjecucionCuriosoComponent
+      },
+      {
+        path: 'perfil',
+        component: PerfilComponent
       },
       {
         path: "**",
