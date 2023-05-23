@@ -1,3 +1,4 @@
+import { PunteosReport } from './punteos-report';
 export class Punteo {
     id!:number;
     id_instancia_juego!:number
@@ -5,4 +6,5 @@ export class Punteo {
     id_usuario_juegador!:number
     dificultad!:string
     punteo!:number;
+    punteosRepor:PunteosReport[]=[]
 }

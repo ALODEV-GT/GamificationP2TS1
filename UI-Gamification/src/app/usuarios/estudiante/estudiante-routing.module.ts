@@ -1,3 +1,4 @@
+import { JuegoMemoramaComponent } from './../../juegos/memorama/area-estudiante/juego-memorama/juego-memorama.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InicioComponent } from './pages/inicio/inicio.component';
@@ -32,7 +33,7 @@ const rutas: Routes = [
       },
       {
         path: 'aula/:codigo/juego/memorama/:id',
-        component: JuegoEjecucionMemoramaComponent
+        component: JuegoMemoramaComponent
       },
       {
         path: 'aula/:codigo/juego/curioso/:id',

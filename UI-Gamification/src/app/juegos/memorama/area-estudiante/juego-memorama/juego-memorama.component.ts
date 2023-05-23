@@ -32,13 +32,14 @@ export class JuegoMemoramaComponent implements OnInit {
 
 
   constructor(private router:ActivatedRoute, private memoramaService:MemoramaServiceService,
-    private usuarioService:UsuarioService) { }
+    private usuarioService:UsuarioService, private routers:Router) { }
 
   async ngOnInit(): Promise<void> {
     this.router.params.subscribe(({ codigo, id }) => {
-      this.tema.id_instancia_juego = id;
+      this.tema.id = id;      
       this.codigoAula = codigo
     })
+    this.tema = await this.memoramaService.getMemoramaIdInstanciaJuego(this.tema.id).toPromise();
     this.calculoDififultad()
     this.preguntas = await this.memoramaService.getPreguntasJuego(this.tema.id).toPromise();
     for (let i = 0; i < this.preguntas.length; i++) {
@@ -109,7 +110,7 @@ export class JuegoMemoramaComponent implements OnInit {
 
   private descontarPuntosTarjeta(index:number){
     if (this.respuestas[index].puntos>3) {
-      this.respuestas[index].puntos--
+      this.respuestas[index].puntos =this.respuestas[index].puntos-3
     }
   }
 
@@ -151,6 +152,7 @@ export class JuegoMemoramaComponent implements OnInit {
           title: 'Exelente juego',
           text: 'Juego Terminado tu Puntuacion es: '+this.punteoGeneral,
         })
+        this.routers.navigate(['estudiante/aula/',this.codigoAula])
       },
       (error:any) =>{
         Swal.fire({

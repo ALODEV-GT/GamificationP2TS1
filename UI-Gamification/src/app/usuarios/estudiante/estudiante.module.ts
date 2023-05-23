@@ -1,3 +1,4 @@
+import { MemoramaModule } from 'src/app/juegos/memorama/memorama.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EstudianteRoutingModule } from './estudiante-routing.module';
@@ -32,7 +33,8 @@ import { ComidoModule } from 'src/app/juegos/comido/comido.module';
     UsuariosModule,
     FormsModule,
     ReactiveFormsModule,
-    ComidoModule
+    ComidoModule,
+    MemoramaModule
   ]
 })
 export class EstudianteModule { }
