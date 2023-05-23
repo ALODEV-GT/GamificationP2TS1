@@ -1,3 +1,5 @@
+import { DemoJuegoComponent } from './../../juegos/memorama/area-profesor/demo-juego/demo-juego.component';
+import { AreaJuegosCreadosComponent } from './../../juegos/memorama/area-profesor/area-juegos-creados/area-juegos-creados.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InicioComponent } from './pages/inicio/inicio.component';
@@ -10,6 +12,7 @@ import { CreacionMemoramaComponent } from './pages/creacion-memorama/creacion-me
 import { CreacionSopaComponent } from './pages/creacion-sopa/creacion-sopa.component';
 import { CreacionCuriosoComponent } from './pages/creacion-curioso/creacion-curioso.component';
 import { JuegoSopaLetrasComponent } from 'src/app/juegos/sopa/juego-sopa-letras/juego-sopa-letras.component';
+import { CreadosComponent } from './pages/creados/creados.component';
 
 const rutas: Routes = [
   {
@@ -30,6 +33,10 @@ const rutas: Routes = [
 
       },
       {
+        path: 'creados',
+        component: CreadosComponent,
+      },
+      {
         path: 'area-creacion/comido',
         component: CreacionComidoComponent
       },
@@ -38,8 +45,16 @@ const rutas: Routes = [
         component: CreacionMemoramaComponent
       },
       {
+        path: 'area-creacion/memorama/memoramas-creados',
+        component: AreaJuegosCreadosComponent
+      },
+      {
         path: 'area-creacion/sopa',
         component: CreacionSopaComponent
+      },
+      {
+        path: 'area-creacion/memorama/demo/:id',
+        component: DemoJuegoComponent
       },
       {
         path: 'area-creacion/curioso',

@@ -4,25 +4,25 @@
       <div class="col-12 col-lg-9 col-xl-7">
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
-            <h3 class="">Creacion de Juego Scattergories-Memorama</h3>
+            <h3 class="">Creacion de Juego Memorama</h3>
             <div>
               <div class="row">
                 <div class="col-md-12 mb-4">
                   <div class="form-outline">
                     <input type="text" id="firstName" class="form-control form-control-lg"
-                      placeholder="Escribe el titulo del Tema del Juego example: Tipo de Animales"
-                      [(ngModel)]='tema.titulo' />
+                      placeholder="Escribe el titulo del Tema del Juego, ejemplo: Tipo de Animales"
+                      [(ngModel)]='tema.titulo'/>
                     <label class="form-label" for="firstName">Titulo</label>
                   </div>
                 </div>
               </div>
-              <h5> ➮ Puedes Escribir categorias o preguntas, maximo 6 y minimo 3</h5>
+              <h5> ➮ Puedes Escribir categorias, maximo 6 y minimo 3</h5>
               <div class="row">
                 <div class="col-md-10 mb-4">
                   <div class="form-outline">
                     <input type="text" id="firstName" class="form-control form-control-lg"
                       placeholder="Los Animales Mamíferos" [(ngModel)]='categoria' />
-                    <label class="form-label" for="firstName">Pregunta o Categoria 1</label>
+                    <label class="form-label" for="firstName">Categorias</label>
                   </div>
                 </div>
               </div>
@@ -38,14 +38,14 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-outline">
-                    <input type="text" id="firstName" class="form-control form-control-lg" placeholder="example: León"
+                    <input type="text" id="firstName" class="form-control form-control-lg" placeholder="ejemplo: León"
                       [(ngModel)]='respuesta2' />
                     <label class="form-label" for="firstName"></label>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-outline">
-                    <input type="text" id="firstName" class="form-control form-control-lg" placeholder="example: "
+                    <input type="text" id="firstName" class="form-control form-control-lg" placeholder="ejemplo: "
                       [(ngModel)]='respuesta3' />
                     <label class="form-label" for="firstName"></label>
                   </div>
@@ -78,8 +78,8 @@
               </div>
               <div class="mt-4 pt-2">
                 <button type="submit" class="btn btn-primary " (click)="crearGuardarJuego()">Crear Juego</button>
+                <button type="button" class="btn btn-info float-end" (click)="clickMemoramasCreados()">Ir a Memoramas Creados</button>
               </div>
-
             </div>
           </div>
         </div>

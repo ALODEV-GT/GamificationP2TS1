@@ -2,7 +2,7 @@ import { Tema } from './../../models/tema';
 import { MemoramaServiceService } from '../../services/memorama-service.service';
 import { Pregunta } from '../../models/pregunta';
 import { Respuesta } from '../../models/respuesta';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 
@@ -25,10 +25,25 @@ export class DemoJuegoComponent implements OnInit {
   coeficienteDificultad:number=0.7
 
 
-  constructor(private router:Router, private memoramaService:MemoramaServiceService) { }
+  constructor(private router:ActivatedRoute, private memoramaService:MemoramaServiceService) { }
 
   async ngOnInit(): Promise<void> {
-    this.tema.id = 5   // this.tema = servicioSesion.Tema
+    this.router.params.subscribe(params => {
+      this.tema.id = params['id'];
+      // Hacer algo con el valor del parámetro id
+    });
+    Swal.fire({
+      title: '<strong><u>Explicacion y reglas</u></strong>',
+      icon: 'info',
+      html:
+        'Puedes Memorizarte las respuesta lo mejor Posible, cuando presiones el boton comenzar las preguntas se ocultaran y el juego comienza <b>Suerte!!</b>'
+        +'<br /><br /> <b>Cada Tarjeta seleccionada correctamente y a la primera vale 10 pts, mientras mas falles estos puntos se ven reducidos </b>',
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+     
+    })
+    this.tema = await this.memoramaService.getMemorama(this.tema.id).toPromise();
     this.calculoDififultad()
     this.preguntas = await this.memoramaService.getPreguntasJuego(this.tema.id).toPromise();
     for (let i = 0; i < this.preguntas.length; i++) {
@@ -99,7 +114,7 @@ export class DemoJuegoComponent implements OnInit {
 
   private descontarPuntosTarjeta(index:number){
     if (this.respuestas[index].puntos>3) {
-      this.respuestas[index].puntos--
+      this.respuestas[index].puntos = this.respuestas[index].puntos-3
     }
   }
 
@@ -121,7 +136,7 @@ export class DemoJuegoComponent implements OnInit {
           icon: 'success',
           title: 'Completado! siguiente Categoria :'+this.preguntas[this.indexPregunta].pregunta,
           showConfirmButton: false,
-          timer: 1500
+          timer: 2000
         })
         this.preguntas[this.indexPregunta].mostrarFigura = true;
       }else{

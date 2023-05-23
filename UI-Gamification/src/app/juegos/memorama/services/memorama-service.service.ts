@@ -13,7 +13,7 @@ export class MemoramaServiceService {
   readonly API_URL = 'http://localhost:3000/api/memorama/';
   constructor(private httpClient: HttpClient) { }
 
-  public saveUsurioSesion(tema:Tema): Observable<Tema>{
+  public saveMemorama(tema:Tema): Observable<Tema>{
     return this.httpClient.post<Tema>(this.API_URL+'save-game',tema)
   }
   
@@ -28,6 +28,15 @@ export class MemoramaServiceService {
   public getRespuestas(id_pregunta:number):Observable<Respuesta[]>{
     return this.httpClient.get<Respuesta[]>(this.API_URL+'get-respuestas?id='+id_pregunta)
   }
+
+  public setDificultad(tema:Tema): Observable<Tema>{
+    return this.httpClient.put<Tema>(this.API_URL+'set-dificultad',tema)
+  }
+
+  public getMemorama(id:number):Observable<Tema>{
+    return this.httpClient.get<Tema>(this.API_URL+'get-tema-memorama?id='+id)
+  }
+  
 
   
 

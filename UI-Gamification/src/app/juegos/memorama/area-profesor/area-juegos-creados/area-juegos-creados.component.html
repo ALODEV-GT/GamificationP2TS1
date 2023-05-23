@@ -1,131 +1,57 @@
-<app-nav-bar-profe></app-nav-bar-profe>
-<section class="gradient-custom">
-<<<<<<< HEAD:UI-Gamification/src/app/juegos/memorama/game-memori-scratteg/area-juegos-creados/area-juegos-creados.component.html
+<section class="vh-100 d-flex">
   <div class="container-xl py-4">
-    <div class="row">
-      <div class="col-md-1 mb-4"></div>
-      <div class="col-md-3 mb-4">
-        <div class="card-body p-1">
-          <br>
-          <h4 class="text-center">Datos para la partida con tema : <b>hola mundo</b></h4>
-          <br>
-          <div class="form-outline">
-            <input type="text" id="firstName" class="form-control form-control-lg" />
-            <label class="form-label" for="firstName">Codigo para el juego</label>
-          </div>
-          <br>
-          <label class="form-label" for="firstName"><b>Dificultad del juego</b></label>
-          <div class="form-outline">
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-              <div>
-                <input type="radio" class="btn-check" name="btnradio1" id="facil" autocomplete="off" checked>
-                <label class="btn btn-outline-success" for="facil">Facil</label>
-                <input type="radio" class="btn-check" name="btnradio1" id="Medio" autocomplete="off" checked>
-                <label class="btn btn-outline-success" for="Medio">Medio</label>
-                <input type="radio" class="btn-check" name="btnradio1" id="Dificil" autocomplete="off" checked>
-                <label class="btn btn-outline-success" for="Dificil">Dificil</label>
-              </div>
-            </div>
-          </div>
-          <br>
-          <label class="form-label" for="firstName"><b>Aceptar Invitados?</b></label>
-          <div class="form-outline">
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-              <div>
-                <input type="radio" class="btn-check" name="btnradio" id="id1" autocomplete="off" checked>
-                <label class="btn btn-outline-primary" for="id1">Si</label>
-                <input type="radio" class="btn-check" name="btnradio" id="id2" autocomplete="off" checked>
-                <label class="btn btn-outline-primary" for="id2">No</label>
-              </div>
-=======
-    <div class="container-xl py-4">
-        <div class="row">
-            <div class="col-md-1 mb-4"></div>
-            <div class="col-md-3 mb-4">
-                <div class="card-body p-1" >
-                    <br>
-                    <h4 class="text-center">Datos para la partida con tema : <b>{{tituloTema}}</b></h4>
-                    <br>
-                    <div class="form-outline">
-                        <input type="text" id="firstName" class="form-control form-control-lg" 
-                        />
-                        <label class="form-label" for="firstName">Codigo para el juego</label>
-                    </div>
-                    <br>
-                <label class="form-label" for="firstName"><b>Dificultad del juego</b></label>
-                <div class="form-outline">
-                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <div  >
-                            <input type="radio" class="btn-check" name="btnradio1" id="facil" autocomplete="off" checked>
-                            <label class="btn btn-outline-success" for="facil" >Facil</label>
-                            <input type="radio" class="btn-check" name="btnradio1" id="Medio" autocomplete="off" checked>
-                            <label class="btn btn-outline-success" for="Medio" >Medio</label>
-                            <input type="radio" class="btn-check" name="btnradio1" id="Dificil" autocomplete="off" checked>
-                            <label class="btn btn-outline-success" for="Dificil" >Dificil</label>
-                        </div>
-                      </div>
-                </div>
-                <br>
-                <button type="button" class="btn btn-warning">Crear Partida</button>
-                </div>   
-            </div>
-            <div class="col-md-1 mb-4"></div>
-            <div class="col-md-6 mb-4">
-                <div class="card-body p-1">
-                    <h2 class="text-center">Juegos Scattergories-Memorama creados</h2>
-                    <table class="table table-bordered border-success">
-                        <thead>
-                          <tr class="text-center">
-                            <th scope="col">#</th>
-                            <th scope="col"> Tema </th>
-                            <th scope="col">Demo</th>
-                            <th scope="col">Crear Partida</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="text-center" *ngFor="let tema of temas let i = index" >
-                            <th scope="row">{{i+1}}</th>
-                            <td><b>{{tema.titulo}}</b></td>
-                            <td><button type="button" class="btn btn-link" (click)='clickGoDemo(i)' >Probar</button></td>
-                            <td><button type="button" class="btn btn-link" (click)='clickSettearTemaPartida(i)' >Crear</button></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                </div>
->>>>>>> 6694265e7bfa532e3ea7c9f3e9a2f8848220e184:UI-Gamification/src/app/juegos/memorama/area-profesor/area-juegos-creados/area-juegos-creados.component.html
-            </div>
-          </div>
-          <br>
-          <button type="button" class="btn btn-warning">Crear Partida</button>
+      <div class="d-flex justify-content-center align-items-center">
+        <div>
+            <div class="card-body p-1">
+              <h2 class="text-center">Juegos Scattergories-Memorama creados</h2>
+              <br>
+              <table class="table table-bordered border-success">
+                <thead>
+                  <tr class="text-center">
+                    <th scope="col">#</th>
+                    <th scope="col">Tema</th>
+                    <th scope="col">Dificultad</th>
+                    <th scope="col">Cantidad Categorias</th>
+                    <th scope="col">Demo</th>
+                    <th scope="col">Editar Dificultad</th>
 
-        </div>
-
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="text-center" *ngFor="let tema of temas; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>
+                      <b>{{ tema.titulo }}</b>
+                    </td>
+                    <td>
+                      {{ tema.dificultad }}
+                    </td>
+                    <td>
+                      {{ tema.cantidad_preguntas }}
+                    </td>
+                    <td>
+                      <button
+                        type="button"
+                        class="btn btn-link"
+                        (click)="clickGoDemo(i)"
+                      >
+                        Probar
+                      </button>
+                    </td>
+                    <td>
+                      <select class="form-select bg-info" aria-label="Default select example">
+                        <option selected>Opciones</option>
+                        <option (click)="clickEditarDificultad(i,1)">Facil</option>
+                        <option (click)="clickEditarDificultad(i,2)">Medio</option>
+                        <option (click)="clickEditarDificultad(i,3)">Dificil</option>
+                      </select>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>       
+         </div>
       </div>
-      <div class="col-md-1 mb-4"></div>
-      <div class="col-md-6 mb-4">
-        <div class="card-body p-1">
-          <h2 class="text-center">Juegos Scattergories-Memorama creados</h2>
-          <table class="table table-bordered border-success">
-            <thead>
-              <tr class="text-center">
-                <th scope="col">#</th>
-                <th scope="col"> Tema </th>
-                <th scope="col">Demo</th>
-                <th scope="col">Crear Partida</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="text-center" *ngFor="let tema of temas let i = index">
-                <th scope="row">{{i+1}}</th>
-                <td><b>{{tema.titulo}}</b></td>
-                <td><button type="button" class="btn btn-link" (click)='clickGoDemo()'>Probar</button></td>
-                <td><button type="button" class="btn btn-link">Crear</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="col-md-1 mb-4"></div>
-    </div>
-  </div>
+    <br />
 </section>

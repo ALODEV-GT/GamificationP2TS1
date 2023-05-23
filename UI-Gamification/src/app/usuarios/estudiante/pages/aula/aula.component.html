@@ -5,8 +5,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4"></div>
-    <div class="col-4">
+    <div class="col-2"></div>
+    <div class="col-6">
       <div class="card">
         <div class="card-header">
           <div class="user-info">
@@ -15,22 +15,25 @@
                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
                 alt="Imagen de perfil" class="avatar-img">
             </div>
-            <h5 class="card-title">Nombre de usuario</h5>
+            <div>
+              <h5 class="card-title">{{usuario.nombre + " " + usuario.apellido}}</h5>
+              <h5 class="usuario-text">@{{usuario.usuario}}</h5>
+            </div>
           </div>
         </div>
         <div class="card-body">
           <div class="col-auto">
-            <input type="text" class="form-control">
+            <input [(ngModel)]="contenido" type="text" placeholder="¿Que tienes en mente hoy?" class="form-control">
           </div>
           <div class="mt-3">
-            <button type="button" class="btn btn-primary">
+            <button (click)="publicar()" type="button" class="btn btn-primary">
               Publicar
             </button>
           </div>
         </div>
       </div>
 
-      <app-publicacion *ngFor="let publicacion of publicaciones"></app-publicacion>
+      <app-publicacion *ngFor="let publicacion of publicaciones" [publicacion]="publicacion"></app-publicacion>
     </div>
     <div class="col-1">
     </div>
@@ -44,7 +47,7 @@
             src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
             alt="Imagen de perfil" class="avatar-img-miembro">
         </div>
-        <h5 class="card-title-miembro">Nombre de usuario</h5>
+        <h5 class="card-title-miembro">{{miembro.nombre}} {{miembro.apellido}} <span class="user-miembro">@{{miembro.usuario}}</span></h5>
       </div>
       <a type="button" (click)="openModal()" class="more mt-2">Ver mas</a>
     </div>
@@ -66,7 +69,7 @@
               src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
               alt="Imagen de perfil" class="avatar-img-miembro">
           </div>
-          <h5 class="card-title-miembro">Nombre de usuario</h5>
+          <h5 class="card-title-miembro">{{miembro.nombre}} {{miembro.apellido}} <span class="user-miembro">@{{miembro.usuario}}</span></h5>
         </div>
       </div>
     </div>
