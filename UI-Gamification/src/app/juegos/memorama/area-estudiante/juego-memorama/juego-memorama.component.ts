@@ -1,3 +1,5 @@
+import { UsuarioService } from './../../../../usuarios/services/usuario.service';
+import { Punteo } from './../../models/punteo';
 import { Usuario } from 'src/models/usuarios/Usuario';
 import { Tema } from './../../models/tema';
 import { MemoramaServiceService } from '../../services/memorama-service.service';
@@ -28,7 +30,8 @@ export class JuegoMemoramaComponent implements OnInit {
   usuario:Usuario=new Usuario()
 
 
-  constructor(private router:Router, private memoramaService:MemoramaServiceService) { }
+  constructor(private router:Router, private memoramaService:MemoramaServiceService,
+    private usuarioService:UsuarioService) { }
 
   async ngOnInit(): Promise<void> {
     this.tema.id = 4  // this.tema = servicioSesion.Tema
@@ -130,19 +133,41 @@ export class JuegoMemoramaComponent implements OnInit {
         this.preguntas[this.indexPregunta].mostrarFigura = true;
       }else{
         //guradar resultados de la partida
-        Swal.fire({
-          icon: 'success',
-          title: 'Exelente juego',
-          text: 'Juego Terminado tu Puntuacion es: '+this.punteoGeneral,
-        })
+        this.guardarPunteoJugador()
         this.indexPregunta=0
       }
     }
   }
 
   //funcion para guardar el punteo de la partida
-  private guardarResultadosPartida() {
-    //ir a traer el punteo anteriro si es que existiera
+  private guardarPunteoJugador(){
+    this.memoramaService.savePuntajeJugador(this.crearEntidadPunteo()).subscribe(
+      (value:Punteo) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Exelente juego',
+          text: 'Juego Terminado tu Puntuacion es: '+this.punteoGeneral,
+        })
+      },
+      (error:any) =>{
+        Swal.fire({
+          icon: 'error',
+          title: 'error en el servidor',
+          text: error,
+        })
+      }
+    )
+  }
+
+
+  private crearEntidadPunteo():Punteo {
+    const punteo:Punteo=new Punteo()
+    punteo.id_instancia_juego=this.tema.id_instancia_juego
+    //punteo.codigo_aula= codigo aula 
+    punteo.dificultad = this.tema.dificultad
+    punteo.id_usuario_juegador = this.usuarioService.getUsuarioSesion()!.id_usuario
+    punteo.punteo = this.punteoGeneral
+    return punteo
   }
 
 

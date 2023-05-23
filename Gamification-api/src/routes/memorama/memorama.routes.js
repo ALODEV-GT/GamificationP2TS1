@@ -8,6 +8,8 @@ router.get('/get-preguntas', controllerMemorama.getQuestions)
 router.get('/get-respuestas',controllerMemorama.getRespuestas)
 router.put('/set-dificultad',controllerMemorama.setDificultad)
 router.get('/get-tema-memorama',controllerMemorama.getTemaMemorama)
+router.post('/save-punteo-memorama',controllerMemorama.guardarPuntaje)
+
 
 
 
