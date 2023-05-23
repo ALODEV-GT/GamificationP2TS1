@@ -35,6 +35,17 @@ CREATE TABLE control_game_memorama.Tema_pregunta(
     FOREIGN KEY (id_pregunta) REFERENCES control_game_memorama.pregunta(id)
 ); 
 
+CREATE TABLE control_game_memorama.punteo_partida_memorama(
+    id SERIAL PRIMARY KEY,
+    id_instancia_juego INTEGER NOT NULL,
+    codigo_aula VARCHAR(20) NOT NULL,
+    id_usuario_juegador INTEGER NOT NULL,
+    punteo INTEGER NOT NULL,
+    dificultad VARCHAR(15) NOT NULL,
+    FOREIGN KEY (id_usuario_juegador) REFERENCES control_usuarios.usuario(id_usuario),
+    FOREIGN KEY(codigo_aula) REFERENCES control_aulas.aula(codigo_aula),
+    FOREIGN KEY (id_instancia_juego) REFERENCES control_general_juego.instancia_juego(id_instancia_juego)
+);
 
 --algunas consultas
 SELECT pregunta.* FROM control_game_memorama.pregunta AS pregunta

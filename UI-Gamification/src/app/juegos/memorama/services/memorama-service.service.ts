@@ -1,3 +1,4 @@
+import { Punteo } from './../models/punteo';
 import { Respuesta } from '../models/respuesta';
 import { Pregunta } from '../models/pregunta';
 import { Tema } from '../models/tema';
@@ -37,7 +38,8 @@ export class MemoramaServiceService {
     return this.httpClient.get<Tema>(this.API_URL+'get-tema-memorama?id='+id)
   }
   
-
-  
+  public savePuntajeJugador(punteo:Punteo): Observable<Punteo>{
+    return this.httpClient.post<Punteo>(this.API_URL+'save-punteo-memorama',punteo)
+  }
 
 }
