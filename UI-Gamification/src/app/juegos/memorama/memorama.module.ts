@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AreaCreatJuegoComponent } from './area-profesor/area-creat-juego/area-creat-juego.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DemoMemoramaVisitanteComponent } from './area-estudiante/demo-memorama-visitante/demo-memorama-visitante.component';
 
 
 
@@ -11,7 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AreaCreatJuegoComponent,
     AreaJuegosCreadosComponent,
-    DemoJuegoComponent
+    DemoJuegoComponent,
+    DemoMemoramaVisitanteComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ], exports: [
     AreaCreatJuegoComponent,
     AreaJuegosCreadosComponent,
-    DemoJuegoComponent
+    DemoJuegoComponent,
+    DemoMemoramaVisitanteComponent
   ]
 })
 export class MemoramaModule { }
