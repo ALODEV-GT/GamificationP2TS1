@@ -9,6 +9,8 @@ export class ComidoDemoComponent implements OnInit {
 
   constructor() { }
 
+  esDemo = true;
+
   ngOnInit(): void {
   }
 
