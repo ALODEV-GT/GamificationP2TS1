@@ -25,7 +25,8 @@ export class DemoJuegoComponent implements OnInit {
   coeficienteDificultad:number=0.7
 
 
-  constructor(private router:ActivatedRoute, private memoramaService:MemoramaServiceService) { }
+  constructor(private router:ActivatedRoute, private memoramaService:MemoramaServiceService,
+    private routs:Router) { }
 
   async ngOnInit(): Promise<void> {
     this.router.params.subscribe(params => {
@@ -140,6 +141,7 @@ export class DemoJuegoComponent implements OnInit {
         })
         this.preguntas[this.indexPregunta].mostrarFigura = true;
       }else{
+        this.routs.navigate(['profesor/area-creacion/memorama/memoramas-creados'])
         Swal.fire({
           icon: 'success',
           title: 'Exelente juego',

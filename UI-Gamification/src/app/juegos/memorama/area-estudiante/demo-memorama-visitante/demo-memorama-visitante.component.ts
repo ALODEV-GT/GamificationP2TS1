@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Pregunta } from '../../models/pregunta';
 import { Respuesta } from '../../models/respuesta';
@@ -25,7 +25,8 @@ export class DemoMemoramaVisitanteComponent implements OnInit {
   tema:Tema= new Tema()
   coeficienteDificultad:number=0.7
   
-  constructor(private router:ActivatedRoute, private memoramaService:MemoramaServiceService) { }
+  constructor(private router:ActivatedRoute, private memoramaService:MemoramaServiceService,
+    private routes:Router) { }
 
   async ngOnInit(): Promise<void> {
     this.tema.id=1
@@ -126,6 +127,7 @@ export class DemoMemoramaVisitanteComponent implements OnInit {
         })
         this.preguntas[this.indexPregunta].mostrarFigura = true;
       }else{
+        this.routes.navigate(['inicio/principal'])
         Swal.fire({
           icon: 'success',
           title: 'Exelente juego',
