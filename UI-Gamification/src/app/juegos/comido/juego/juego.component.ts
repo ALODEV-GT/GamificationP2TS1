@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
 import { Comido } from '../models/Comido';
 
 interface Letter {
@@ -19,7 +19,8 @@ interface Coin {
   templateUrl: './juego.component.html',
   styleUrls: ['./juego.component.css']
 })
-export class JuegoComponent {
+export class JuegoComponent implements OnInit {
+  @Input() esDemo!: boolean;
 
   @ViewChild('pacman', { static: false }) pacman!: ElementRef;
   @ViewChild('ghost', { static: false }) ghost!: ElementRef;
@@ -37,12 +38,12 @@ export class JuegoComponent {
   widthGhost: number = 70;
 
   //Game config
-  clues: string[] = [
-    "Pista 1",
-    "Pista 2",
-    "Pista 3",
-  ]
-  game: Comido = new Comido("serpiente", "code", this.clues);
+  clues: string[] = []
+
+  //DEMO CONFIGS
+
+
+  game: Comido = new Comido("", "code", this.clues);
 
   //Letters
   letters: Letter[] = []
@@ -68,6 +69,13 @@ export class JuegoComponent {
   inputLetter: string = "";
 
   constructor() {
+
+  }
+  ngOnInit(): void {
+    if (this.esDemo) {
+      this.game.palabra = "game-learn"
+      this.game.pistas = ["Nombre de la pagina"]
+    }
     this.createDivLetters();
     this.createDivCoins();
   }

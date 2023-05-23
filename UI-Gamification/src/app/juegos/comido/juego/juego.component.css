@@ -1,6 +1,6 @@
 .base {
   height: 100vh;
-  background: #181717;
+  background: #ffffff;
   display: flex;
   align-items: center;
 }
@@ -177,15 +177,22 @@
 
 
 .title {
-  color: white;
-  margin-top: 50px;
+  color: rgb(255, 255, 255);
   font-weight: bold;
   font-size: 20px;
 }
 
 .clue {
-  color: white;
+  color: rgb(255, 255, 255);
   margin-top: 10px;
   border-bottom: 3px solid #ecdf20;
   margin-bottom: 10px;
+}
+
+.cajita{
+  background-color: #0f0f0f;
+  border-radius: 15px;
+  border: 10px solid #1919A6;
+  box-shadow: 1px 1px 15px 1px #1919A6;
+  height: fit-content;
 }
