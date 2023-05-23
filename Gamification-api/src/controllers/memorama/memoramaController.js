@@ -86,6 +86,14 @@ const saveQuestions = async (preguntas, tema) => {
         [tema.dificultad, tema.id]); 
     return res.json(response.rows[0])  ;
   }
+
+  const guardarPuntaje = async (req, res)=> {
+    const puntaje = req.body
+    const response = await conexion.pool.query(
+    'INSERT INTO control_game_memorama.punteo_partida_memorama(id_instancia_juego, codigo_aula, id_usuario_juegador, punteo, dificultad) VALUES($1,$2,$3,$4,$5)',
+    [puntaje.id_instancia_juego,puntaje.codigo_aula, puntaje.id_usuario_juegador, puntaje.punteo, puntaje.dificultad])
+    return res.json(response.rows[0])  ;
+  }
   
 
 
@@ -95,5 +103,6 @@ module.exports={
     getQuestions:getQuestions,
     getRespuestas:getRespuestas,
     setDificultad:setDificultad,
-    getTemaMemorama:getTemaMemorama
+    getTemaMemorama:getTemaMemorama,
+    guardarPuntaje:guardarPuntaje
 }

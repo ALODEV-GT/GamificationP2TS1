@@ -1,3 +1,4 @@
+import { JuegoMemoramaComponent } from './area-estudiante/juego-memorama/juego-memorama.component';
 import { DemoJuegoComponent } from './area-profesor/demo-juego/demo-juego.component';
 import { AreaJuegosCreadosComponent } from './area-profesor/area-juegos-creados/area-juegos-creados.component';
 import { NgModule } from '@angular/core';
@@ -13,7 +14,8 @@ import { DemoMemoramaVisitanteComponent } from './area-estudiante/demo-memorama-
     AreaCreatJuegoComponent,
     AreaJuegosCreadosComponent,
     DemoJuegoComponent,
-    DemoMemoramaVisitanteComponent
+    DemoMemoramaVisitanteComponent,
+    JuegoMemoramaComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { DemoMemoramaVisitanteComponent } from './area-estudiante/demo-memorama-
     AreaCreatJuegoComponent,
     AreaJuegosCreadosComponent,
     DemoJuegoComponent,
-    DemoMemoramaVisitanteComponent
+    DemoMemoramaVisitanteComponent,
+    JuegoMemoramaComponent
   ]
 })
 export class MemoramaModule { }

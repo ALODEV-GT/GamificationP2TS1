@@ -1,5 +1,8 @@
 export class Punteo {
     id!:number;
-    intentos:number=0;
+    id_instancia_juego!:number
+    codigo_aula!:string
+    id_usuario_juegador!:number
+    dificultad!:string
     punteo!:number;
 }
