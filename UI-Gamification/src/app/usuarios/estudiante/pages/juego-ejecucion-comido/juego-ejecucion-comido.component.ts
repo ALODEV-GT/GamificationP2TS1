@@ -16,10 +16,10 @@ export class JuegoEjecucionComidoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(({ id }) => {
+    this.activatedRoute.params.subscribe(({ codigo, id }) => {
       this.id_instancia_juego = id;
-      console.log(this.id_instancia_juego);
-
+      console.log("Codigo aula: " + codigo);
+      console.log("id_instancia_juego: " + id);
     })
   }
 
