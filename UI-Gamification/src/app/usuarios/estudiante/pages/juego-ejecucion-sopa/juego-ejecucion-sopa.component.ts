@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-juego-ejecucion-sopa',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JuegoEjecucionSopaComponent implements OnInit {
 
-  constructor() { }
+  id_instancia_juego: string = "";
+ 
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(({ id }) => {
+      this.id_instancia_juego = id;
+      console.log(this.id_instancia_juego);
+
+    })
   }
 
 }
