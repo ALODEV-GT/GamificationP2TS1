@@ -1,4 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { UsuarioService } from 'src/app/usuarios/services/usuario.service';
+import { Usuario } from 'src/models/usuarios/Usuario';
+import { SesionService } from 'src/service/sesion.service';
 import Swal from 'sweetalert2';
 import { sopaCreacionService } from '../service/sopaCreacion-service';
 import { casilla } from './models/casilla';
@@ -17,8 +20,9 @@ export class CreacionJuegoComponent implements OnInit {
   tituloPartida:string="";
   palabras:string[]=[];
   palabraNG="";
+  descripcionNivel:string="";
   limite=0;
-  constructor(private sopaService:sopaCreacionService) { 
+  constructor(private sopaService:sopaCreacionService,private usuarioService:UsuarioService) { 
 
   }
 
@@ -39,12 +43,19 @@ export class CreacionJuegoComponent implements OnInit {
   }
 
   crearJuego(){
-    console.log(JSON.stringify(new creacionSopa(this.codigo,this.tituloPartida,1,this.palabras,this.nivelPartida)));
+    if (this.palabras.length<5) {
+      this.popError("palabras insuficientes")
+    }else if(this.palabras.length===5){
+      console.log(JSON.stringify(new creacionSopa(this.tituloPartida,1,this.palabras,this.nivelPartida)));
+      let user:Usuario = this.usuarioService.getUsuarioSesion()!;
+      this.sopaService.saveUsurioSesion(new creacionSopa(this.tituloPartida,user.id_usuario,this.palabras,this.nivelPartida)).subscribe((gen:creacionSopa)=>{
+        console.log(gen)
+        this.popAfirmation();
+      })
+    }
 
-    this.sopaService.saveUsurioSesion(new creacionSopa(this.codigo,this.tituloPartida,1,this.palabras,this.nivelPartida)).subscribe((gen:creacionSopa)=>{
-      console.log(gen)
-      this.popAfirmation();
-    })
+
+ 
     /* 
     console.log(this.tituloPartida)
     console.log(this.codigo)
@@ -54,9 +65,32 @@ export class CreacionJuegoComponent implements OnInit {
     this.palabras=[]
   }
 
+
+  agregarDescripcion(){
+    if (this.nivelPartida==="Facil") {
+      this.descripcionNivel="Las palabras apareceran de forma horizontal y vertical"
+    }else if (this.nivelPartida==="Intermedio") {
+      this.descripcionNivel="Las palabras apareceran de forma horizontal, vertical y diagonal"
+    }else if (this.nivelPartida==="Avanzado") {
+      this.descripcionNivel="Las palabras apareceran de forma horizontal, vertical y diagonal , con la posibilidad de aparecer invetidas"
+    }
+
+
+  }
+
   ngOnInit(): void {
     
   }
+
+
+  public popError(msj:string){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: msj,
+    })
+  }
+
 
 
   public popAfirmation(){

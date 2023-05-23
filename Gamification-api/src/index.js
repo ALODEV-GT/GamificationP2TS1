@@ -9,10 +9,11 @@ const userRoutes = require('./routes/routes_generales/User.routes')
 const aulaRoutes = require('./routes/routes_generales/Aula.routes')
 const publicacionRoutes = require('./routes/routes_generales/Publicacion.routes')
 
+
 //juegos
 const memoramaRoutes = require('./routes/memorama/memorama.routes')
 const comidoRoutes = require('./routes/comido/comido.routes')
-
+const sopaRoutes = require('./routes/sopa/sopa.routes')
 
 
 const app = express()
@@ -30,6 +31,7 @@ app.use('/api/publicaciones', publicacionRoutes)
 
 app.use('/api/memorama', memoramaRoutes)
 app.use('/api/comido', comidoRoutes)
+app.use('/api/sopa',sopaRoutes)
 
 app.listen(3000)
 

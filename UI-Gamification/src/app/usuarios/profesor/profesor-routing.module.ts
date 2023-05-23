@@ -9,6 +9,7 @@ import { CreacionComidoComponent } from './pages/creacion-comido/creacion-comido
 import { CreacionMemoramaComponent } from './pages/creacion-memorama/creacion-memorama.component';
 import { CreacionSopaComponent } from './pages/creacion-sopa/creacion-sopa.component';
 import { CreacionCuriosoComponent } from './pages/creacion-curioso/creacion-curioso.component';
+import { JuegoSopaLetrasComponent } from 'src/app/juegos/sopa/juego-sopa-letras/juego-sopa-letras.component';
 
 const rutas: Routes = [
   {

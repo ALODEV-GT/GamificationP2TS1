@@ -1,0 +1,60 @@
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <h3>Creacion Juego Curioso</h3>
+            <div class="card">
+                <form class="form-card" >
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Titulo de la partida</label> <input [(ngModel)]="tituloPartida" type="text" name="tituloPartida" placeholder=""> </div>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Ingrese la pregunta</label> <input type="text" [(ngModel)]="pregunta" name="pregunta" placeholder=""> </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> 
+                            <label class="form-control-label px-3">Respuesta<span class="text-danger"> *</span></label>
+                             <input type="text"  [(ngModel)]="respuesta"  class="input" id="fname" name="respuesta"  > 
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> 
+                            <label class="form-control-label px-3">Opcion 1 </label> 
+                            <input type="text" [(ngModel)]="opcion1" class="input" id="lname" name="opcion1" > 
+                        </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> 
+                            <label class="form-control-label px-3">Opcion 2</label> 
+                            <input type="text" id="email" [(ngModel)]="opcion2"  name="opcion2" placeholder="" > </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                             <label class="form-control-label px-3">Opcion 3
+
+                        </label> 
+                        <input type="text"  [(ngModel)]="opcion3"  id="mob" name="opcion3" placeholder="" > </div>
+                    </div>
+
+                    <div class="row justify-content-end">
+                        <div class="form-group col-sm-6"> <button type="submit" [disabled]="preguntas.length==5" (click)="agregarPreguntas()" class="btn btn-primary">Agregar Pregunta</button> </div>
+                    </div>
+                </form>
+
+                <div *ngFor="let pregunta of preguntas">
+                   
+
+              
+                <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-6 flex-column d-flex"> 
+                        <label class="form-control-label px-3">{{"P: "+pregunta.pregunta +" R: "+pregunta.respuesta+" Op: "+pregunta.opciones}}</label>
+
+                    </div>
+                    <div class="form-group col-sm-2 flex-column d-flex"> 
+                        <button class="btn btn-danger" >eliminar</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-success">Crear Juego</button>
+
+            </div>
+        </div>
+    </div>
+</div>
