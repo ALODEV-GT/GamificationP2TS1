@@ -28,15 +28,16 @@ export class JuegoMemoramaComponent implements OnInit {
   tema:Tema= new Tema()
   coeficienteDificultad:number=0.7
   usuario:Usuario=new Usuario()
+  codigoAula!:string
 
 
   constructor(private router:ActivatedRoute, private memoramaService:MemoramaServiceService,
     private usuarioService:UsuarioService) { }
 
   async ngOnInit(): Promise<void> {
-    this.router.params.subscribe(params => {
-      this.tema.id = params['id'];
-      // Hacer algo con el valor del parámetro id
+    this.router.params.subscribe(({ codigo, id }) => {
+      this.tema.id_instancia_juego = id;
+      this.codigoAula = codigo
     })
     this.calculoDififultad()
     this.preguntas = await this.memoramaService.getPreguntasJuego(this.tema.id).toPromise();
@@ -165,7 +166,7 @@ export class JuegoMemoramaComponent implements OnInit {
   private crearEntidadPunteo():Punteo {
     const punteo:Punteo=new Punteo()
     punteo.id_instancia_juego=this.tema.id_instancia_juego
-    //punteo.codigo_aula= codigo aula 
+    punteo.codigo_aula= this.codigoAula
     punteo.dificultad = this.tema.dificultad
     punteo.id_usuario_juegador = this.usuarioService.getUsuarioSesion()!.id_usuario
     punteo.punteo = this.punteoGeneral
