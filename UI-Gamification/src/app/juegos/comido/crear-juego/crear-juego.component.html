@@ -16,9 +16,9 @@
                       </div>
 
                       <div class="form-outline mb-4">
-                        <label class="form-label">Codigo: </label>
-                        <input class="form-control" type="text" class="form-control" formControlName="codigo" />
-                        <div *ngIf="campoEsValido('codigo')" class="form-text text-danger">
+                        <label class="form-label">Nombre del juego: </label>
+                        <input class="form-control" type="text" class="form-control" formControlName="nombre" placeholder="Mi juego"/>
+                        <div *ngIf="campoEsValido('nombre')" class="form-text text-danger">
                           Debe de ser mayor a 4 caracteres
                         </div>
                       </div>
@@ -27,7 +27,7 @@
                         <label class="form-label">Ingrese la palabra a adivinar: </label>
                         <input class="form-control" type="text" class="form-control" formControlName="palabra" />
                         <div *ngIf="campoEsValido('palabra')" class="form-text text-danger">
-                          Debe de ser mayor a 1 caracter
+                          Debe de ser mayor a 2 caracteres
                         </div>
                       </div>
 

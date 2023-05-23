@@ -8,4 +8,5 @@ export class Tema {
     dificultad:string='Facil'
     id_tipo_juego:number=3
     codigo_instancia_juego!:string
+    id_instancia_juego!:number
 }

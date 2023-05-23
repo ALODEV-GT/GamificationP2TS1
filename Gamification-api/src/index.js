@@ -15,6 +15,7 @@ const likeRoutes = require('./routes/routes_generales/Like.routes')
 
 
 //juegos
+const juegosRoutes = require('./routes/juegosGeneral/juegos.routes')
 const memoramaRoutes = require('./routes/memorama/memorama.routes')
 const comidoRoutes = require('./routes/comido/comido.routes')
 const sopaRoutes = require('./routes/sopa/sopa.routes')
@@ -37,6 +38,7 @@ app.use('/api/asignaciones', asignacionRoutes)
 app.use('/api/comentarios', comentarioRoutes)
 app.use('/api/likes', likeRoutes)
 
+app.use('/api/juegos', juegosRoutes)
 app.use('/api/memorama', memoramaRoutes)
 app.use('/api/comido', comidoRoutes)
 app.use('/api/sopa',sopaRoutes)
