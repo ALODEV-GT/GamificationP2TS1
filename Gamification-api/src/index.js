@@ -13,12 +13,13 @@ const asignacionRoutes = require('./routes/routes_generales/Asignacion.routes')
 const comentarioRoutes = require('./routes/routes_generales/Comentario.routes')
 const likeRoutes = require('./routes/routes_generales/Like.routes')
 
+
 //juegos
 const juegosRoutes = require('./routes/juegosGeneral/juegos.routes')
 const memoramaRoutes = require('./routes/memorama/memorama.routes')
 const comidoRoutes = require('./routes/comido/comido.routes')
-
-
+const sopaRoutes = require('./routes/sopa/sopa.routes')
+const curiosoRoutes = require('./routes/curioso/curioso.routes')
 
 const app = express()
 
@@ -40,6 +41,8 @@ app.use('/api/likes', likeRoutes)
 app.use('/api/juegos', juegosRoutes)
 app.use('/api/memorama', memoramaRoutes)
 app.use('/api/comido', comidoRoutes)
+app.use('/api/sopa',sopaRoutes)
+app.use('/api/curioso',curiosoRoutes)
 
 app.listen(3000)
 

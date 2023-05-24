@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { puntuacionSopa } from 'src/app/juegos/sopa/juego-sopa-letras/models/puntuacionSopa';
+import { sopaJuegoService } from 'src/app/juegos/sopa/juego-sopa-letras/service/sopaService';
 
 @Component({
   selector: 'app-puntaje-sopa',
@@ -7,7 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PuntajeSopaComponent implements OnInit {
 
-  constructor() { }
+  punteos:puntuacionSopa[]=[];
+
+
+  constructor(private sopaService:sopaJuegoService) {
+
+    this.sopaService.getHistorial().subscribe((gen:puntuacionSopa[])=>{
+      this.punteos=gen;
+    })
+
+
+
+   }
 
   ngOnInit(): void {
   }
