@@ -28,7 +28,7 @@ export class PuntajeMemoramaComponent implements OnInit {
         const punteo = this.punteos[i];
         const punteoReport = await this.memoramaService.getListPuntajesAulaInstaicaJuego(this.idInstanciaJuego, punteo.codigo_aula).toPromise();
         punteo.punteosRepor = punteoReport;
-        console.log(punteoReport)
+        
       }
     });
   }
