@@ -1,0 +1,100 @@
+Temas para Juegos de Memorama
+
+1-  Tipo de Animales
+
+------Los Animales Mamíferos
+*Los Perros
+*Los Gatos
+*Los Elefantes
+
+------Los Animales Carnivoros
+*Los Leones
+*Los Tigres
+*Las Panteras
+*Los Osos
+
+------Los Animales Herbívoros
+*Los Conejos
+*Los Vacas
+*Las Jirfa
+
+------Los Reptiles
+*Los Cocodrilos
+*Los Lagartijas
+*Las Tortugas
+
+2- Partes Operaciones Aritmeticas
+
+------La Suma
+*Sumandos
+*Signo de suma (+)
+*Total o resultado
+
+------La Resta
+*Minuendo
+*Sustraendo
+*Diferencia
+*Signo de resta (-)
+
+------La Multiplicacion
+*Factores
+*Signo de multiplicación (×)
+*Producto
+
+------La Division
+*Dividendo
+*Divisor
+*Residuo
+*Cociente
+
+------------------------------------------------------------------------
+Teoria de Sistemas
+
+3- Temas importantes en Teoria de Sistemas
+
+------La Abstraccion
+*Asociación / Relación de Ideas
+*Diagrama
+*Esquemas/mapas conceptuales
+
+------Definicion de Sistema
+*Análisis CEEM
+*Caja Negra
+*Caja Blanca
+
+------Paradigmas
+*Paradigmas de programación
+*Paradigma científico
+*Paradigma de la complejidad
+*Conocimiento
+
+------Pensamiento sistémico
+*Objetivo del Sistema
+*Entradas/Salidas
+*Actividades
+
+4- Lenguajes de Paradigmas de programación
+
+------Multiparadigma
+*Python
+*JavaScript
+*Scala
+
+------Declarativo
+*Prolog
+*SQL
+
+
+------Orientado a Objetos
+*Java
+*C++
+*C#
+*Ruby
+
+
+------Imperativa
+*C
+*Pascal
+*Fortran
+
+
