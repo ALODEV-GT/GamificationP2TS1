@@ -46,23 +46,3 @@ CREATE TABLE control_game_memorama.punteo_partida_memorama(
     FOREIGN KEY(codigo_aula) REFERENCES control_aulas.aula(codigo_aula),
     FOREIGN KEY (id_instancia_juego) REFERENCES control_general_juego.instancia_juego(id_instancia_juego)
 );
-
---algunas consultas
-SELECT pregunta.* FROM control_game_memorama.pregunta AS pregunta
-INNER JOIN control_game_memorama.Tema_pregunta AS asoci
-ON pregunta.id = asoci.id_pregunta WHERE asoci.id_tema = 4;
-
-SELECT respuesta.* FROM control_game_memorama.respuesta AS respuesta
-INNER JOIN control_game_memorama.pregunta_respuesta AS asoci
-ON respuesta.id = asoci.id_respuesta WHERE asoci.id_pregunta = 3;
-
-
-SELECT tema.* FROM control_game_memorama.Tema AS tema
-INNER JOIN control_general_juego.instancia_juego AS instancia
-ON tema.codigo_instancia_juego = instancia.codigo_instancia_juego
-WHERE instancia.id_usuario_creador=1;
-
-
-SELECT user.nombre, user.apellido, user.usuario, partida.punteo, partida.dificultad FROM control_usuarios.usuario AS user
-INNER JOIN control_game_memorama.punteo_partida_memorama AS partida
-ON user.id_usuario = partida.id_usuario_juegador WHERE partida.codigo_aula = '123AA' AND partida.id_instancia_juego = 1;
