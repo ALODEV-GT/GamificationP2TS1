@@ -1,0 +1,15 @@
+Palabra: Abstraccion
+Es el proceso de simplificar y generalizar conceptos o ideas complejas.
+Es la capacidad de representar conceptos sin hacer referencia a detalles específicos.
+Es el acto de separar los elementos esenciales de un objeto o fenómeno.
+
+Palabra: Sistema
+Es un conjunto de elementos interrelacionados que funcionan de manera coordinada para lograr un objetivo.
+Es una estructura organizada que realiza tareas específicas y se compone de componentes interdependientes.
+Es un conjunto de partes interconectadas que trabajan juntas para cumplir una función determinada.
+
+Palabra: Paradigma
+Es un conjunto de creencias, ideas o enfoques que definen una forma de pensamiento.
+Es un modelo o patrón que guía la comprensión y solución de problemas.
+Es una perspectiva o marco conceptual que establece las reglas y supuestos de una disciplina.
+
