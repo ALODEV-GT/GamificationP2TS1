@@ -81,8 +81,7 @@ export class JuegoEjecucionCuriosoComponent implements OnInit {
       const element = preguntas[index];
       
       let opciones:opcionCurioso[] = await this.curiosoService.getOpcionesInstancia(element.id).toPromise();
-      console.log(opciones);
-
+     
       let xd:string[]=[];
 
       for (let index = 0; index < opciones.length; index++) {
@@ -162,7 +161,7 @@ export class JuegoEjecucionCuriosoComponent implements OnInit {
     let user:Usuario = this.usuarioService.getUsuarioSesion()!;
     
     this.curiosoService.saveHistorial(new historialCurioso(parseInt(this.id_instancia_juego),this.codigo_aula,user.id_usuario,this.puntuacion,this.preguntasAcertadas)).subscribe((gen:historialCurioso)=>{
-      console.log(gen);;
+
       
     })
 

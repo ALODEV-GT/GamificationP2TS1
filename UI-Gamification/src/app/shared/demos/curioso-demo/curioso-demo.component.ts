@@ -109,7 +109,7 @@ export class CuriosoDemoComponent implements OnInit {
 
   juegoTerminado(){
     this.popJuegoTerminado();
-    this.guardarHistorial();
+   // this.guardarHistorial();
     this.router.navigate(['/inicio/principal']);
 
   }
@@ -119,8 +119,7 @@ export class CuriosoDemoComponent implements OnInit {
     let user:Usuario = this.usuarioService.getUsuarioSesion()!;
     
     this.curiosoService.saveHistorial(new historialCurioso(parseInt(this.id_instancia_juego),this.codigo_aula,user.id_usuario,this.puntuacion,this.preguntasAcertadas)).subscribe((gen:historialCurioso)=>{
-      console.log(gen);;
-      
+      console.log(gen)
     })
 
 
@@ -196,7 +195,7 @@ export class CuriosoDemoComponent implements OnInit {
       position: 'center',
       icon: 'success',
       title: 'Juego terminado',
-      text: 'Puntuacion obtenida '+this.puntuacion +"Aciertos : "+this.preguntasAcertadas,
+      text: 'Puntuacion obtenida '+this.puntuacion +" Aciertos : "+this.preguntasAcertadas,
       
       showConfirmButton: false,
       timer: 4000,
