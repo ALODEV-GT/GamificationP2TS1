@@ -34,6 +34,19 @@ export class PuntajeComidoComponent implements OnInit {
     })
   }
 
+  coloresPodio(posicion: number){
+    switch (posicion) {
+      case 0:
+        return "table-warning"
+      case 1:
+        return "table-primary"
+      case 2:
+        return "table-secondary"
+      default:
+        return ""
+    }
+  }
+
   ngOnInit(): void {
   }
 

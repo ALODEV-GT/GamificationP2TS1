@@ -253,7 +253,7 @@ export class JuegoComponent implements OnInit {
       } else {
         this.router.navigate([`estudiante/aula/${this.codigoAula}`])
       }
-    }, time + 8000);
+    }, time + 6000);
   }
 
   soundEatFruit() {

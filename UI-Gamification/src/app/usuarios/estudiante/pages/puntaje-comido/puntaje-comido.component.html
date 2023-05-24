@@ -26,7 +26,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let registro of registros, let i = index">
+            <tr *ngFor="let registro of registros, let i = index" [ngClass]="coloresPodio(i)">
               <td>{{i+1}}</td>
               <td>{{registro.nombre_usuario}}</td>
               <td>{{registro.apellido}}</td>
