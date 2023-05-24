@@ -8,6 +8,8 @@ router.get('/cofings-game', controllerComido.getCofigsGame)
 
 router.get('/puntuaciones', controllerComido.getPuntuaciones)
 
+router.get('/puntuacion-aula', controllerComido.getPuntuacinAula)
+
 router.post('/guardar-punteo', controllerComido.guardarPunteo)
 
 module.exports = router;

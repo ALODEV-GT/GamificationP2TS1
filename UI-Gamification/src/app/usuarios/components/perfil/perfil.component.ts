@@ -19,13 +19,15 @@ export class PerfilComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UsuarioService,
-  ) { }
+  ) {
+    this.usuario = this.userService.getUsuarioSesion()!;
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      nombre: ["", [Validators.required, Validators.minLength(5)]],
-      apellido: ["", [Validators.required, Validators.minLength(5)]],
-      nik_name: ["", [Validators.required, Validators.minLength(5)]],
+      nombre: [this.usuario.nombre, [Validators.required, Validators.minLength(5)]],
+      apellido: [this.usuario.apellido, [Validators.required, Validators.minLength(5)]],
+      nik_name: [this.usuario.usuario, [Validators.required, Validators.minLength(5)]],
       passworde: ["", [Validators.required, Validators.minLength(5)]],
     });
   }

@@ -101,9 +101,16 @@ async function recuperarPuntuacionAula(id_instancia_juego, codigo_aula) {
   return punteosAula.rows;
 }
 
+const getPuntuacinAula = async (req, res) => {
+  const { id_instancia_juego, codigo_aula } = req.query
+  const registros = await recuperarPuntuacionAula(id_instancia_juego, codigo_aula)
+  res.json(registros)
+}
+
 module.exports = {
   saveComido: saveComido,
   getCofigsGame: getCofigsGame,
   guardarPunteo: guardarPunteo,
-  getPuntuaciones: getPuntuaciones
+  getPuntuaciones: getPuntuaciones,
+  getPuntuacinAula: getPuntuacinAula
 }
