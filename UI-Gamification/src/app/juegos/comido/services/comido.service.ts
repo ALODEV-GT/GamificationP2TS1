@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Comido } from '../models/Comido';
 import { Punteo } from '../models/Punteo';
-import { Rep1 } from 'src/models/juegos/InterfacesJuego';
+import { Registro, Rep1 } from 'src/models/juegos/InterfacesJuego';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,10 @@ export class ComidoService {
 
   public getPunteos(idInstanciaJuego: number): Observable<Rep1[]> {
     return this.http.get<Rep1[]>(`${this.baseURL}puntuaciones?id_instancia_juego=${idInstanciaJuego}`)
+  }
+
+  public getPunteoAula(idInstanciaJuego: number, codigoAula: string): Observable<Registro[]> {
+    return this.http.get<Registro[]>(`${this.baseURL}puntuacion-aula?id_instancia_juego=${idInstanciaJuego}&codigo_aula=${codigoAula}`)
   }
 
 }

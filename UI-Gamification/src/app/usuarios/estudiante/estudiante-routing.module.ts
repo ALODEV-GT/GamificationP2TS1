@@ -9,6 +9,10 @@ import { JuegoEjecucionComidoComponent } from './pages/juego-ejecucion-comido/ju
 import { JuegoEjecucionSopaComponent } from './pages/juego-ejecucion-sopa/juego-ejecucion-sopa.component';
 import { JuegoEjecucionMemoramaComponent } from './pages/juego-ejecucion-memorama/juego-ejecucion-memorama.component';
 import { JuegoEjecucionCuriosoComponent } from './pages/juego-ejecucion-curioso/juego-ejecucion-curioso.component';
+import { PuntajeComidoComponent } from './pages/puntaje-comido/puntaje-comido.component';
+import { PuntajeSopaComponent } from './pages/puntaje-sopa/puntaje-sopa.component';
+import { PuntajeMemoramaComponent } from './pages/puntaje-memorama/puntaje-memorama.component';
+import { PuntajeCuriosoComponent } from './pages/puntaje-curioso/puntaje-curioso.component';
 
 const rutas: Routes = [
   {
@@ -38,6 +42,22 @@ const rutas: Routes = [
       {
         path: 'aula/:codigo/juego/curioso/:id',
         component: JuegoEjecucionCuriosoComponent
+      },
+      {
+        path: 'aula/:codigo/puntaje/comido/:id',
+        component: PuntajeComidoComponent
+      },
+      {
+        path: 'aula/:codigo/puntaje/sopa/:id',
+        component: PuntajeSopaComponent
+      },
+      {
+        path: 'aula/:codigo/puntaje/memorama/:id',
+        component: PuntajeMemoramaComponent
+      },
+      {
+        path: 'aula/:codigo/puntaje/curioso/:id',
+        component: PuntajeCuriosoComponent
       },
       {
         path: 'perfil',

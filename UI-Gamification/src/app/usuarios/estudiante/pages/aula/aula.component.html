@@ -11,7 +11,7 @@
       </div>
       <div class="user-info-miembro mt-2" *ngFor="let juego of juegosCompartidos">
         <button (click)="redireccionar(juego)" [ngClass]="colorBoton(juego)"> {{juego.nombre}} </button>
-        <button type="button" class="btn btn-warning mx-2">
+        <button (click)="dirigirAPuntaje(juego)" type="button" [ngClass]="colorBotonPuntaje(juego)">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trophy-fill"
             viewBox="0 0 16 16">
             <path

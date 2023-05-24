@@ -1,17 +1,17 @@
 
 CREATE TABLE control_game_memorama.respuesta(
-    id SERIAL PRIMARY KEY,  
+    id SERIAL PRIMARY KEY,
     respuesta VARCHAR(70) NOT NULL
 );
 
 CREATE TABLE control_game_memorama.pregunta(
-    id SERIAL PRIMARY KEY, 
+    id SERIAL PRIMARY KEY,
     cantidad_respuestas INTEGER NOT NULL,
     pregunta VARCHAR(70) NOT NULL
 );
 
 CREATE TABLE control_game_memorama.pregunta_respuesta(
-    id SERIAL PRIMARY KEY, 
+    id SERIAL PRIMARY KEY,
     id_pregunta INTEGER NOT NULL,
     id_respuesta INTEGER NOT NULL,
     FOREIGN KEY (id_pregunta) REFERENCES control_game_memorama.pregunta(id),
@@ -19,7 +19,7 @@ CREATE TABLE control_game_memorama.pregunta_respuesta(
 );
 
 CREATE TABLE control_game_memorama.Tema(
-    id SERIAL PRIMARY KEY, 
+    id SERIAL PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
     cantidad_preguntas INTEGER NOT NULL,
     dificultad VARCHAR(15) NOT NULL,
@@ -28,12 +28,12 @@ CREATE TABLE control_game_memorama.Tema(
 );
 
 CREATE TABLE control_game_memorama.Tema_pregunta(
-    id SERIAL PRIMARY KEY, 
+    id SERIAL PRIMARY KEY,
     id_pregunta INTEGER NOT NULL,
     id_tema INTEGER NOT NULL,
     FOREIGN KEY (id_tema) REFERENCES control_game_memorama.Tema(id),
     FOREIGN KEY (id_pregunta) REFERENCES control_game_memorama.pregunta(id)
-); 
+);
 
 CREATE TABLE control_game_memorama.punteo_partida_memorama(
     id SERIAL PRIMARY KEY,

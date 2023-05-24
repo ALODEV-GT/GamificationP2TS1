@@ -85,6 +85,22 @@ export class AulaComponent implements OnInit {
 
   }
 
+  colorBotonPuntaje(juego: JuegoCompartidoI): string {
+    switch (juego.id_tipo_juego) {
+      case 1:
+        return "btn btn-dark"
+      case 2:
+        return "btn btn-danger"
+      case 3:
+        return "btn btn-warning"
+      case 4:
+        return "btn btn-success"
+      default:
+        return "btn btn-secondary"
+    }
+
+  }
+
   redireccionar(juego: JuegoCompartidoI) {
     switch (juego.id_tipo_juego) {
       case 1:
@@ -131,6 +147,26 @@ export class AulaComponent implements OnInit {
         })
       }
     })
+  }
+
+  dirigirAPuntaje(juego: JuegoCompartidoI) {
+    switch (juego.id_tipo_juego) {
+      case 1:
+        this.router.navigate([`estudiante/aula/${this.codigoAula}/puntaje/comido/${juego.id_instancia_juego}`])
+        break;
+      case 2:
+        this.router.navigate([`estudiante/aula/${this.codigoAula}/puntaje/sopa/${juego.id_instancia_juego}`])
+        break;
+      case 3:
+        this.router.navigate([`estudiante/aula/${this.codigoAula}/puntaje/memorama/${juego.id_instancia_juego}`])
+        break;
+      case 4:
+        this.router.navigate([`estudiante/aula/${this.codigoAula}/puntaje/curioso/${juego.id_instancia_juego}`])
+        break;
+      default:
+        this.router.navigate([`estudiante/aula/${this.codigoAula}`])
+        break;
+    }
   }
 
   openModal() {

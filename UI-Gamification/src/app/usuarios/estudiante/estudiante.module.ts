@@ -14,6 +14,10 @@ import { JuegoEjecucionSopaComponent } from './pages/juego-ejecucion-sopa/juego-
 import { JuegoEjecucionMemoramaComponent } from './pages/juego-ejecucion-memorama/juego-ejecucion-memorama.component';
 import { JuegoEjecucionCuriosoComponent } from './pages/juego-ejecucion-curioso/juego-ejecucion-curioso.component';
 import { ComidoModule } from 'src/app/juegos/comido/comido.module';
+import { PuntajeComidoComponent } from './pages/puntaje-comido/puntaje-comido.component';
+import { PuntajeSopaComponent } from './pages/puntaje-sopa/puntaje-sopa.component';
+import { PuntajeMemoramaComponent } from './pages/puntaje-memorama/puntaje-memorama.component';
+import { PuntajeCuriosoComponent } from './pages/puntaje-curioso/puntaje-curioso.component';
 
 
 @NgModule({
@@ -25,7 +29,11 @@ import { ComidoModule } from 'src/app/juegos/comido/comido.module';
     JuegoEjecucionComidoComponent,
     JuegoEjecucionSopaComponent,
     JuegoEjecucionMemoramaComponent,
-    JuegoEjecucionCuriosoComponent
+    JuegoEjecucionCuriosoComponent,
+    PuntajeComidoComponent,
+    PuntajeSopaComponent,
+    PuntajeMemoramaComponent,
+    PuntajeCuriosoComponent
   ],
   imports: [
     CommonModule,
