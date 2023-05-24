@@ -1,0 +1,66 @@
+1-Cultura guatemalteca
+
+a.¿Cual es el arbol nacional de Guatemala?
+    R: la ceiba
+    op1:Pino
+    op2:Oliveo
+    op3:Arbol del neem
+
+b.¿Cuál es la pirámide más grande de Guatemala?
+    R:La Danta
+    op1:El gran Jaguar
+    op2:Templo IV
+    op3:machupichu
+
+c.¿Cuál es el volcán más alto de Guatemala?
+    R:Tajumulco
+    op1:Acatenango
+    op2:Tacana
+    op3:Pacaya
+
+d.¿En qué año se firmó el Acta de Independencia de Guatemala?
+ R:1821
+ op1:1822
+ op2:1521
+ op3:1850
+
+e.¿Quién obtuvo el primer Premio Nobel de Guatemala?
+    R:Miguel Angel
+    op1:Roberta Menchu
+    op2:Efrain Recinos
+    op3:José Martí
+
+
+2-Cultura general
+
+a.¿Cual es la moneda oficial de japón?
+ R:yen
+ op1:yuan
+ op2:won
+ op3:peso
+
+b.¿En que pais se encunetra el Machu Picchu?
+    R:peru
+    op1:chile
+    op2:bolivia
+    op3:argentina
+
+c.¿Hueso mas largo del cuerpo humano?
+    R:Femur
+    op1:tibia
+    op2:radio
+    op3:columna
+
+d:¿Cuantos lados tiene un rombo?
+    R:4 lados
+    op1:6 lados
+    op2:5 lados
+    op3:2 lados
+
+e:¿Cual es la montañan más alta de la tierra?
+    R:Monte Everest
+    op1:Aconcagua
+    op2:Kanchenjunga
+    op3:Monte fuji
+
+

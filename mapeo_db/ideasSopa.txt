@@ -1,0 +1,31 @@
+1- Mamiferos
+Palabras: 
+
+perro
+elefante
+camello
+leon
+zorro
+
+
+
+2-Matematicas
+palabras:
+
+operacion
+suma
+divison
+resta
+raiz
+
+
+
+3-Teoria de sistemas
+palabaras:
+
+paradigma
+teoria
+sistemas
+analisis
+diagrama
+
