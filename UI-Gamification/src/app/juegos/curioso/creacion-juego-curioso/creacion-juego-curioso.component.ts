@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsuarioService } from 'src/app/usuarios/services/usuario.service';
+import { Usuario } from 'src/models/usuarios/Usuario';
+import Swal from 'sweetalert2';
+import { creacionCurioso } from '../models/creacionCurioso';
 import { preguntaCurioso } from '../models/preguntaCurioso';
+import { curiosoCreacionService } from '../services/curioso.service';
 
 @Component({
   selector: 'app-creacion-juego-curioso',
@@ -20,7 +26,11 @@ export class CreacionJuegoCuriosoComponent implements OnInit {
 
   preguntas:preguntaCurioso[]=[]
 
-  constructor() { }
+  constructor(private curiosoService:curiosoCreacionService,private usuarioService:UsuarioService,private router:Router) { }
+
+
+  ngOnInit(): void {
+  }
 
 
 
@@ -46,9 +56,27 @@ export class CreacionJuegoCuriosoComponent implements OnInit {
 
 
 
+  crearJuego(){
+
+    let user:Usuario = this.usuarioService.getUsuarioSesion()!;
+    console.log(new creacionCurioso(this.tituloPartida,1,this.preguntas))
+
+    this.curiosoService.saveCurioso(new creacionCurioso(this.tituloPartida,user.id_usuario,this.preguntas)).subscribe((gen:creacionCurioso)=>{
+      console.log(gen)
+      this.popAfirmation();
+      this.router.navigate(['/profesor/creados'])
+    })
+
+  }
 
 
-  ngOnInit(): void {
+
+
+
+  public popAfirmation(){
+    Swal.fire(
+      'Partida Creada',
+    )
   }
 
 }

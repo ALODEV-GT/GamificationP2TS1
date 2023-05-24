@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/usuarios/services/usuario.service';
 import { Usuario } from 'src/models/usuarios/Usuario';
 import { SesionService } from 'src/service/sesion.service';
@@ -22,7 +23,7 @@ export class CreacionJuegoComponent implements OnInit {
   palabraNG="";
   descripcionNivel:string="";
   limite=0;
-  constructor(private sopaService:sopaCreacionService,private usuarioService:UsuarioService) { 
+  constructor(private sopaService:sopaCreacionService,private usuarioService:UsuarioService,private router:Router) { 
 
   }
 
@@ -51,6 +52,7 @@ export class CreacionJuegoComponent implements OnInit {
       this.sopaService.saveUsurioSesion(new creacionSopa(this.tituloPartida,user.id_usuario,this.palabras,this.nivelPartida)).subscribe((gen:creacionSopa)=>{
         console.log(gen)
         this.popAfirmation();
+        this.router.navigate(['/profesor/creados'])
       })
     }
 

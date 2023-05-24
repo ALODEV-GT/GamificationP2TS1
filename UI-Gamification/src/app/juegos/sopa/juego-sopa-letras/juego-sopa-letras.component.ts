@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 import { sopaJuegoService } from './service/sopaService';
 import { palabraBD } from './models/palabraBD';
 import { titulo } from './models/titulo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-juego-sopa-letras',
@@ -40,7 +41,7 @@ export class JuegoSopaLetrasComponent implements OnInit {
 
   nombres: string[] = [];
 
-  dificultad: string = "";
+  dificultad: string = "Intermedio";
 
   seleccion: string = "";
 
@@ -59,7 +60,7 @@ export class JuegoSopaLetrasComponent implements OnInit {
   titulo: string = "";
 
 
-  constructor(private sopaService: sopaJuegoService) {
+  constructor(private sopaService: sopaJuegoService,private router:Router) {
 
 
     //titulo se agrega desde la BD
@@ -126,7 +127,7 @@ export class JuegoSopaLetrasComponent implements OnInit {
   }
 
  async ngOnInit(): Promise<void> {
-  let titulo:titulo = await this.sopaService.getTituloInstancia(6).toPromise();
+ /*  let titulo:titulo = await this.sopaService.getTituloInstancia(6).toPromise();
 
   this.titulo=titulo.titulo;
   
@@ -136,12 +137,17 @@ export class JuegoSopaLetrasComponent implements OnInit {
     this.arrayPalabras.push((palabras[index].palabra).toUpperCase());
     
   }
+ */
 
+  //this.dificultad=titulo.nivel;
 
-  this.dificultad=titulo.nivel;
+  this.arrayPalabras.push("GAME")
+  this.arrayPalabras.push("LEARN")
+  this.arrayPalabras.push("JUEGA")
+  this.arrayPalabras.push("APRENDE")
+  this.arrayPalabras.push("DIVIERTE")
 
-
-  this.totalPalabras=palabras.length;
+  this.totalPalabras=this.arrayPalabras.length;
 
 
   if (this.dificultad == "Facil") {
@@ -435,63 +441,6 @@ export class JuegoSopaLetrasComponent implements OnInit {
 
   }
 
-  comprobar() {
-    console.log("--------- tamanio")
-    console.log(this.posicionesSeleccionadas.length)
-    console.log("--------- posiciones seleccionadas")
-    console.log(this.posicionesSeleccionadas);
-    console.log("--------- posiciones seleccionadas")
-
-    this.posicionesSeleccionadas.sort();
-    let iguales = true;
-
-    for (let index = 0; index < this.palabrasPosicion.length; index++) {
-      const element1 = this.palabrasPosicion[index];
-
-
-
-      if (element1.posiciones.length === this.posicionesSeleccionadas.length) {
-        console.log("entro a ciclo")
-        element1.posiciones.sort();
-        
-        for (let jindex = 0; jindex < this.palabrasPosicion.length; jindex++) {
-          let element = this.palabrasPosicion[index];
-
-          console.log("posiciones  "+element.posiciones[jindex]);
-          console.log("posiciones  "+this.posicionesSeleccionadas[jindex]);
-
-          console.log("posiciones  "+element.posiciones[jindex][1]);
-          console.log("posiciones  "+this.posicionesSeleccionadas[jindex][1]);
-
-
-          if (element.posiciones[jindex] === this.posicionesSeleccionadas[jindex] || element.posiciones[jindex][1] === this.posicionesSeleccionadas[jindex][1]) {
-            console.log(element.posiciones[jindex]);
-            console.log(this.posicionesSeleccionadas);
-            console.log("palabra encontrada xd");
-
-            this.funcionPalabra();
-            break;
-
-
-          } else {
-            console.log("no se encontro")
-            iguales = false;
-            break;
-
-          }
-        }
-
-      }
-
-    }
-
- /*    if (iguales) {
-      console.log("palabra encontrada")
-    } else {
-      console.log("palabra no encontrada")
-    } */
-  }
-
 
 
 
@@ -516,26 +465,19 @@ export class JuegoSopaLetrasComponent implements OnInit {
     if (this.totalPalabras === 0) {
       this.popJuegoTerminado();
       console.log("JUEGO TERMINADOOO")
+      this.router.navigate(['/inicio/principal'])
     }
 
 
   }
 
 
-  pintar() {
-
-    const element: any = document.querySelector('#4');
-
-    element.style.color = 'red';
-
-  }
-
 
 
   public popPalabraAcertada() {
     Swal.fire({
       position: 'center',
-      icon: 'success',
+      icon: 'info',
       title: 'Palabra Encontada',
       showConfirmButton: false,
       timer: 1000,
@@ -548,14 +490,16 @@ export class JuegoSopaLetrasComponent implements OnInit {
   public popJuegoTerminado() {
     Swal.fire({
       position: 'center',
-      icon: 'error',
-      title: 'Juego terminado',
+      icon: 'success',
+      title: 'Demo terminado',
       text: 'Puntuacion obtenida '+this.puntuacion,
       showConfirmButton: false,
-      timer: 2000,
+      timer: 4000,
 
 
     })
   }
+
+
 
 }

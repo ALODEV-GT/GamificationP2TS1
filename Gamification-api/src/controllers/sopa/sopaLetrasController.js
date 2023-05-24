@@ -56,11 +56,40 @@ const getTemasJuegoInstancia=async (req, res) => {
 
 
 
+
+const guardarHisotiral = async(req,res)=>{
+    const puntaje = req.body
+    const response = await conexion.pool.query(
+    'INSERT INTO control_game_sopa.historial_partida_sopa(id_instancia_juego, codigo_aula, id_jugador, puntuacion, nivel) VALUES($1,$2,$3,$4,$5)',
+    [puntaje.id_instancia_juego,puntaje.codigo_aula, puntaje.id_jugador, puntaje.puntuacion, puntaje.nivel])
+    return res.json(response.rows[0])  ;
+
+}
+
+
+
+const listarHistorial = async(req,res)=>{
+
+    const puntaje = req.body
+    const response = await conexion.pool.query(
+    'SELECT nombre,usuario,codigo_aula,puntuacion,nivel FROM control_usuarios.usuario AS users INNER JOIN control_game_sopa.historial_partida_sopa AS histori ON users.id_usuario=histori.id_jugador ORDER BY codigo_aula;')
+    return res.json(response.rows)  ;
+
+
+
+}
+
+  
+
+
+
   module.exports={
     saveaSopa:saveaSopa,
     getPalabras:getPalabras,
     getTemasJuego:getTemasJuego,
     getTemasJuegoInstancia:getTemasJuegoInstancia,
+    guardarHisotiral:guardarHisotiral,
+    listarHistorial:listarHistorial,
  /*    getTemasJuego:getTemasJuego,
     getQuestions:getQuestions,
     getRespuestas:getRespuestas */

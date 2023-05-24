@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { historialSopa } from '../models/historialSopa';
 import { palabraBD } from '../models/palabraBD';
+import { puntuacionSopa } from '../models/puntuacionSopa';
 import { titulo } from '../models/titulo';
 
 
@@ -31,6 +33,18 @@ export class sopaJuegoService{
      public getTituloInstancia(id_tema:number){
       return this.httpClient.get<titulo>(this.API_URL+'titulo-instancia?id='+id_tema)
      } 
+
+
+     public saveHistorial(creacion:historialSopa): Observable<historialSopa>{
+      return this.httpClient.post<historialSopa>(this.API_URL+'save-historial',creacion)
+    }
+    
+
+
+    public getHistorial(){
+      return this.httpClient.get<puntuacionSopa[]>(this.API_URL+'listar-historial')
+     } 
+
 
       
 }

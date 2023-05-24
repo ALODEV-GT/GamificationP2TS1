@@ -16,6 +16,7 @@ import { ComidoDemoComponent } from './shared/demos/comido-demo/comido-demo.comp
 import { MemoramaDemoComponent } from './shared/demos/memorama-demo/memorama-demo.component';
 import { SopaDemoComponent } from './shared/demos/sopa-demo/sopa-demo.component';
 import { CuriosoDemoComponent } from './shared/demos/curioso-demo/curioso-demo.component';
+import { SopaModule } from './juegos/sopa/sopa.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { CuriosoDemoComponent } from './shared/demos/curioso-demo/curioso-demo.c
     ReactiveFormsModule,
     HttpClientModule,
     ComidoModule,
-    MemoramaModule
+    MemoramaModule,
+    SopaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

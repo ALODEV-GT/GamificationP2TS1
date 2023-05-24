@@ -31,7 +31,7 @@
                 <button class="btn btn-danger" (click)="eliminarPalabra(i)" >Eliminar</button>
             </div>
           <hr>
-          <button class="btn btn-primary" (click)="crearJuego()" >Crear Juego</button>
+          <button [disabled]="palabras.length<4" class="btn btn-primary" (click)="crearJuego()" >Crear Juego</button>
         </form>
     </div>
 

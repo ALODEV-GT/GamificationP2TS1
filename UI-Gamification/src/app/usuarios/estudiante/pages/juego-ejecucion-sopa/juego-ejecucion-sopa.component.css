@@ -1,0 +1,116 @@
+.bd-example {
+    position: relative;
+    padding: 1rem;
+    margin: 1rem -15px 0;
+    border: solid #f7f7f9;
+    border-width: 0.2rem 0 0;
+}
+
+.btn{
+    float: left;
+    border-radius: 0%;
+    width:65px;
+    height:65px;
+    border-color: white;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+h1{
+  font-family: 'Raleway', sans-serif;
+}
+
+h2{
+  font-family: 'Raleway', sans-serif;
+}
+
+
+.tituloGen{
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid white;
+  background-color: green;
+  color: white;
+ 
+}
+
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* ajusta la altura según tu necesidad */
+  }
+  
+.centrado{
+    text-align: center;
+}
+
+  .izquierda{
+text-align: left;
+  }
+
+  .derecha{
+text-align: right;
+  }
+
+
+  .top{
+    text-align: start;
+  }
+  
+
+  .scoreboard {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    padding: 10px;
+    background-color: #1e416f;
+    color: #fff;
+    border-color: white;
+    border-width: 7px;
+    border-style: dashed;
+  }
+  
+.divIntermedio{
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divPalabras{
+    text-align: center;
+  font-weight: bold;
+}
+  
+  #team1score, #team2score {
+    font-size: 70px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+
+
+  #team1score {
+    color: #f9a11b;
+    font-family: 'VT323', monospace;
+  }
+  
+  #team2score {
+    color: #ff4f00;
+  }
+
+  .titulo{
+    font-family: 'VT323', monospace;
+    font-size: 40px;
+    margin-bottom: 5px;
+    color: white;
+  }
