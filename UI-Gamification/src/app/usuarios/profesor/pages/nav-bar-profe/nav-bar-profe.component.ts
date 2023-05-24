@@ -92,5 +92,4 @@ export class NavBarProfeComponent implements OnInit {
     this.myDropVar.toggle()
   }
 
-
 }
