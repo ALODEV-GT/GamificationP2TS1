@@ -100,6 +100,18 @@ const listarHistorial = async(req,res)=>{
 
 }
 
+const listarHistorialAula = async(req,res)=>{
+    const idUser=req.query.id
+    const instancia=req.query.instancia
+    const puntaje = req.body
+    const response = await conexion.pool.query(
+    'SELECT nombre,usuario,codigo_aula,puntuacion,total_aciertos FROM control_usuarios.usuario AS users INNER JOIN control_game_preguntados.historial_partida_curioso AS histori ON users.id_usuario=histori.id_jugador WHERE codigo_aula=$1 AND id_instancia_juego=$2',[idUser,instancia])
+    return res.json(response.rows)  ;
+
+
+
+}
+
 
 
 
@@ -114,6 +126,7 @@ const listarHistorial = async(req,res)=>{
     getOpcionesJuegoInstancia:getOpcionesJuegoInstancia,
     guardarHistorial:guardarHistorial,
     listarHistorial:listarHistorial,
+    listarHistorialAula:listarHistorialAula,
  /*    getTemasJuego:getTemasJuego,
     getQuestions:getQuestions,
     getRespuestas:getRespuestas */

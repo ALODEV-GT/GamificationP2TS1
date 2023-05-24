@@ -56,6 +56,14 @@ export class curiosoCreacionService{
      } 
 
 
+     public getHistorialAula(aula:string,instancia:number){
+      return this.httpClient.get<puntuacionCurioso[]>(this.API_URL+'listar-historial?id='+aula+"&instancia="+instancia)
+     } 
+
+
+
+
+
 
 
 

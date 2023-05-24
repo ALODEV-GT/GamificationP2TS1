@@ -1,1 +1,20 @@
-<p>puntaje-curioso works!</p>
+<!--table>(tr>td*8)*5-->
+<h1>Tabla de posiciones</h1>
+<table cellspacing="0" cellpadding="0">
+  <tr class="destacado">
+    <td>Nombre</td>  
+    <td>Usuario</td>
+    <td>Puntuación</td>
+    <td>Total aciertos</td>
+    <td>Aula</td>
+  </tr>
+  <tr *ngFor="let punto of punteos" >
+    <td>
+        {{punto.nombre}}</td>
+    <td>
+      {{punto.usuario}}</td>
+    <td>{{punto.puntuacion}}</td>
+    <td>{{punto.total_aciertos}}</td>
+    <td>{{punto.codigo_aula}}</td>
+
+  </tr>

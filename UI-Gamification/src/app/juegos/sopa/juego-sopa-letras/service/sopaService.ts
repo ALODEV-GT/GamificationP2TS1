@@ -46,5 +46,9 @@ export class sopaJuegoService{
      } 
 
 
+     public getHistorialAula(id:string,instancia:number){
+      return this.httpClient.get<puntuacionSopa[]>(this.API_URL+'listar-historial-aula?id='+id+"&instancia="+instancia)
+     } 
+
       
 }
