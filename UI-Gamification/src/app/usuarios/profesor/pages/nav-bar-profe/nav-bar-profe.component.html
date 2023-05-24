@@ -43,7 +43,20 @@
             </button>
             <hr>
           </div>
-
+          <!--Notificacion comentarios de publicacion-->
+          <div class="m-3" *ngFor="let noti of notisComentarios">
+            <span>
+              {{noti.nombre}} {{noti.apellido}} ({{noti.usuario}}) comento tu publicacion "{{recorteTexto(noti.contenido)}}"
+            </span>
+            <hr>
+          </div>
+          <!--Notificacion likes de publicacion-->
+          <div class="m-3" *ngFor="let noti of notisLikes">
+            <span>
+              {{noti.nombre}} {{noti.apellido}} ({{noti.usuario}}) le dio like a tu publicacion "{{recorteTexto(noti.contenido)}}"
+            </span>
+            <hr>
+          </div>
         </div>
       </div>
       <button routerLink="/profesor/perfil" type="button" class="btn btn-primary boton-margin">

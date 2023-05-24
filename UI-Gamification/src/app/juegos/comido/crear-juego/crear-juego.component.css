@@ -1,0 +1,20 @@
+.input-space {
+  border: none;
+  font-weight: bold;
+  color: #dfe216;
+  box-shadow: 1px 1px 15px 1px #ecdf20;
+  background-color: transparent;
+}
+
+.tarjeta {
+  background-color: rgb(26, 23, 23);
+  border: 10px solid #1919A6;
+  box-shadow: 1px 1px 15px 1px #1919A6;
+  border-radius: 20px;
+}
+
+.pista {
+  background-color: rgb(26, 23, 23);
+  box-shadow: 1px 1px 15px 1px #ecdf20;
+  border-radius: 10px;
+}
