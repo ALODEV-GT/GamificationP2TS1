@@ -7,7 +7,11 @@
           <div class="row p-5">
             <div class="game-over">{{messaje}}</div>
           </div>
-
+          <div class="row d-flex justify-content-center pb-3">
+            <div class="col-auto">
+              <span class="multiplicador">20X{{multiplicador}}</span>
+            </div>
+          </div>
           <div class="row">
             <div class="col-12">
               <div class="orilla">
@@ -20,7 +24,7 @@
                     <div class="coin" [style.left.px]="coin.x" [style.top.px]="coin.y" *ngIf="coin.visible">
                     </div>
                   </div>
-                  <div class="score">0</div>
+                  <div class="score">{{points}}</div>
                 </div>
               </div>
             </div>

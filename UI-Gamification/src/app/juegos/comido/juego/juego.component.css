@@ -196,3 +196,9 @@
   box-shadow: 1px 1px 15px 1px #1919A6;
   height: fit-content;
 }
+
+.multiplicador{
+  color: #eee8e8;
+  font-size: 25px;
+  font-weight: 500;
+}

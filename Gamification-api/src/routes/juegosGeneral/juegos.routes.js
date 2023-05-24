@@ -5,15 +5,11 @@ const router = express.Router();
 router.post('/guardar-instancia-juego', JuegosController.guardarInstanciaJuego)
 
 router.get('/instancias-juego', JuegosController.getInstanciasJuego)
-/*
 
-router.get('/aula', JuegosController.getAulaByCodigo)
+router.post('/guardar-compartir-aula', JuegosController.guardarCompartirAula)
 
-router.get('/mis-aulas-profesor', JuegosController.getMisAulasProfesor)
+router.get('/existe-compartir-aula', JuegosController.existeCompartirAula)
 
-router.get('/mis-aulas-estudiante', JuegosController.getMisAulasEstudiante)
-
-router.get('/miembros', JuegosController.getMiembros)
-*/
+router.get('/all-compartir-aula', JuegosController.getAllCompartirAula)
 
 module.exports = router;

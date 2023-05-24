@@ -1,5 +1,10 @@
 import { Component, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
 import { Comido } from '../models/Comido';
+import { ComidoService } from '../services/comido.service';
+import { Router } from '@angular/router';
+import { Punteo } from '../models/Punteo';
+import { UsuarioService } from '../../../usuarios/services/usuario.service';
+import { Usuario } from 'src/models/usuarios/Usuario';
 
 interface Letter {
   id: string,
@@ -21,6 +26,8 @@ interface Coin {
 })
 export class JuegoComponent implements OnInit {
   @Input() esDemo!: boolean;
+  @Input() id_instancia_juego!: number
+  @Input() codigoAula!: string
 
   @ViewChild('pacman', { static: false }) pacman!: ElementRef;
   @ViewChild('ghost', { static: false }) ghost!: ElementRef;
@@ -58,9 +65,13 @@ export class JuegoComponent implements OnInit {
   //Pacman
   isPacmanDead = false;
 
-  //Guessed words
+  //Points
+  BASE_POINT: number = 20;
   counter: number = 0;
-
+  points: number = 0;
+  multiplicador: number = 1;
+  puntosPerdidos: number = 0;
+  numErrores: number = 0;
 
   messaje: string = "";
   errorMessaje: string = "";
@@ -68,16 +79,28 @@ export class JuegoComponent implements OnInit {
   //comparition
   inputLetter: string = "";
 
-  constructor() {
+  constructor(
+    private comidoService: ComidoService,
+    private router: Router,
+    private usuarioService: UsuarioService
+  ) {
 
   }
   ngOnInit(): void {
     if (this.esDemo) {
       this.game.palabra = "game-learn"
       this.game.pistas = ["Nombre de la pagina"]
+      this.createDivLetters();
+      this.createDivCoins();
+      this.soundStartGame();
+    } else {
+      this.comidoService.getConfigsGame(Number(this.id_instancia_juego)).subscribe((resp: Comido) => {
+        this.game = resp;
+        this.createDivLetters();
+        this.createDivCoins();
+        this.soundStartGame();
+      })
     }
-    this.createDivLetters();
-    this.createDivCoins();
   }
 
   createDivLetters() {
@@ -115,6 +138,7 @@ export class JuegoComponent implements OnInit {
       }
     }
 
+    this.sumPoints(this.coinDifferenceX * 30)
     this.desabledButtons(false, this.coinDifferenceX * 30)
 
     this.eatCoin(isLast)
@@ -127,6 +151,23 @@ export class JuegoComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  sumPoints(time: number) {
+    setTimeout(() => {
+      this.points += this.BASE_POINT * this.multiplicador;
+      this.multiplicador++;
+    }, time);
+  }
+
+  resPoints(time: number) {
+    setTimeout(() => {
+      const ptsPerdidos = Math.floor(this.points * .20)
+      this.points = this.points - ptsPerdidos;
+      this.puntosPerdidos += ptsPerdidos;
+      this.numErrores++;
+      this.multiplicador = 1;
+    }, time);
   }
 
   eatCoin(isLast: boolean) {
@@ -148,7 +189,21 @@ export class JuegoComponent implements OnInit {
       this.soundWin()
       this.messaje = "GANASTE"
       this.desabledButtons(true, 1)
+      this.guardarPunteo();
     }, 500)
+    this.redirect(500 + 5000);
+  }
+
+  guardarPunteo() {
+    const usuario: Usuario = this.usuarioService.getUsuarioSesion()!;
+    const punteo: Punteo = new Punteo(0, this.id_instancia_juego, usuario.id_usuario,this.codigoAula,this.points,this.numErrores,this.puntosPerdidos);
+    this.comidoService.guardarPunteo(punteo).subscribe((resp: boolean) => {
+      if (resp) {
+        console.log("punteo guardado");
+      }else{
+
+      }
+    })
   }
 
   moveGhost() {
@@ -163,6 +218,7 @@ export class JuegoComponent implements OnInit {
       }
     }
 
+    this.resPoints(this.coinDifferenceX * 30 * 2)
     this.desabledButtons(false, this.coinDifferenceX * 30 * 2)
 
     if (willPacmanDie) {
@@ -185,7 +241,19 @@ export class JuegoComponent implements OnInit {
       this.isPacmanDead = true;
       this.messaje = "PERDISTE"
       this.desabledButtons(true, 1);
+      this.guardarPunteo();
     }, this.coinDifferenceX * 2 * 30);
+    this.redirect(this.coinDifferenceX * 2 * 30);
+  }
+
+  redirect(time: number) {
+    setTimeout(() => {
+      if (this.esDemo) {
+        this.router.navigate([`inicio/principal`])
+      } else {
+        this.router.navigate([`estudiante/aula/${this.codigoAula}`])
+      }
+    }, time + 8000);
   }
 
   soundEatFruit() {
@@ -244,15 +312,13 @@ export class JuegoComponent implements OnInit {
       this.moveGhost()
     }
 
-
-
     this.inputLetter = "";
   }
 
   findLetter(): boolean {
     for (let i = 0; i < this.letters.length; i++) {
       if (!this.letters[i].value) {
-        if (this.letters[i].correctValue == this.inputLetter) {
+        if (this.letters[i].correctValue.toLowerCase() == this.inputLetter.toLowerCase()) {
           this.letters[i].value = this.letters[i].correctValue
           return true;
         }

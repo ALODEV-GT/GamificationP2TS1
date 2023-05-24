@@ -1,1 +1,46 @@
-<p>puntaje-comido works!</p>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-10"></div>
+    <div class="col-2">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <div class="titulo">{{idPartida}} - {{nombrePartida}} </div>
+      <div *ngFor="let tabla of tablas" class="mt-4">
+        <div class="mb-1">
+          <div class="subtitulo">Aula: {{tabla.codigo}}</div>
+        </div>
+        <div class="mb-2">
+          <table class="table">
+            <thead class="table-light">
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Usuario</th>
+                <th>Numero de errores</th>
+                <th>Puntos perdidos</th>
+                <th>Puntos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let registro of tabla.registros, let i = index">
+                <td>{{i+1}}</td>
+                <td>{{registro.nombre_usuario}}</td>
+                <td>{{registro.apellido}}</td>
+                <td>{{registro.usuario}}</td>
+                <td>{{registro.numero_errores}}</td>
+                <td>{{registro.puntos_perdidos}}</td>
+                <td>{{registro.puteo}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-1"></div>
+    </div>
+  </div>
+</div>

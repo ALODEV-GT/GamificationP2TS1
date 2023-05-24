@@ -86,3 +86,8 @@
   color: dimgrey;
   cursor: pointer;
 }
+
+.btn-juego{
+  width: 100%;
+  font-weight: 500;
+}
