@@ -1,1 +1,56 @@
-<p>juego-ejecucion-sopa works!</p>
+
+
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+</head>
+
+
+
+<section style="background-color: #81cdf5" >
+    <h1 class="tituloGen" >{{titulo}}</h1>
+
+    <div class="contenedor">
+    
+        <div class="centrado">
+            <div *ngFor="let word of matriz; let i = index">
+                <div class="btn-group" *ngFor="let e of word;let j = index">
+                    <button  *ngIf="e.select==true;else not"  [disabled]="e.encontrado" class="btn btn-primary" (click)="clickCasilla(i,j)"  >{{e.letra}}</button>
+                    <ng-template #not><button class="btn btn-dark" [disabled]="e.encontrado"  (click)="clickCasilla(i,j)">{{e.letra}}</button></ng-template>
+                </div>
+            
+            </div>
+        </div>
+      
+        <div class="derecha">
+            <div class="divIntermedio">
+                <div class="scoreboard" >
+                    <h2 class="titulo" >Puntuación</h2>
+                    <div class="team">
+                        <span id="team1score">{{puntuacion}}</span>
+                    </div>
+                    
+                </div>
+            </div>
+            <hr>
+            <div class="divPalabras" >
+                <div class="divIntermedio" >
+                    <h1>Palabras por buscar</h1>
+                    <div *ngFor="let palabra of arrayPalabras;let i= index">
+                        <h3>{{palabra}}</h3>
+                    </div>
+                </div>
+              
+            </div>
+           
+        </div>
+    </div>
+    
+</section>

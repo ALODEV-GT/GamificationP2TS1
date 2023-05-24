@@ -1,1 +1,30 @@
-<p>juego-ejecucion-curioso works!</p>
+<body>
+    <div id="tablero-de-juego">
+        <div class="container " >
+            <div class="row">
+                <div class="col-12" >
+                    <div class="card" id="encabezado">
+                        <br>
+                        <span class="pregunta" id="pregunta">{{pregunta}}</span>
+                        <br>
+                  </div>
+                </div>
+            </div>
+         
+
+            <div class="row">
+                <div class="col-md-6" *ngFor="let opcion of opciones; let i=index" >
+                    <div  [style.background]="getRandomColor3()"  class="opcion"  id="opcion{{i}}" (click)="seleccionarOpcion(i)">
+                        {{opcion}}
+                   </div>
+                </div>
+            
+            </div>
+          
+
+        </div>
+    
+
+    </div>
+
+
