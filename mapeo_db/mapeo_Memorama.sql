@@ -61,3 +61,8 @@ SELECT tema.* FROM control_game_memorama.Tema AS tema
 INNER JOIN control_general_juego.instancia_juego AS instancia
 ON tema.codigo_instancia_juego = instancia.codigo_instancia_juego
 WHERE instancia.id_usuario_creador=1;
+
+
+SELECT user.nombre, user.apellido, user.usuario, partida.punteo, partida.dificultad FROM control_usuarios.usuario AS user
+INNER JOIN control_game_memorama.punteo_partida_memorama AS partida
+ON user.id_usuario = partida.id_usuario_juegador WHERE partida.codigo_aula = '123AA' AND partida.id_instancia_juego = 1;

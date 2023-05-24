@@ -27,6 +27,12 @@ const getTemasJuego=async (req, res) => {
     res.json(response.rows)
 }
 
+const getTemaJuegoIdInstancia=async (req, res) => {
+    const idMemorama=req.query.id
+    const response = await conexion.pool.query('SELECT * FROM control_game_memorama.Tema WHERE id_instancia_juego=$1',[idMemorama])
+    res.json(response.rows[0])
+}
+
 const getTemaMemorama = async (req, res) => {
     const idMemorama=req.query.id
     const response = await conexion.pool.query('SELECT * FROM control_game_memorama.Tema WHERE id=$1',[idMemorama])
@@ -89,10 +95,32 @@ const saveQuestions = async (preguntas, tema) => {
 
   const guardarPuntaje = async (req, res)=> {
     const puntaje = req.body
+    const existente = await conexion.pool.query(
+        'select * from control_game_memorama.punteo_partida_memorama where id_instancia_juego = $1 and codigo_aula = $2 and id_usuario_juegador=$3',
+        [puntaje.id_instancia_juego,puntaje.codigo_aula, puntaje.id_usuario_juegador])
+    if (existente.rows.length>0) {
+        const responseUpdate = await conexion.pool.query(
+            'UPDATE control_game_memorama.punteo_partida_memorama SET dificultad = $1, punteo = $2 WHERE id = $3',
+            [puntaje.dificultad,puntaje.punteo,existente.rows[0].id ])
+        return res.json(responseUpdate.rows[0]) ;
+    }
     const response = await conexion.pool.query(
     'INSERT INTO control_game_memorama.punteo_partida_memorama(id_instancia_juego, codigo_aula, id_usuario_juegador, punteo, dificultad) VALUES($1,$2,$3,$4,$5)',
     [puntaje.id_instancia_juego,puntaje.codigo_aula, puntaje.id_usuario_juegador, puntaje.punteo, puntaje.dificultad])
-    return res.json(response.rows[0])  ;
+    return res.json(response.rows[0]) ;
+  }
+
+  getCodigoAulaPuntacionesDePartida = async (req, res)=> {
+    const idInstanciaJuego=req.query.id
+    const response = await conexion.pool.query('SELECT codigo_aula, COUNT(*) AS cantidad_registros FROM control_game_memorama.punteo_partida_memorama WHERE id_instancia_juego = $1 GROUP BY codigo_aula',[idInstanciaJuego])
+    res.json(response.rows) 
+  }
+
+  getListPuntajesAulaInstaicaJuego = async (req, res)=> {
+    const idInstanciaJuego=req.query.id
+    const codigo=req.query.codigo
+    const response = await conexion.pool.query('SELECT usr.nombre, usr.apellido, usr.usuario, partida.punteo, partida.dificultad FROM control_usuarios.usuario AS usr INNER JOIN control_game_memorama.punteo_partida_memorama AS partida ON usr.id_usuario = partida.id_usuario_juegador  WHERE partida.codigo_aula = $1 AND partida.id_instancia_juego = $2 ORDER BY partida.punteo DESC',[codigo, idInstanciaJuego])
+    res.json(response.rows) 
   }
   
 
@@ -104,5 +132,8 @@ module.exports={
     getRespuestas:getRespuestas,
     setDificultad:setDificultad,
     getTemaMemorama:getTemaMemorama,
-    guardarPuntaje:guardarPuntaje
+    guardarPuntaje:guardarPuntaje,
+    getTemaJuegoIdInstancia:getTemaJuegoIdInstancia,
+    getCodigoAulaPuntacionesDePartida:getCodigoAulaPuntacionesDePartida,
+    getListPuntajesAulaInstaicaJuego:getListPuntajesAulaInstaicaJuego
 }
