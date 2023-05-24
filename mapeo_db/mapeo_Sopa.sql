@@ -1,5 +1,3 @@
-CREATE SCHEMA control_game_sopa;
-
 CREATE TABLE control_game_sopa.Titulo(
     id SERIAL PRIMARY KEY,
     id_instancia_juego INTEGER NOT NULL,
