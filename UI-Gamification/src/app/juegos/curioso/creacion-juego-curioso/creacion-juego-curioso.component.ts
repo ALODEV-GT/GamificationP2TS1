@@ -54,24 +54,43 @@ export class CreacionJuegoCuriosoComponent implements OnInit {
 
   }
 
-
+  eliminar(i:number){
+    this.preguntas.splice(i,1);
+  }
 
   crearJuego(){
 
-    let user:Usuario = this.usuarioService.getUsuarioSesion()!;
-    console.log(new creacionCurioso(this.tituloPartida,1,this.preguntas))
 
-    this.curiosoService.saveCurioso(new creacionCurioso(this.tituloPartida,user.id_usuario,this.preguntas)).subscribe((gen:creacionCurioso)=>{
-      console.log(gen)
-      this.popAfirmation();
-      this.router.navigate(['/profesor/creados'])
-    })
+    if (this.preguntas.length<3) {
 
+      this.popError("Minimo debes ingresar 3 preguntas");
+
+    }else{
+
+      let user:Usuario = this.usuarioService.getUsuarioSesion()!;
+
+
+      this.curiosoService.saveCurioso(new creacionCurioso(this.tituloPartida,user.id_usuario,this.preguntas)).subscribe((gen:creacionCurioso)=>{
+        console.log(gen)
+        this.popAfirmation();
+        this.router.navigate(['/profesor/creados'])
+      })
+  
+
+    }
+
+   
   }
 
 
 
-
+  public popError(msj:string){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: msj,
+    })
+  }
 
   public popAfirmation(){
     Swal.fire(

@@ -33,11 +33,11 @@
                     </div>
 
                     <div class="row justify-content-end">
-                        <div class="form-group col-sm-6"> <button type="submit" [disabled]="preguntas.length==5" (click)="agregarPreguntas()" class="btn btn-primary">Agregar Pregunta</button> </div>
+                        <div class="form-group col-sm-6"> <button type="submit" [disabled]="preguntas.length==6" (click)="agregarPreguntas()" class="btn btn-primary">Agregar Pregunta</button> </div>
                     </div>
                 </form>
 
-                <div *ngFor="let pregunta of preguntas">
+                <div *ngFor="let pregunta of preguntas;let i=index">
                    
 
               
@@ -47,7 +47,7 @@
 
                     </div>
                     <div class="form-group col-sm-2 flex-column d-flex"> 
-                        <button class="btn btn-danger" >eliminar</button>
+                        <button class="btn btn-danger" (click)="eliminar(i)"  >eliminar</button>
                     </div>
                 </div>
             </div>

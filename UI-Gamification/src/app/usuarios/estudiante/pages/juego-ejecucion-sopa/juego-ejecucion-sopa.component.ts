@@ -77,8 +77,7 @@ export class JuegoEjecucionSopaComponent implements OnInit {
   this.activatedRoute.params.subscribe(({ codigo, id }) => {
     this.id_instancia_juego = id;
     this.codigo_aula=codigo;
-    console.log("Codigo aula: " + codigo);
-    console.log("id_instancia_juego: " + id);
+
   })
 
 
@@ -189,7 +188,7 @@ export class JuegoEjecucionSopaComponent implements OnInit {
 
   public agregarPalabra(palabra: string) {
 
-    console.log("entro")
+
 
     let tamanio = this.palabraGrande();
 
@@ -213,17 +212,17 @@ export class JuegoEjecucionSopaComponent implements OnInit {
         for (let i = 0; i < palabra.length; i++) {
           if (aleatorio === 'horizontal') {
             this.matriz[fila][columna + i].letra = palabra[i];
-            console.log("i,j" + fila + "-" + (columna + i));
+    
             posicion.push([fila, (columna + i)]);
 
           } else if (aleatorio === 'vertical') {
             this.matriz[fila + i][columna].letra = palabra[i];
-            console.log("i,j" + fila + "-" + (columna + i));
+     
             posicion.push([(fila + i), columna]);
 
           } else if (aleatorio === 'diagonal') {
             this.matriz[fila + i][columna + i].letra = palabra[i];
-            console.log("i,j" + fila + "-" + (columna + i));
+           
             posicion.push([(fila + i), (columna + i)]);
           }
 
@@ -240,10 +239,7 @@ export class JuegoEjecucionSopaComponent implements OnInit {
   }
 
 
-  public imprimir() {
-    console.log(this.matriz.map(row => row.join('')).join('\n'));
 
-  }
 
   llenarVacios() {
     let tamanio = this.palabraGrande();
@@ -262,7 +258,7 @@ export class JuegoEjecucionSopaComponent implements OnInit {
 
 
   generarJuego() {
-    console.log("palabra mas grande :" + this.palabraGrande())
+ 
 
 
     this.inicializarMatriz();
@@ -270,7 +266,7 @@ export class JuegoEjecucionSopaComponent implements OnInit {
     if (this.dificultad === "Avanzado") {
       this.agregarReversibles();
     } else {
-      console.log("antes", this.arrayPalabras);
+ 
       this.arrayPalabrasUsadas = this.arrayPalabras;
     }
 
@@ -283,15 +279,11 @@ export class JuegoEjecucionSopaComponent implements OnInit {
     }
 
     this.llenarVacios();
-    this.imprimir();
-    console.log(this.palabrasPosicion)
-    console.log(this.posicionesSeleccionadas)
-    console.log("----")
+
+
     for (let index = 0; index < this.palabrasPosicion.length; index++) {
       const element = this.palabrasPosicion[index];
-      console.log(element.palabra)
-      console.log(element.posiciones)
-      console.log(element.posiciones.length)
+
     }
   }
 
@@ -313,9 +305,7 @@ export class JuegoEjecucionSopaComponent implements OnInit {
 
 
   clickCasilla(index: number, jindex: number) {
-    console.log(index)
-    console.log(jindex)
-    console.log(this.matriz[index][jindex]);
+
     if (this.matriz[index][jindex].select == true) {
       this.matriz[index][jindex].select = false;
       this.puntuacion = this.puntuacion - 10;
@@ -325,12 +315,10 @@ export class JuegoEjecucionSopaComponent implements OnInit {
       this.matriz[index][jindex].select = true;
       this.posicionesSeleccionadas.push([index, jindex]);
     }
-    console.log(this.matriz[index][jindex]);
-    console.log(this.palabrasPosicion[0].posiciones);
+  
 
 
 
-    console.log(this.posicionesSeleccionadas);
 
 
     this.comprobar2();
@@ -341,7 +329,7 @@ export class JuegoEjecucionSopaComponent implements OnInit {
 
 
   comprobar2(){
-    console.log("----------comprobacion-------------------");
+   
     
     let igualdad=true;
 
@@ -354,12 +342,7 @@ export class JuegoEjecucionSopaComponent implements OnInit {
       if (palabra.posiciones.length===this.posicionesSeleccionadas.length) {
         
         for (let jindex = 0; jindex < palabra.posiciones.length; jindex++) {
-          console.log("posicion or 0" +palabra.posiciones[jindex][0])
-          console.log("posicion sel 0" +this.posicionesSeleccionadas[jindex][0])
-
-          console.log("posicion or 1" +palabra.posiciones[jindex][1])
-          console.log("posicion sel 1" +this.posicionesSeleccionadas[jindex][1])
-
+         
          if (palabra.posiciones[jindex][0]===this.posicionesSeleccionadas[jindex][0] && palabra.posiciones[jindex][1]===this.posicionesSeleccionadas[jindex][1] ) {
           //  console.log("igualdad")
             
@@ -371,11 +354,11 @@ export class JuegoEjecucionSopaComponent implements OnInit {
         }
 
         if (igualdad) {
-          console.log("palabra conincidente")
+     
           this.funcionPalabra();
           break;
         }else{
-          console.log("palabra no coincide");
+      
           
         }
 
@@ -388,15 +371,13 @@ export class JuegoEjecucionSopaComponent implements OnInit {
     }
 
 
-    console.log("----------comprobacion fin-------------------");
-
   }
 
 
 
   funcionPalabra() {
 
-    console.log("------LLAMANDO FUNCION-----")
+  
 
     for (let index = 0; index < this.posicionesSeleccionadas.length; index++) {
       const element = this.posicionesSeleccionadas[index];
@@ -414,7 +395,7 @@ export class JuegoEjecucionSopaComponent implements OnInit {
     this.totalPalabras--;
     if (this.totalPalabras === 0) {
       this.popJuegoTerminado();
-      console.log("JUEGO TERMINADOOO")
+    
       this.guardarHistorial();
       this.router.navigate(['/estudiante/mis-aulas']);
 
@@ -429,7 +410,7 @@ export class JuegoEjecucionSopaComponent implements OnInit {
     let user:Usuario = this.usuarioService.getUsuarioSesion()!;
     
     this.sopaService.saveHistorial(new historialSopa(parseInt(this.id_instancia_juego),this.codigo_aula,user.id_usuario,this.puntuacion,this.dificultad)).subscribe((gen:historialSopa)=>{
-      console.log(gen);;
+      console.log(gen);
       
     })
 
