@@ -7,6 +7,7 @@ import { JuegosService } from '../../services/juegos.service';
 import { InstanciaJuego } from 'src/models/juegos/InstanciaJuego';
 import { UsuarioService } from '../../../usuarios/services/usuario.service';
 import { Usuario } from 'src/models/usuarios/Usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-juego',
@@ -27,7 +28,8 @@ export class CrearJuegoComponent implements OnInit {
     private fb: FormBuilder,
     private comidoService: ComidoService,
     private juegosService: JuegosService,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private router: Router
   ) { }
 
   miFormulario: FormGroup = this.fb.group({
@@ -94,6 +96,7 @@ export class CrearJuegoComponent implements OnInit {
             '',
             'success'
           )
+          this.router.navigate([`profesor/creados`])
           this.miFormulario.reset();
           this.pistas = [];
         }
