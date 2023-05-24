@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ComidoService } from '../../../../juegos/comido/services/comido.service';
 import { ActivatedRoute } from '@angular/router';
-import { Rep1 } from 'src/models/juegos/InterfacesJuego';
+import { ComidoService } from 'src/app/juegos/comido/services/comido.service';
+import { Registro } from 'src/models/juegos/InterfacesJuego';
 
 @Component({
   selector: 'app-puntaje-comido',
@@ -10,24 +10,23 @@ import { Rep1 } from 'src/models/juegos/InterfacesJuego';
 })
 export class PuntajeComidoComponent implements OnInit {
 
-  tablas: Rep1[] = []
+  id_instancia_juego!: number;
+  codigoAula: string = "";
+  registros: Registro[] = []
   nombrePartida: string = "Nadie ha jugado";
-  idPartida: number = 0;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private comidoService: ComidoService
   ) {
-    this.activatedRoute.params.subscribe(({ id }) => {
-      this.comidoService.getPunteos(Number(id)).subscribe((resp: Rep1[]) => {
-        this.tablas = resp;
+    this.activatedRoute.params.subscribe(({ codigo, id }) => {
+      this.id_instancia_juego = Number(id);
+      this.codigoAula = codigo;
+      this.comidoService.getPunteoAula(this.id_instancia_juego, this.codigoAula).subscribe((resp: Registro[]) => {
+        this.registros = resp;
         if (resp) {
           if (resp.length > 0) {
-            if (resp[0].registros) {
-              if (resp[0].registros.length > 0) {
-                this.nombrePartida = resp[0].registros[0].nombre_partida;
-                this.idPartida = id;
-              }
-            }
+            this.nombrePartida = resp[0].nombre_partida;
           }
         }
       })

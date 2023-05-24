@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as bootstrap from 'bootstrap';
 import { AulaService } from 'src/app/usuarios/services/aula.service';
 import { PublicacionService } from 'src/app/usuarios/services/publicacion.service';
@@ -8,6 +8,8 @@ import { Miembro } from 'src/models/interfaces/Miembro';
 import { Publicacion } from 'src/models/publicaciones/Publicacion';
 import { Usuario } from 'src/models/usuarios/Usuario';
 import Swal from 'sweetalert2';
+import { JuegosService } from '../../../../juegos/services/juegos.service';
+import { JuegoCompartidoI } from 'src/models/juegos/InterfacesJuego';
 
 @Component({
   selector: 'app-aula',
@@ -24,12 +26,15 @@ export class AulaComponent implements OnInit {
   codigoAula: string = "";
   usuario!: Usuario;
   publicaciones: Publicacion[] = []
+  juegosCompartidos: JuegoCompartidoI[] = []
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private publicacionService: PublicacionService,
     private usuarioService: UsuarioService,
-    private aulaService: AulaService
+    private aulaService: AulaService,
+    private juegosService: JuegosService,
+    private router: Router
   ) {
     this.usuario = this.usuarioService.getUsuarioSesion()!;
   }
@@ -39,10 +44,17 @@ export class AulaComponent implements OnInit {
       this.codigoAula = codigo;
       this.listarPublicaciones();
       this.listarMiembros();
+      this.listarJuegosCompartidos();
     })
 
     const myModal = this.myModal.nativeElement;
     this.myModalVar = new bootstrap.Modal(myModal);
+  }
+
+  listarJuegosCompartidos() {
+    this.juegosService.getAllCompartirAula(this.codigoAula).subscribe((resp: JuegoCompartidoI[]) => {
+      this.juegosCompartidos = resp;
+    })
   }
 
   listarPublicaciones() {
@@ -55,6 +67,58 @@ export class AulaComponent implements OnInit {
     this.aulaService.getMiembrosAula(this.codigoAula).subscribe((resp: Miembro[]) => {
       this.miembros = resp;
     })
+  }
+
+  colorBoton(juego: JuegoCompartidoI): string {
+    switch (juego.id_tipo_juego) {
+      case 1:
+        return "btn btn-dark btn-juego"
+      case 2:
+        return "btn btn-danger btn-juego"
+      case 3:
+        return "btn btn-warning btn-juego"
+      case 4:
+        return "btn btn-success btn-juego"
+      default:
+        return "btn btn-secondary btn-juego"
+    }
+
+  }
+
+  colorBotonPuntaje(juego: JuegoCompartidoI): string {
+    switch (juego.id_tipo_juego) {
+      case 1:
+        return "btn btn-dark"
+      case 2:
+        return "btn btn-danger"
+      case 3:
+        return "btn btn-warning"
+      case 4:
+        return "btn btn-success"
+      default:
+        return "btn btn-secondary"
+    }
+
+  }
+
+  redireccionar(juego: JuegoCompartidoI) {
+    switch (juego.id_tipo_juego) {
+      case 1:
+        this.router.navigate([`estudiante/aula/${this.codigoAula}/juego/comido/${juego.id_instancia_juego}`])
+        break;
+      case 2:
+        this.router.navigate([`estudiante/aula/${this.codigoAula}/juego/sopa/${juego.id_instancia_juego}`])
+        break;
+      case 3:
+        this.router.navigate([`estudiante/aula/${this.codigoAula}/juego/memorama/${juego.id_instancia_juego}`])
+        break;
+      case 4:
+        this.router.navigate([`estudiante/aula/${this.codigoAula}/juego/curioso/${juego.id_instancia_juego}`])
+        break;
+      default:
+        this.router.navigate([`estudiante/aula/${this.codigoAula}`])
+        break;
+    }
   }
 
   publicar() {
@@ -83,6 +147,26 @@ export class AulaComponent implements OnInit {
         })
       }
     })
+  }
+
+  dirigirAPuntaje(juego: JuegoCompartidoI) {
+    switch (juego.id_tipo_juego) {
+      case 1:
+        this.router.navigate([`estudiante/aula/${this.codigoAula}/puntaje/comido/${juego.id_instancia_juego}`])
+        break;
+      case 2:
+        this.router.navigate([`estudiante/aula/${this.codigoAula}/puntaje/sopa/${juego.id_instancia_juego}`])
+        break;
+      case 3:
+        this.router.navigate([`estudiante/aula/${this.codigoAula}/puntaje/memorama/${juego.id_instancia_juego}`])
+        break;
+      case 4:
+        this.router.navigate([`estudiante/aula/${this.codigoAula}/puntaje/curioso/${juego.id_instancia_juego}`])
+        break;
+      default:
+        this.router.navigate([`estudiante/aula/${this.codigoAula}`])
+        break;
+    }
   }
 
   openModal() {

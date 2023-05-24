@@ -5,7 +5,7 @@ import { Tema } from './../../models/tema';
 import { MemoramaServiceService } from '../../services/memorama-service.service';
 import { Pregunta } from '../../models/pregunta';
 import { Respuesta } from '../../models/respuesta';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 
@@ -28,14 +28,18 @@ export class JuegoMemoramaComponent implements OnInit {
   tema:Tema= new Tema()
   coeficienteDificultad:number=0.7
   usuario:Usuario=new Usuario()
+  codigoAula!:string
 
 
-  constructor(private router:Router, private memoramaService:MemoramaServiceService,
-    private usuarioService:UsuarioService) { }
+  constructor(private router:ActivatedRoute, private memoramaService:MemoramaServiceService,
+    private usuarioService:UsuarioService, private routers:Router) { }
 
   async ngOnInit(): Promise<void> {
-    this.tema.id = 4  // this.tema = servicioSesion.Tema
-    // this.usuario= usuarioSesion
+    this.router.params.subscribe(({ codigo, id }) => {
+      this.tema.id = id;      
+      this.codigoAula = codigo
+    })
+    this.tema = await this.memoramaService.getMemoramaIdInstanciaJuego(this.tema.id).toPromise();
     this.calculoDififultad()
     this.preguntas = await this.memoramaService.getPreguntasJuego(this.tema.id).toPromise();
     for (let i = 0; i < this.preguntas.length; i++) {
@@ -106,7 +110,7 @@ export class JuegoMemoramaComponent implements OnInit {
 
   private descontarPuntosTarjeta(index:number){
     if (this.respuestas[index].puntos>3) {
-      this.respuestas[index].puntos--
+      this.respuestas[index].puntos =this.respuestas[index].puntos-3
     }
   }
 
@@ -148,6 +152,7 @@ export class JuegoMemoramaComponent implements OnInit {
           title: 'Exelente juego',
           text: 'Juego Terminado tu Puntuacion es: '+this.punteoGeneral,
         })
+        this.routers.navigate(['estudiante/aula/',this.codigoAula])
       },
       (error:any) =>{
         Swal.fire({
@@ -163,7 +168,7 @@ export class JuegoMemoramaComponent implements OnInit {
   private crearEntidadPunteo():Punteo {
     const punteo:Punteo=new Punteo()
     punteo.id_instancia_juego=this.tema.id_instancia_juego
-    //punteo.codigo_aula= codigo aula 
+    punteo.codigo_aula= this.codigoAula
     punteo.dificultad = this.tema.dificultad
     punteo.id_usuario_juegador = this.usuarioService.getUsuarioSesion()!.id_usuario
     punteo.punteo = this.punteoGeneral

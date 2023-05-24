@@ -8,19 +8,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class JuegoEjecucionComidoComponent implements OnInit {
 
-  id_instancia_juego: string = "";
   esDemo = false;
+  id_instancia_juego!: number;
+  codigoAula: string = "";
 
   constructor(
     private activatedRoute: ActivatedRoute,
-  ) { }
+  ) {
+    this.activatedRoute.params.subscribe(({ codigo, id }) => {
+      this.id_instancia_juego = Number(id);
+      this.codigoAula = codigo;
+    })
+  }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(({ codigo, id }) => {
-      this.id_instancia_juego = id;
-      console.log("Codigo aula: " + codigo);
-      console.log("id_instancia_juego: " + id);
-    })
+
   }
 
 }

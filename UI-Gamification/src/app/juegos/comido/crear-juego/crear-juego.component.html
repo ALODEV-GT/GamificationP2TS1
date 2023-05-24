@@ -17,7 +17,8 @@
 
                       <div class="form-outline mb-4">
                         <label class="form-label">Nombre del juego: </label>
-                        <input class="form-control" type="text" class="form-control" formControlName="nombre" placeholder="Mi juego"/>
+                        <input class="form-control" type="text" class="form-control" formControlName="nombre"
+                          placeholder="Mi juego" />
                         <div *ngIf="campoEsValido('nombre')" class="form-text text-danger">
                           Debe de ser mayor a 4 caracteres
                         </div>
@@ -44,9 +45,9 @@
                           <button (click)="agregarPista()" type="button" class="btn btn-outline-info">Agregar
                             pista</button>
                         </div>
-                        <div class="col-auto">
+                        <!---  <div class="col-auto">
                           <button (click)="vistaPrevia()" type="button" class="btn btn-primary">Vista previa</button>
-                        </div>
+                        </div> -->
                         <div class="col-auto">
                           <button type="submit" class="btn btn-success">Crear juego</button>
                         </div>
