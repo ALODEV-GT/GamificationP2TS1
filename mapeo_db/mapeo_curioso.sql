@@ -1,7 +1,5 @@
-CREATE SCHEMA control_game_preguntados;
-
 CREATE TABLE control_game_preguntados.Titulo(
-    id SERIAL PRIMARY KEY, 
+    id SERIAL PRIMARY KEY,
     id_instancia_juego INTEGER NOT NULL,
     titulo VARCHAR(100) NOT NULL,
     id_user_creador INTEGER NOT NULL,
@@ -10,7 +8,7 @@ CREATE TABLE control_game_preguntados.Titulo(
 );
 
  CREATE TABLE control_game_preguntados.Pregunta(
-    id SERIAL PRIMARY KEY, 
+    id SERIAL PRIMARY KEY,
     id_titulo INTEGER NOT NULL,
     pregunta VARCHAR(400) NOT NULL,
     respuesta VARCHAR(400) NOT NULL,
@@ -19,7 +17,7 @@ CREATE TABLE control_game_preguntados.Titulo(
 
 
  CREATE TABLE control_game_preguntados.Opciones(
-    id SERIAL PRIMARY KEY, 
+    id SERIAL PRIMARY KEY,
     id_pregunta INTEGER NOT NULL,
     opcion VARCHAR(400) NOT NULL,
 FOREIGN KEY (id_pregunta) REFERENCES control_game_preguntados.Pregunta(id)
@@ -27,7 +25,7 @@ FOREIGN KEY (id_pregunta) REFERENCES control_game_preguntados.Pregunta(id)
 
 
 CREATE TABLE control_game_preguntados.historial_partida_curioso(
-    id SERIAL PRIMARY KEY, 
+    id SERIAL PRIMARY KEY,
     id_instancia_juego INTEGER NOT NULL,
     codigo_aula VARCHAR(20) NOT NULL,
     id_jugador INTEGER NOT NULL,
